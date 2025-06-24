@@ -15,11 +15,11 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
-      <div className="row">
+    <main className="min-h-screen flex flex-col items-center justify-start p-2 pb-8">
+      <h1 className="my-8 text-3xl font-bold">Rick & Morty Explorer</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
         {characters.map((char) => (
-          <div className="col-md-4 mb-4" key={char.id}>
+          <div key={char.id}>
             <CharacterCard character={char} />
           </div>
         ))}
