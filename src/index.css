@@ -1,4 +1,6 @@
-body {
+@import "tailwindcss";
+
+/* body {
   font-family: Arial, sans-serif;
   background-color: #f2f2f2;
   margin: 0;
@@ -9,4 +11,4 @@ body {
   max-width: 900px;
   margin: auto;
   padding: 1rem;
-}
+} */
