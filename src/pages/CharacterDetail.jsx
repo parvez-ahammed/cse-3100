@@ -16,7 +16,7 @@ export default function CharacterDetail() {
   else
     return (
       <div className="max-w-6xl mx-auto p-4 mt-4 flex flex-col md:flex-row rounded-lg">
-        <div className="flex flex-col items-center md:items-start">
+        <div className="flex flex-col items-center md:items-start mr-4">
           <img
             src={character.image}
             className="rounded-lg w-100 h-100 object-cover"
@@ -30,7 +30,7 @@ export default function CharacterDetail() {
             <span className="font-bold text-gray-800 text-2xl lg:text-3xl">
               Status
             </span>
-            <span className="font-semibold text-2xl lg:text-3xl">
+            <span className="font-light text-xl lg:text-3xl">
               {character.status}
             </span>
           </div>
@@ -38,7 +38,7 @@ export default function CharacterDetail() {
             <span className="font-bold text-gray-800 text-2xl lg:text-3xl">
               Species
             </span>
-            <span className="font-semibold text-2xl lg:text-3xl">
+            <span className="font-light text-xl lg:text-3xl">
               {character.species}
             </span>
           </div>
@@ -46,7 +46,7 @@ export default function CharacterDetail() {
             <span className="font-bold text-gray-800 text-2xl lg:text-3xl">
               Origin
             </span>
-            <span className="font-semibold text-2xl lg:text-3xl">
+            <span className="font-light text-xl lg:text-3xl">
               {character.origin?.name}
             </span>
           </div>
@@ -54,7 +54,7 @@ export default function CharacterDetail() {
             <span className="font-bold text-gray-800 text-2xl lg:text-3xl">
               Location
             </span>
-            <span className="font-semibold text-2xl lg:text-3xl">
+            <span className="font-light text-xl lg:text-3xl">
               {character.location?.name}
             </span>
           </div>
@@ -62,7 +62,7 @@ export default function CharacterDetail() {
             <span className="font-bold text-gray-900 text-2xl lg:text-3xl">
               Episodes
             </span>
-            <span className="font-semibold text-2xl lg:text-3xl">
+            <span className="font-light text-xl lg:text-3xl">
               {character.episode?.length}
             </span>
           </div>
