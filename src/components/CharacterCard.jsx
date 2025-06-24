@@ -1,4 +1,12 @@
-export default function CharacterCard({ character }) {
+import {useNavigate} from "react-router-dom";
+  
+  export default function CharacterCardWithNavigate({ character }) {
+  const navigate = useNavigate();
+
+  const handleViewDetails = () => {
+    navigate(`/character/${character.id}`);
+   
+  };
   return (
     <div className="card">
       <img
@@ -12,7 +20,10 @@ export default function CharacterCard({ character }) {
           <strong>Status:</strong> {character.status} <br />
           <strong>Species:</strong> {character.species}
         </p>
-        <button>View Details</button>
+
+        <button onClick={handleViewDetails}>
+          
+          View Details</button>
       </div>
     </div>
   );
