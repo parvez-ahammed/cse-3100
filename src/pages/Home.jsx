@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start p-2 pb-8">
-      <h1 className="my-8 text-3xl font-bold">Rick & Morty Explorer</h1>
+      {/* <h1 className="my-8 text-3xl font-bold">Rick & Morty Explorer</h1> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
         {characters.map((char) => (
           <div key={char.id}>
