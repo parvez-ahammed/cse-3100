@@ -18,11 +18,13 @@ export default function CharacterDetail() {
       <h2>{character.name}</h2>
       <img src={character.image} alt={character.name} className="img-fluid" />
       <p>
+
         <strong>Status:</strong> {character.status} <br />
         <strong>Species:</strong> {character.species} <br />
         <strong>Origin:</strong>  {character.origin.name} <br/>
         <strong>Last Known Loaction:</strong> {character.location.name} <br/>
-        <strong>Number of episodes:</strong> {character.episode.length} <br/>
+        <strong>Number of episodes they appeared in
+:</strong> {character.episode.length} <br/>
       </p>
     </div>
   );
