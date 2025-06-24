@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: #e1d7d7;
   margin: 0;
   padding:0;
 }
@@ -8,4 +8,5 @@ body {
   max-width: 900px;
   margin: auto;
   padding: 1rem;
+  
 }

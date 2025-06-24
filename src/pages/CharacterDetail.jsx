@@ -20,6 +20,9 @@ export default function CharacterDetail() {
       <p>
         <strong>Status:</strong> {character.status} <br />
         <strong>Species:</strong> {character.species} <br />
+        <strong>Origin:</strong>  {character.origin.name} <br/>
+        <strong>Last Known Loaction:</strong> {character.location.name} <br/>
+        <strong>Number of episodes:</strong> {character.episode.length} <br/>
       </p>
     </div>
   );
