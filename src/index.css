@@ -1,12 +1,135 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
+
+:root {
+  --primary-bg-color: #f8f9fa; /* A light off-white/gray */
+  --content-bg-color: #ffffff; /* White for the content "sheet" */
+  --text-color: #212529;
+  --border-color: #dee2e6;
+  --card-bg-color: #3c3e44; /* Dark background for character cards */
+  --card-text-color: #ffffff;
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-bg-color); /* Sets the off-white background for the whole page */
+  color: var(--text-color);
+}
+
+/* --- Main Layout & Content Container Styling --- */
+main .container {
+  background-color: var(--content-bg-color);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+  border: 1px solid var(--border-color);
+}
+/* --- Character Card Styling (NEW Lighter Blue THEME) --- */
+
+.card {
+  /*airy blue */
+  background-color: #E0EFFF; 
+  color: #212529; 
+
+  /* A very subtle border to complement the light theme */
+  border: 1px solid #f0f7ff; 
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+.card .card-body {
   padding: 1rem;
+}
+
+.card .card-title {
+  color: #212529; 
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.card .card-text {
+  font-size: 0.9rem;
+}
+.card .btn-primary {
+  background-color: #007BFF; /* A classic, strong blue */
+  border-color: #007BFF;
+  color: #ffffff; /* White text for the button */
+  font-weight: 500;
+}
+
+.card .btn-primary:hover {
+  background-color: #0056b3; /* A darker blue on hover */
+  border-color: #0056b3;
+}
+/* --- Form Element Styling --- */
+.form-control, .form-select {
+  border-radius: 1rem; 
+  padding: 0.75rem 1rem;
+}
+
+.btn-dark {
+  background-color: #000;
+  border: none;
+}
+/*2 column e 5 ta kore item show kora */
+
+@media (min-width: 992px) {
+  .col-custom-5 {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+/* --- Character Detail Page Styling --- */
+
+.character-detail-main-box {
+  background-color: #fff; /* White background */
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* to hold vertical stack of detail pairs */
+.detail-table {
+  border-radius: 0.75rem; /* Rounded corners for the entire "table" */
+  overflow: hidden; /* This is crucial for making the child corners conform */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* A very subtle shadow on the table */
+}
+
+/* The container for a single label/value pair */
+.detail-pair {
+  display: flex;
+  border-bottom: 1.5px solid #d1e3f8; /* A line between each row */
+}
+.detail-table .detail-pair:last-child {
+  border-bottom: none;
+}
+
+/* This styles the left side (the label) of the pair */
+.detail-label {
+  flex: 0 0 50%; /* Take up exactly 50% of the width */
+  padding: 1.25rem;
+  background-color: #E9ECEF; /* The darker gray */
+  font-weight: 500;
+  text-align: right;
+  padding-right: 1.5rem;
+}
+
+/* This styles the right side (the value) of the pair */
+.detail-value {
+  flex: 0 0 50%; /* Take up the other 50% */
+  padding: 1rem;
+  background-color: #E0EFFF; /* The light blue */
+  text-align: left;
+  padding-left: 1.5rem;
 }
