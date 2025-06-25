@@ -5,9 +5,11 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="w-full border-b p-4 flex items-center justify-between">
+    <nav className="w-full border-b px-8 py-4  mb-2 flex items-center justify-between">
       <div className="flex items-center space-x-2">
-        <span className="text-2xl font-bold">Rick & Morty Explorer</span>
+        <Link to="/" className="text-2xl font-bold">
+          Rick & Morty Explorer
+        </Link>
       </div>
 
       <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
