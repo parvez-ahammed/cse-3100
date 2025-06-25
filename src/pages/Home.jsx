@@ -8,12 +8,15 @@ export default function Home() {
   const [name, setName] = useState(searchParams.get("name") || "");
   const [status, setStatus] = useState(searchParams.get("status") || "");
   const [searchTrigger, setSearchTrigger] = useState(false);
+  const [page, setPage] = useState(parseInt(searchParams.get("page")) || 1);
+  const [maxPage, setMaxPage] = useState(1);
 
   useEffect(() => {
     const fetchCharacters = async () => {
       const query = new URLSearchParams();
       if (name) query.set("name", name);
       if (status) query.set("status", status);
+      query.set("page", page);
       let qStr = query.toString();
 
       const url = `https://rickandmortyapi.com/api/character/?${qStr}`;
@@ -21,22 +24,16 @@ export default function Home() {
       const data = await res.json();
 
       setCharacters(data.results || []);
-      console.log(data.results?.length);
+      setMaxPage(data.info?.pages || 1);
       setSearchParams(query);
       setSearchTrigger(false);
     };
     fetchCharacters();
-  }, [searchTrigger, setSearchParams]);
+  }, [searchTrigger, page, setSearchParams]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start p-2 pb-8">
-      {/* <form
-        onSubmit={() => {
-          setSearchTrigger(true);
-        }}
-        className="input"
-      > */}
-      <div className="flex flex-col min-w-2xs sm:min-w-xl min-h-12 sm:flex-row gap-4 my-4">
+    <main className="min-h-screen flex flex-col items-center justify-start p-2 pb-4">
+      <div className="flex flex-col min-w-2xs sm:min-w-xl min-h-12 sm:flex-row gap-4 mt-4 mb-6">
         <input
           type="text"
           placeholder="Search (by name)..."
@@ -57,13 +54,13 @@ export default function Home() {
         <button
           className="p-2 min-w-28 rounded-xl bg-gray-900 text-white font-medium hover:bg-gray-800 transition"
           onClick={() => {
+            setPage(1);
             setSearchTrigger(true);
           }}
         >
           Search
         </button>
       </div>
-      {/* </form> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {characters.length > 0 ? (
           characters.map((char) => (
@@ -76,6 +73,39 @@ export default function Home() {
             No results found
           </p>
         )}
+      </div>
+      <div className="flex justify-center mt-6 space-x-4">
+        <button
+          disabled={page <= 1}
+          onClick={() => {
+            setPage((prev) => prev - 1);
+            setSearchTrigger(true);
+          }}
+          className={`px-4 py-2 rounded-xl font-medium ${
+            page <= 1
+              ? "bg-gray-300"
+              : "bg-gray-600 text-white hover:bg-gray-800"
+          }`}
+        >
+          Prev
+        </button>
+        <span className="text-gray-700 my-auto font-semibold">
+          Page {page} of {maxPage}
+        </span>
+        <button
+          disabled={page >= maxPage}
+          onClick={() => {
+            setPage((prev) => prev + 1);
+            setSearchTrigger(true);
+          }}
+          className={`px-4 py-2 rounded-xl font-medium ${
+            page >= maxPage
+              ? "bg-gray-300"
+              : "bg-gray-600 text-white hover:bg-gray-800"
+          }`}
+        >
+          Next
+        </button>
       </div>
     </main>
   );
