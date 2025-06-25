@@ -7,6 +7,8 @@ You'll apply React and JavaScript skills, routing, API fetching, conditional ren
 ---
 
 ## Requirements
+##Wakatime Badge
+[![wakatime](https://wakatime.com/badge/user/3e03447a-8791-4526-b6ff-5bcb2cdcbb30/project/3ab3fc11-a99f-42dd-9934-146a8e864f8b.svg)](https://wakatime.com/badge/user/3e03447a-8791-4526-b6ff-5bcb2cdcbb30/project/3ab3fc11-a99f-42dd-9934-146a8e864f8b)
 
 Make sure you have the following installed:
 
