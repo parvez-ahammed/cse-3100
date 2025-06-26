@@ -19,6 +19,7 @@
 
 - Redesigned the original app for a modern look
 - Responsive design
+- New font
 
 ## Known issues
 
