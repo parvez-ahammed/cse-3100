@@ -1,0 +1,38 @@
+.navbar{
+    background: linear-gradient(120deg, #101726, #1b273f);
+    padding: 1.5 rem;
+    box-shadow:0 4px 15px rgba(10,30,60,0.7);
+    font-family:'Poppins', 'Segoe UI', sans-serif;
+    transition:all 0.3s ease;
+}
+
+.navbar-brand{
+    text-decoration: none !important;
+    font-weight:700;
+    font-size: 1.8 rem;
+    color: #56ccf2;
+    text-shadow:0 0 8px rgba(86,204,242,0.6);
+    transition: 0.3s ease, text-shadow 0.3s ease;
+}
+.navbar-brand:hover{
+    color: #a0d8ff;
+    text-shadow: 0 0 12px rgba(160, 216, 255, 0.8);  
+}
+
+.nav-link{
+    text-decoration: none !important;
+  color: #9bbbd4; 
+  font-weight: 500;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s ease, transform 0.2s ease;
+
+}
+
+.navbar-toggler{
+     border-color: transparent;
+  padding: 0.5rem 0.75rem;
+}
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(86,204,242,0.8)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
