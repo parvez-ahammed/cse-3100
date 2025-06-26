@@ -1,6 +1,6 @@
 # Rick & Morty Explorer – Assignment 1
 
-## A beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
+#### A beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
 
 ## WakaTime Badge
 
