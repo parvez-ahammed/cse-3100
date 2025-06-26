@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
 export default function CharacterCard({ character }) {
   return (
-    <div className="card">
+  <Link
+      to={`/character/${character.id}`}
+      style={{ textDecoration: "none", color: "inherit" }}
+    >
+
+    <div className="card h-100">
       <img
         src={character.image}
         className="card-img-top"
@@ -11,9 +17,11 @@ export default function CharacterCard({ character }) {
         <p className="card-text">
           <strong>Status:</strong> {character.status} <br />
           <strong>Species:</strong> {character.species}
+          
         </p>
         <button>View Details</button>
       </div>
     </div>
-  );
+     </Link>
+  ); 
 }
