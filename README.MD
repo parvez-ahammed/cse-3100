@@ -1,7 +1,10 @@
 # Rick & Morty Explorer – Assignment 1
 
-A beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
----
+## A beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
+
+## WakaTime Badge
+
+[![wakatime](https://wakatime.com/badge/user/85cb73f7-78ac-4c44-b46a-96c2cea7248b/project/4ea49930-25a3-4a56-934f-ebd8e9560ea8.svg)](https://wakatime.com/badge/user/85cb73f7-78ac-4c44-b46a-96c2cea7248b/project/4ea49930-25a3-4a56-934f-ebd8e9560ea8)
 
 ## Implemented Features
 
@@ -64,4 +67,5 @@ npm install
 ```bash
 npm run dev
 ```
+
 ---
