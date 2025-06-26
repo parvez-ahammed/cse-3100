@@ -16,15 +16,24 @@ export default function Home() {
       const query = new URLSearchParams();
       if (name) query.set("name", name);
       if (status) query.set("status", status);
-      query.set("page", page);
+      query.set("page", parseInt((page + 1) / 2));
       let qStr = query.toString();
 
       const url = `https://rickandmortyapi.com/api/character/?${qStr}`;
       const res = await fetch(url);
       const data = await res.json();
 
-      setCharacters(data.results || []);
-      setMaxPage(data.info?.pages || 1);
+      var slicedData = [];
+
+      if (page % 2 !== 0) {
+        slicedData = data.results?.slice(0, 10) || [];
+      } else {
+        slicedData = data.results?.slice(10, 20) || [];
+      }
+
+      setCharacters(slicedData);
+      setMaxPage(data.info?.pages * 2 - 1 || 1);
+      query.set("page", page);
       setSearchParams(query);
       setSearchTrigger(false);
     };
