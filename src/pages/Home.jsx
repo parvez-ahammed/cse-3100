@@ -6,7 +6,7 @@ export default function Home() {
   const [characters, setCharacters] = useState([]);
   const [info, setInfo] = useState({}); 
   const [searchParams, setSearchParams] = useSearchParams(); 
- 
+
   const nameFilter = searchParams.get("name") || "";
   const statusFilter = searchParams.get("status") || "";
   const initialPage = parseInt(searchParams.get("page")) || 1;
@@ -42,12 +42,11 @@ export default function Home() {
 
     fetchCharacters();
 
-   
     const newSearchParams = new URLSearchParams(searchParams);
     if (page !== 1) {
       newSearchParams.set("page", page.toString());
     } else {
-      newSearchParams.delete("page"); 
+      newSearchParams.delete("page");
     }
     setSearchParams(newSearchParams);
 
@@ -69,7 +68,7 @@ export default function Home() {
     <main className="container">
       <h1 className="my-4">Rick & Morty Explorer</h1>
 
-      
+     
 
       <div className="row">
         {characters.length > 0 ? (
