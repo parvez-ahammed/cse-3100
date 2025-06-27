@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CharacterCard from "../components/CharacterCard";
+import './home.css'; 
 
 export default function Home() {
   const [characters, setCharacters] = useState([]);
-  const [info, setInfo] = useState({}); 
-  const [searchParams, setSearchParams] = useSearchParams(); 
+  const [info, setInfo] = useState({});
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const nameFilter = searchParams.get("name") || "";
   const statusFilter = searchParams.get("status") || "";
@@ -31,8 +32,9 @@ export default function Home() {
           return;
         }
         const data = await res.json();
-        setCharacters(data.results);
-        setInfo(data.info); 
+        setInfo(data.info);
+
+        setCharacters(data.results.slice(0, 10));  
       } catch (error) {
         console.error("Error fetching characters:", error);
         setCharacters([]);
@@ -50,7 +52,7 @@ export default function Home() {
     }
     setSearchParams(newSearchParams);
 
-  }, [nameFilter, statusFilter, page, setSearchParams, searchParams]); 
+  }, [nameFilter, statusFilter, page, setSearchParams, searchParams]);
 
   const handleNextPage = () => {
     if (info.next) {
@@ -65,33 +67,31 @@ export default function Home() {
   };
 
   return (
-    <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
+    <main className="home-container">
+      <h1 className="title">Rick & Morty Explorer</h1>
 
-     
-
-      <div className="row">
+      <div className="character-list">
         {characters.length > 0 ? (
           characters.map((char) => (
-            <div className="col-md-4 mb-4" key={char.id}>
+            <div className="character-card" key={char.id}>
               <CharacterCard character={char} />
             </div>
           ))
         ) : (
-          <p className="text-center">No characters found matching your criteria.</p>
+          <p className="no-results">No characters found matching your criteria.</p>
         )}
       </div>
 
-      <div className="d-flex justify-content-between my-4">
+      <div className="pagination">
         <button
-          className="btn btn-primary"
+          className="pagination-btn"
           onClick={handlePreviousPage}
           disabled={!info.prev}
         >
           Previous
         </button>
         <button
-          className="btn btn-primary"
+          className="pagination-btn"
           onClick={handleNextPage}
           disabled={!info.next}
         >
