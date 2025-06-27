@@ -1,25 +1,26 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 import "./header.css";
 
 export default function Navigation() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  
   const [localNameFilter, setLocalNameFilter] = useState(searchParams.get("name") || "");
   const [localStatusFilter, setLocalStatusFilter] = useState(searchParams.get("status") || "");
 
-  
+  const [isDarkMode, setIsDarkMode] = useState(false);  // Track dark mode
+
   useEffect(() => {
     setLocalNameFilter(searchParams.get("name") || "");
     setLocalStatusFilter(searchParams.get("status") || "");
-  }, [searchParams]); 
+  }, [searchParams]);
+
   const handleNameInputChange = (e) => {
-    setLocalNameFilter(e.target.value); 
+    setLocalNameFilter(e.target.value);
   };
 
   const handleStatusSelectChange = (e) => {
-    setLocalStatusFilter(e.target.value); 
+    setLocalStatusFilter(e.target.value);
   };
 
   const handleSearchClick = () => {
@@ -37,12 +38,18 @@ export default function Navigation() {
       newSearchParams.delete("status");
     }
 
-    newSearchParams.delete("page"); 
+    newSearchParams.delete("page");
     setSearchParams(newSearchParams);
   };
 
+  // Toggle between dark and light modes
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+    document.body.classList.toggle("dark-mode", !isDarkMode);  // Toggle class on body
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
           Rick & Morty Explorer
@@ -71,12 +78,12 @@ export default function Navigation() {
               className="form-control me-2 custom-search-input"
               placeholder="Search by name..."
               value={localNameFilter}
-              onChange={handleNameInputChange} 
+              onChange={handleNameInputChange}
             />
             <select
-              className="form-select me-2 custom-filter-select" 
+              className="form-select me-2 custom-filter-select"
               value={localStatusFilter}
-              onChange={handleStatusSelectChange} 
+              onChange={handleStatusSelectChange}
             >
               <option value="">All Statuses</option>
               <option value="alive">Alive</option>
@@ -84,20 +91,25 @@ export default function Navigation() {
               <option value="unknown">Unknown</option>
             </select>
             <button
-              className="btn btn-primary custom-search-button" 
-              onClick={handleSearchClick} 
+              className="btn btn-primary custom-search-button"
+              onClick={handleSearchClick}
             >
               Search
             </button>
           </div>
         </div>
+
+        {/* Dark Mode Toggle Button */}
+        <div className="dark-mode-wrapper">
+          <button
+            onClick={toggleDarkMode}
+            className="dark-mode-toggle"
+            title="Toggle Dark Mode"
+          >
+            {isDarkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+        </div>
       </div>
     </nav>
   );
 }
-
-
-
-
-
-
