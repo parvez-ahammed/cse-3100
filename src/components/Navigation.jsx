@@ -1,14 +1,16 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./header.css";
 
 export default function Navigation() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [localNameFilter, setLocalNameFilter] = useState(searchParams.get("name") || "");
   const [localStatusFilter, setLocalStatusFilter] = useState(searchParams.get("status") || "");
 
-  const [isDarkMode, setIsDarkMode] = useState(false);  // Track dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false);  
 
   useEffect(() => {
     setLocalNameFilter(searchParams.get("name") || "");
@@ -24,28 +26,45 @@ export default function Navigation() {
   };
 
   const handleSearchClick = () => {
-    const newSearchParams = new URLSearchParams(searchParams);
+    const newSearchParams = new URLSearchParams();
 
     if (localNameFilter) {
       newSearchParams.set("name", localNameFilter);
-    } else {
-      newSearchParams.delete("name");
     }
 
     if (localStatusFilter) {
       newSearchParams.set("status", localStatusFilter);
-    } else {
-      newSearchParams.delete("status");
     }
 
-    newSearchParams.delete("page");
-    setSearchParams(newSearchParams);
+    if (location.pathname !== "/") {
+      navigate(`/?${newSearchParams.toString()}`);
+    } else {
+      newSearchParams.delete("page");
+      setSearchParams(newSearchParams);
+    }
   };
 
-  // Toggle between dark and light modes
+  
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearchClick();
+    }
+  };
+
+  
+  const handleClearSearch = () => {
+    setLocalNameFilter("");
+    setLocalStatusFilter("");
+    if (location.pathname === "/") {
+      setSearchParams(new URLSearchParams());
+    } else {
+      navigate("/");
+    }
+  };
+
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
-    document.body.classList.toggle("dark-mode", !isDarkMode);  // Toggle class on body
+    document.body.classList.toggle("dark-mode", !isDarkMode);  
   };
 
   return (
@@ -79,6 +98,7 @@ export default function Navigation() {
               placeholder="Search by name..."
               value={localNameFilter}
               onChange={handleNameInputChange}
+              onKeyPress={handleKeyPress}
             />
             <select
               className="form-select me-2 custom-filter-select"
@@ -91,15 +111,23 @@ export default function Navigation() {
               <option value="unknown">Unknown</option>
             </select>
             <button
-              className="btn btn-primary custom-search-button"
+              className="btn btn-primary custom-search-button me-2"
               onClick={handleSearchClick}
             >
               Search
             </button>
+            {(localNameFilter || localStatusFilter) && (
+              <button
+                className="btn btn-outline-secondary custom-clear-button"
+                onClick={handleClearSearch}
+                title="Clear search"
+              >
+                Clear
+              </button>
+            )}
           </div>
         </div>
 
-        {/* Dark Mode Toggle Button */}
         <div className="dark-mode-wrapper">
           <button
             onClick={toggleDarkMode}
@@ -113,3 +141,4 @@ export default function Navigation() {
     </nav>
   );
 }
+
