@@ -28,6 +28,8 @@ The following items are **strongly recommended** to ensure a professional, well-
   - A brief explanation of how they were used
 
 ## Requirements
+## Waka
+[![wakatime](https://wakatime.com/badge/user/3e03447a-8791-4526-b6ff-5bcb2cdcbb30/project/0021c73b-ccfc-4a99-ba59-8f0dfc194180.svg)](https://wakatime.com/badge/user/3e03447a-8791-4526-b6ff-5bcb2cdcbb30/project/0021c73b-ccfc-4a99-ba59-8f0dfc194180)
 
 Make sure you have the following installed:
 
