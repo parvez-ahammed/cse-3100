@@ -1,22 +1,105 @@
+import { useState } from 'react';
+
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setIsSubmitting(true);
+      // Simulate API call
+      setTimeout(() => {
+        console.log('Form submitted:', formData);
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setIsSubmitting(false);
+        setTimeout(() => setIsSubmitted(false), 3000);
+      }, 1000);
+    }
+  };
+
   return (
-    <div className="container my-4">
-      <h2>Contact Us</h2>
-      <form>
-        <div className="mb-3">
-          <label>Name</label>
-          <input className="form-control" type="text" />
+    <div className="max-w-md mx-auto p-5">
+      <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+      
+      {isSubmitted && (
+        <div className="mb-5 p-3 text-green-700 bg-green-100 border border-green-400 rounded">
+          Thank you! Your message has been sent.
         </div>
-        <div className="mb-3">
-          <label>Email</label>
-          <input className="form-control" type="email" />
+      )}
+      
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-2">Name</label>
+          <input
+            className={`w-full px-3 py-2 border rounded ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          {errors.name && <span className="text-red-500 text-sm">{errors.name}</span>}
         </div>
-        <div className="mb-3">
-          <label>Message</label>
-          <textarea className="form-control" rows="5"></textarea>
+        
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-2">Email</label>
+          <input
+            className={`w-full px-3 py-2 border rounded ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
         </div>
-        <button className="btn btn-primary" type="submit">
-          Send
+        
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-2">Message</label>
+          <textarea
+            className={`w-full px-3 py-2 border rounded ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
+            rows="5"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+          />
+          {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
+        </div>
+        
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className={`w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+        >
+          {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
       </form>
     </div>

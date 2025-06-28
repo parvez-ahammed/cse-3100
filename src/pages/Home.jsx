@@ -77,7 +77,6 @@ export default function Home() {
 
   return (
     <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
       <div className="row">
         {characters &&
           characters.slice(sliceStart, sliceEnd).map((char) => (
