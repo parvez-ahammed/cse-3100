@@ -1,5 +1,3 @@
-// src/pages/Home.jsx
-
 import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 
@@ -35,10 +33,10 @@ export default function Home() {
   const handleNext = () => info.next && setPage(page + 1);
 
   return (
-    // Removed the dark theme classes from the main wrapper
+    
     <main className="container py-5">
       <div className="text-center mb-5">
-        {/* Removed the inline style from the title */}
+        
         <h1 className="display-4 fw-bold">Rick & Morty Explorer</h1>
         <p className="lead text-muted">
           Find your favorite characters.
@@ -47,7 +45,7 @@ export default function Home() {
 
       <div className="row mb-5 justify-content-center">
         <div className="col-md-5">
-          {/* Removed dark theme classes from the input */}
+        
           <input
             type="text"
             placeholder="Search by name..."
@@ -57,7 +55,7 @@ export default function Home() {
           />
         </div>
         <div className="col-md-3">
-          {/* Removed dark theme classes from the dropdown */}
+          
           <select
             className="form-select form-select-lg"
             value={status}
@@ -80,7 +78,7 @@ export default function Home() {
           ))
         ) : (
           <div className="col text-center">
-            {/* Removed inline style from the "not found" message */}
+            
             <h3>Aw, geez!</h3>
             <p className="lead text-muted">
               No characters found.
