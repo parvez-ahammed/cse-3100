@@ -8,13 +8,17 @@ import Header from "./components/Header";
 export default function App() {
   return (
     <BrowserRouter>
-    <Header/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path = "/character/:id" element ={<CharacterDetail/>}/>
-      </Routes>
+    
+      <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/character/:id" element={<CharacterDetail />} />
+        </Routes>
+      </div>
+      
     </BrowserRouter>
   );
 }

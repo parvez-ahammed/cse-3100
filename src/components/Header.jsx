@@ -1,12 +1,8 @@
-// src/components/Header.jsx
-
 import { Link, NavLink } from "react-router-dom";
-
 export default function Header() {
   return (
-    // Reverted to a light theme navbar with a subtle shadow
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-      <div className="container">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+      <div className="container-fluid">
         <Link className="navbar-brand fw-bold" to="/">
           Rick & Morty Explorer
         </Link>
