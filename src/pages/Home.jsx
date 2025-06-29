@@ -13,10 +13,17 @@ export default function Home() {
       const API_URL = `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchTerm}&status=${status}`;
       try {
         const res = await fetch(API_URL);
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        
+
         const data = await res.json();
         setCharacters(data.results || []);
         setInfo(data.info || {});
       } catch (error) {
+        
         console.error("Error fetching characters:", error);
         setCharacters([]);
         setInfo({});
@@ -33,10 +40,8 @@ export default function Home() {
   const handleNext = () => info.next && setPage(page + 1);
 
   return (
-    
     <main className="container py-5">
       <div className="text-center mb-5">
-        
         <h1 className="display-4 fw-bold">Rick & Morty Explorer</h1>
         <p className="lead text-muted">
           Find your favorite characters.
@@ -45,7 +50,6 @@ export default function Home() {
 
       <div className="row mb-5 justify-content-center">
         <div className="col-md-5">
-        
           <input
             type="text"
             placeholder="Search by name..."
@@ -55,7 +59,6 @@ export default function Home() {
           />
         </div>
         <div className="col-md-3">
-          
           <select
             className="form-select form-select-lg"
             value={status}
@@ -78,7 +81,6 @@ export default function Home() {
           ))
         ) : (
           <div className="col text-center">
-            
             <h3>Aw, geez!</h3>
             <p className="lead text-muted">
               No characters found.
