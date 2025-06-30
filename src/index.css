@@ -2,7 +2,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: #c6fbff;
   margin: 0;
   padding: 0;
 }
@@ -14,7 +14,7 @@ body {
 
 @font-face {
   font-family: 'Get Schwifty';
-  src: url('src/assets/get_schwifty.ttf') format('truetype');
+  src: url('/get_schwifty.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -52,4 +52,21 @@ body {
 
 .glow-animation {
   animation: glowPulse 2s infinite ease-in-out;
+}
+
+@keyframes minimalGlowPulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 2px rgba(255, 255, 255, 0.7),
+      0 0 4px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.8),
+      0 0 6px rgba(255, 255, 255, 0.6);
+  }
+}
+
+.subtle-glow {
+  animation: minimalGlowPulse 4s infinite ease-in-out;
 }
