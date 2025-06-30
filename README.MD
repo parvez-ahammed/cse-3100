@@ -51,6 +51,10 @@ To run this project locally, please follow these steps:
 I think it was a practical project for learning how to connect a React frontend with a third-party API and manage complex state. 
 
 ---
+### **WakaTime badge**
+[![WakaTime](https://wakatime.com/badge/user/477f582d-9b20-4035-93b6-873e173f480d/project/dosdxevlbz.svg)](https://wakatime.com/badge/user/477f582d-9b20-4035-93b6-873e173f480d/project/dosdxevlbz)
+
+---
 
 ### **AI Tool Usage**
 
