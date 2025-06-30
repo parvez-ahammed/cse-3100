@@ -3,6 +3,7 @@
 A React website that fetches and displays characters from the [Rick & Morty API](https://rickandmortyapi.com/), with search, filtering, and pagination.
 
 ![Preview](https://github.com/user-attachments/assets/8a337959-170f-494d-af3d-cecb144a8c1e)
+![Preview](https://github.com/user-attachments/assets/cc6b1650-9541-4e64-9e79-985a10eee31f)
 ![Preview](https://github.com/user-attachments/assets/87f88bc8-789b-4569-a57c-d9be80ac7cec)
 ![Preview](https://github.com/user-attachments/assets/4d5e3ba2-046b-457a-842c-df68c3a643d5)
 
