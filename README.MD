@@ -48,6 +48,8 @@ A React website that fetches and displays characters from the [Rick & Morty API]
 ### **Known Issues**  
 - Could not implement dark mode. Long time usage may strain your eyes.  
 
+[![wakatime](https://wakatime.com/badge/user/8f595e87-f829-4400-9849-5e99a4f44ee2/project/094e70ca-9a80-4b68-9424-75aad70d0b2a.svg)](https://wakatime.com/badge/user/8f595e87-f829-4400-9849-5e99a4f44ee2/project/094e70ca-9a80-4b68-9424-75aad70d0b2a)
+
 ### **Instructor Notes**  
 - **Focus Areas**:  
   - `useLocalStorage` hook implementation.  
