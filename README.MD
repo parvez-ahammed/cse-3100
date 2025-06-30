@@ -52,8 +52,7 @@ I think it was a practical project for learning how to connect a React frontend 
 
 ---
 ### **WakaTime badge**
-[![WakaTime](https://wakatime.com/badge/user/477f582d-9b20-4035-93b6-873e173f480d/project/dosdxevlbz.svg)](https://wakatime.com/badge/user/477f582d-9b20-4035-93b6-873e173f480d/project/dosdxevlbz)
-
+[![wakatime](https://wakatime.com/badge/user/477f582d-9b20-4035-93b6-873e173f480d/project/8c7de9b9-035c-4dcc-83f3-9c5807330780.svg)](https://wakatime.com/badge/user/477f582d-9b20-4035-93b6-873e173f480d/project/8c7de9b9-035c-4dcc-83f3-9c5807330780)
 ---
 
 ### **AI Tool Usage**
