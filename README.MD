@@ -1,31 +1,81 @@
 # Rick & Morty Explorer – Assignment 1
 
-In this project, you'll build a beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
+A React website that fetches and displays characters from the [Rick & Morty API](https://rickandmortyapi.com/), with search, filtering, and pagination.
 
-You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
+![Preview](https://github.com/user-attachments/assets/8a337959-170f-494d-af3d-cecb144a8c1e)
+![Preview](https://github.com/user-attachments/assets/87f88bc8-789b-4569-a57c-d9be80ac7cec)
+![Preview](https://github.com/user-attachments/assets/4d5e3ba2-046b-457a-842c-df68c3a643d5)
 
----
+## Features
 
-## Submission Guidelines
+### 1. **Character Details Page**  
+- Dynamic routes (e.g., `/character/1`) showing:  
+  - Name, image, status, species, origin, last location, and episode count.  
 
-The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
+### 2. **Search & Filter**  
+- **Search**: Filter characters by name.  
+- **Dropdown**: Filter by status (`Alive`, `Dead`, `Unknown`).  
+- URL persistence: `?name=rick&status=alive`.  
 
-- **Time Tracking (Recommended):**  
-  Use tools like [WakaTime](https://wakatime.com/) to track your development time. This provides visibility into the effort invested.
+### 3. **Pagination**  
+- Next/Previous buttons (10 characters per page).  
+- Disabled buttons at page limits.  
 
-- **Updated README (Mandatory):**  
-  Include a clear and updated `README.md` in your repository with:
+### 4. **Contact Us Page** (`/contact`)  
+- Form with validation (name, email, message).  
+- Success message on submit.  
 
-  - Summary of implemented features
-  - Any additional improvements made
-  - Setup and run instructions
-  - Known issues or limitations
-  - Notes for the instructor
+### 5. **About Us Page** (`/about`)  
+- Static page with app info and a favorite R&M quote.  
 
-- **AI Tool Usage (If Used):**  
-  If you have used any AI-powered tools during development, please include:
-  - A short description of which AI tool(s) were used
-  - A brief explanation of how they were used
+### Bonus (Optional)  
+- Episode titles in character details.  
+- `localStorage` for saved filters.  
+
+## Technologies  
+- React  
+- React Router (dynamic routing)  
+- Fetch API  
+- CSS/JSX 
+
+## Improvements & Limitations  
+### **Enhancements**  
+- **UI**: Replaced Bootstrap with Tailwind for cohesive theme (glow animations, frosted glass effects).  
+- **Performance**: Skeleton loading during API fetches.  
+- **Persistence**: Filters survive page refreshes via `localStorage`.  
+
+### **Known Issues**  
+- Could not implement dark mode. Long time usage may strain your eyes.  
+
+### **Instructor Notes**  
+- **Focus Areas**:  
+  - `useLocalStorage` hook implementation.  
+  - Pagination logic (frontend/API page mapping).  
+  - Theme consistency across components.  
+- **Bonus**: Episode list fetches in `CharacterDetail` (extra API calls).  
+
+## AI Tool Usage
+
+### ChatGPT & DeepSeek
+- **Primary Use**: Frontend implementation assistance
+- **Specific Contributions**:
+  - Generated React component templates
+  - Provided Tailwind CSS configuration suggestions
+  - Assisted with complex function logic (pagination, localStorage hooks)
+  - Suggested animation implementations
+
+### Human Development
+- **Original Contributions**:
+  - Designed all visual concepts and UI/UX flow
+  - Created custom color palette (#02afc5 teal + lime theme)
+  - Architected component structure
+  - Made all final implementation decisions
+
+## Key Notes:
+- All AI-generated code was manually reviewed and modified
+- Design integrity maintained through original vision
+- Critical functions were developed collaboratively with AI
+
 
 ## Requirements
 
@@ -66,87 +116,6 @@ npm run dev
 
 ---
 
-## Assignment Instructions
-
-You'll enhance the base Rick & Morty character explorer app with the following features and pages.
-
-### 1. Character Details Page (2 marks)
-
-On the main list, clicking a character should navigate to a dynamic route (e.g., /character/1) and display:
-
-- Name
-- Image
-- Status
-- Species
-- Origin
-- Last known location
-- Number of episodes they appeared in
-
-You must use React Router’s dynamic routing with the character ID.
-
-### 2. Search + Filter Functionality (2 marks)
-
-- Add a search box to filter characters by name.
-
-- Add a dropdown to filter by status (Alive, Dead, Unknown).
-
-- Filters must work together and persist in the URL via query parameters (e.g., ?name=rick&status=alive).
-
-### 3. Pagination (2 marks)
-
-- Use the API’s built-in pagination (?page=2) to add a “Next” and “Previous” button at the bottom.
-
-- Show only 10 characters per page.
-
-- Prevent going past first/last page.
-
-### 4. Contact Us Page (2 marks)
-
-Create a separate route /contact with a form that includes:
-
-- Name
-- Email
-- Message
-- Submit button
-- Form validation (e.g., required fields, valid email format)
-- On submit, display a success message and reset the form.
-
-### 5. About Us Page (1 mark)
-
-Static page /about with:
-
-- Info about the app
-- Developer
-- Favorite Rick & Morty quote
-
-### 6. Code Quality (1 mark)
-
-- Clean code structure
-- Reusable components (e.g., CharacterCard)
-- Proper comments, meaningful names, formatting
-
----
-
-## Bonus Challenges (Optional)
-
-Not required but impressive if done:
-
-- Add episode titles in the character detail view by fetching additional data
-- Add a dark/light mode toggle
-- Store search/filter preferences in localStorage
-
----
-
-## API Reference
-
-- List characters:  
-  <https://rickandmortyapi.com/api/character>
-
-- Search by name:  
-  <https://rickandmortyapi.com/api/character/?name=rick>
-
-- Filter by status:  
-  <https://rickandmortyapi.com/api/character/?status>
 
 ## Recommeded Project Structure (Optional and Flexible)
 
