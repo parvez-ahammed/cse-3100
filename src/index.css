@@ -1,12 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  font-family: 'Inter', sans-serif;
+  background-color: #232d3d;
+  color: #e6edf3;
   margin: 0;
   padding: 0;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+body:not(.dark-mode) {
+  background-color: #ffffff;  
+  color: #333;  
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  color: #1a73e8;  
+  text-shadow: 0 2px 5px rgba(26, 115, 232, 0.2);
+  margin-bottom: 0.8em;
+}
+
+a {
+  color: #1a73e8;  
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: #81e6ff;
+  text-decoration: none;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: #81e6ff;
+  transition: width 0.3s ease, right 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+  left: 0;
+  right: auto;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: auto;
-  padding: 1rem;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  background-color: #f8f9fa; 
+  border-radius: 1rem;
+  border: 1px solid rgba(86, 204, 242, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);  
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.nav-header {
+  background-color: #333;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.nav-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: #555;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main .container {
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.15s;
+  opacity: 0;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e6edf3;
+}
+
+body.dark-mode .container {
+  background-color: #2a3f5a;
+  border: 1px solid rgba(86, 204, 242, 0.15);
+}
+
+body.dark-mode .nav-header {
+  background-color: #333;
+}
+
+body.dark-mode .nav-links a {
+  color: white;
+}
+
+body.dark-mode .nav-links a:hover {
+  background-color: #555;
+}
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+  color: #56ccf2;
+}
+
+body.dark-mode a {
+  color: #56ccf2;
+}
+
+body.dark-mode a:hover {
+  color: #81e6ff;
+}
+
+button, input, select {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button {
+  background-color: #56ccf2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #81e6ff;
+}
+
+body:not(.dark-mode) button {
+  background-color: #56ccf2;
+  color: white;
+}
+
+body:not(.dark-mode) button:hover {
+  background-color: #81e6ff;
+}
+
+body.dark-mode button {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode button:hover {
+  background-color: #555;
+}
+
+body.dark-mode input, body.dark-mode select {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body:not(.dark-mode) input, body:not(.dark-mode) select {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+@media (max-width: 767px) {
+  .nav-header .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
 }
