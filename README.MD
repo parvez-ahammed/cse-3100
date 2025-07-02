@@ -62,7 +62,6 @@ npm run dev
 
 ### 5. About Us Page 
 
-### 6. Code Quality 
 
 
 ## Extra Implemented Features
@@ -81,7 +80,7 @@ npm run dev
 - Responsive Design: The app layout now automatically adjusts to different screen sizes and device types, ensuring a smooth and consistent user experience
 
 
--Modernized UI: Redesigned the interface to align with modern design standards, focusing on simplicity, clarity, and visual appeal to improve overall user interaction.
+- Modernized UI: Redesigned the interface to align with modern design standards, focusing on simplicity, clarity, and visual appeal to improve overall user interaction.
 
 ---
 
