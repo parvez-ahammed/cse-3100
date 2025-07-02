@@ -3,11 +3,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import  CharacterDetail from "./pages/CharacterDetail";
+import  Navigation from "./components/Navigation";
 
 export default function App() {
   return (
     <BrowserRouter>
-        
+         <Navigation/>
       
       <Routes>
        
@@ -19,4 +20,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
