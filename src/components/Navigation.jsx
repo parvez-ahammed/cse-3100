@@ -7,75 +7,46 @@ export default function Navigation() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  
   const [localNameFilter, setLocalNameFilter] = useState(() => {
-    const nameFromUrl = searchParams.get("name");
-    const nameFromLocalStorage = localStorage.getItem("nameFilter");
-    return nameFromUrl || nameFromLocalStorage || "";
+    return searchParams.get("name") || localStorage.getItem("nameFilter") || "";
   });
 
   const [localStatusFilter, setLocalStatusFilter] = useState(() => {
-    const statusFromUrl = searchParams.get("status");
-    const statusFromLocalStorage = localStorage.getItem("statusFilter");
-    return statusFromUrl || statusFromLocalStorage || "";
+    return searchParams.get("status") || localStorage.getItem("statusFilter") || "";
   });
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    const storedDarkMode = localStorage.getItem("darkMode");
-    return storedDarkMode ? JSON.parse(storedDarkMode) : false;
+    const stored = localStorage.getItem("darkMode");
+    return stored ? JSON.parse(stored) : false;
   });
 
   useEffect(() => {
     document.body.classList.toggle("dark-mode", isDarkMode);
   }, [isDarkMode]);
 
-  useEffect(() => {
-    const nameFromUrl = searchParams.get("name");
-    const statusFromUrl = searchParams.get("status");
-
-    if (nameFromUrl !== localNameFilter) {
-      setLocalNameFilter(nameFromUrl || "");
-    }
-    if (statusFromUrl !== localStatusFilter) {
-      setLocalStatusFilter(statusFromUrl || "");
-    }
-  }, [searchParams, localNameFilter, localStatusFilter]);
-
-
-  const handleNameInputChange = (e) => {
-    setLocalNameFilter(e.target.value);
-  };
-
-  const handleStatusSelectChange = (e) => {
-    setLocalStatusFilter(e.target.value);
-  };
-
   const handleSearchClick = () => {
-    const newSearchParams = new URLSearchParams();
+    const params = new URLSearchParams();
 
     if (localNameFilter) {
-      newSearchParams.set("name", localNameFilter);
+      params.set("name", localNameFilter);
       localStorage.setItem("nameFilter", localNameFilter);
     } else {
       localStorage.removeItem("nameFilter");
     }
 
     if (localStatusFilter) {
-      newSearchParams.set("status", localStatusFilter);
+      params.set("status", localStatusFilter);
       localStorage.setItem("statusFilter", localStatusFilter);
     } else {
       localStorage.removeItem("statusFilter");
     }
 
-    if (location.pathname !== "/") {
-      navigate(`/?${newSearchParams.toString()}`);
-    } else {
-      newSearchParams.delete("page"); 
-      setSearchParams(newSearchParams);
-    }
+    params.set("page", "1");
+
+    navigate(`/?${params.toString()}`);
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleSearchClick();
     }
@@ -87,28 +58,20 @@ export default function Navigation() {
     localStorage.removeItem("nameFilter");
     localStorage.removeItem("statusFilter");
 
-    if (location.pathname === "/") {
-      setSearchParams(new URLSearchParams());
-    } else {
-      navigate("/");
-    }
+    navigate("/");
   };
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => {
-      const newMode = !prevMode;
-      localStorage.setItem("darkMode", JSON.stringify(newMode));
-      document.body.classList.toggle("dark-mode", newMode);
-      return newMode;
-    });
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    localStorage.setItem("darkMode", JSON.stringify(newMode));
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand">
-          Rick & Morty Explorer
-        </Link>
+        <Link to="/" className="navbar-brand">Rick & Morty Explorer</Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -120,6 +83,7 @@ export default function Navigation() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
           <div className="navbar-nav">
             <Link to="/" className="nav-link">Home</Link>
@@ -130,33 +94,29 @@ export default function Navigation() {
           <div className="d-flex my-2 my-lg-0 search-filter-navbar">
             <input
               type="text"
-              className="form-control me-2 custom-search-input"
+              className="form-control me-2"
               placeholder="Search by name..."
               value={localNameFilter}
-              onChange={handleNameInputChange}
-              onKeyPress={handleKeyPress}
+              onChange={(e) => setLocalNameFilter(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
             <select
-              className="form-select me-2 custom-filter-select"
+              className="form-select me-2"
               value={localStatusFilter}
-              onChange={handleStatusSelectChange}
+              onChange={(e) => setLocalStatusFilter(e.target.value)}
             >
               <option value="">All Statuses</option>
               <option value="alive">Alive</option>
               <option value="dead">Dead</option>
               <option value="unknown">Unknown</option>
             </select>
-            <button
-              className="btn btn-primary custom-search-button me-2"
-              onClick={handleSearchClick}
-            >
+            <button className="btn btn-primary me-2" onClick={handleSearchClick}>
               Search
             </button>
             {(localNameFilter || localStatusFilter) && (
               <button
-                className="btn btn-outline-secondary custom-clear-button"
+                className="btn btn-outline-secondary"
                 onClick={handleClearSearch}
-                title="Clear search"
               >
                 Clear
               </button>
@@ -164,10 +124,10 @@ export default function Navigation() {
           </div>
         </div>
 
-        <div className="dark-mode-wrapper">
+        <div className="dark-mode-wrapper ms-2">
           <button
             onClick={toggleDarkMode}
-            className="dark-mode-toggle"
+            className="btn btn-sm btn-outline-light"
             title="Toggle Dark Mode"
           >
             {isDarkMode ? "Light Mode" : "Dark Mode"}
@@ -177,5 +137,3 @@ export default function Navigation() {
     </nav>
   );
 }
-
-
