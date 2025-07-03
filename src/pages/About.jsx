@@ -13,7 +13,7 @@ export default function About() {
 
       <h2>Favorite Rick and Morty Quote:</h2>
       <p>
-        Luba dub dub <br></br> (I dont watch Rick and Morty)
+        Wubba lubba dub dub! <br></br> (I dont watch Rick and Morty)
       </p>
     </div>
   );
