@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
+import { allcharaters } from "../context/fetchinfo";
+import statemanage from "../stateManage/contex";
 
 export default function Home() {
-  const [characters, setCharacters] = useState([]);
+  const {allCharacter}=statemanage()
 
-  useEffect(() => {
-    const fetchCharacters = async () => {
-      const res = await fetch("https://rickandmortyapi.com/api/character");
-      const data = await res.json();
-      setCharacters(data.results);
-    };
+  allcharaters()
 
-    fetchCharacters();
-  }, []);
+  if(!allCharacter){
+      return (
+         <p className=" justify-center items-center flex mt-[10%] text-5xl text-black">Loanding.....</p>
+        )
+    }
 
   return (
     <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
-      <div className="row">
-        {characters.map((char) => (
+      <h1 className="my-4 text-2xl font-semibold text-center">Rick & Morty Explorer</h1>
+      <div className="grid gap-4 grid-cols-3">
+        {allCharacter.map((char) => (
           <div className="col-md-4 mb-4" key={char.id}>
             <CharacterCard character={char} />
           </div>

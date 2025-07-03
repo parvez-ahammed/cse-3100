@@ -1,22 +1,22 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import statemanage from "../stateManage/contex";
+import { charaterDetails } from '../context/fetchinfo.js'
 
 export default function CharacterDetail() {
   const { id } = useParams();
-  const [character, setCharacter] = useState(null);
+  const {character} = statemanage()
 
-  useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((res) => res.json())
-      .then(setCharacter);
-  }, [id]);
-
-  if (!character) return <p>Loading...</p>;
+  charaterDetails();
+ 
+  
+  if (!character) return <p className="flex justify-center items-center h-secreen 600">Loading...</p>;
 
   return (
-    <div className="container my-4">
-      <h2>{character.name}</h2>
-      <img src={character.image} alt={character.name} className="img-fluid" />
+
+    <div className="container my-4 text-2xl flex flex-col justify-center items-center border-2 rounded-2xl">
+      <h1 className="text-3xl">{character.name}</h1>
+      <img src={character.image} alt={character.name} className="img-fluid rounded-2xl" />
       <p>
         <strong>Status:</strong> {character.status} <br />
         <strong>Species:</strong> {character.species} <br />
