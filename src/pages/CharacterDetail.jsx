@@ -1,15 +1,12 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import statemanage from "../stateManage/contex";
 import { charaterDetails } from '../context/fetchinfo.js'
 
 export default function CharacterDetail() {
-  const { id } = useParams();
-  const {character} = statemanage()
+  const { character } = statemanage()
 
   charaterDetails();
- 
-  
+
+
   if (!character) return <p className="flex justify-center items-center h-secreen 600">Loading...</p>;
 
   return (
