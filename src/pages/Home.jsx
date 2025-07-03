@@ -2,21 +2,55 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CharacterCard from "../components/CharacterCard";
 import SearchFilter from "../components/SearchFilter";
+import Pagination from "../components/Pagination";
 
 export default function Home() {
   const [characters, setCharacters] = useState([]);
   const [searchParams] = useSearchParams();
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPages: 1,
+    hasNext: false,
+    hasPrev: false,
+  });
 
   useEffect(() => {
     const fetchCharacters = async () => {
       const name = searchParams.get("name") || "";
       const status = searchParams.get("status") || "";
+      const page = parseInt(searchParams.get("page")) || 1;
+
+      // Calculate which API page to fetch (each API page has 20 characters)
+      const apiPage = Math.ceil((page * 10) / 20);
 
       const res = await fetch(
-        `https://rickandmortyapi.com/api/character/?name=${name}&status=${status}`
+        `https://rickandmortyapi.com/api/character/?page=${apiPage}&name=${name}&status=${status}`
       );
       const data = await res.json();
-      setCharacters(data.results || []);
+
+      // Deepseek blackmagic because I couldnt get 10 characters in the page
+      if (!data.results) {
+        setCharacters([]);
+        setPagination({
+          currentPage: 1,
+          totalPages: 1,
+          hasNext: false,
+          hasPrev: false,
+        });
+        return;
+      }
+
+      // Calculate which 10 characters to show from the 20-item API response
+      const startIndex = page % 2 === 1 ? 0 : 10;
+      const visibleCharacters = data.results.slice(startIndex, startIndex + 10);
+
+      setCharacters(visibleCharacters);
+      setPagination({
+        currentPage: page,
+        totalPages: data.info.pages * 2, // Each API page = 2 UI pages
+        hasNext: page < data.info.pages * 2 && !!data.info.next,
+        hasPrev: page > 1,
+      });
     };
 
     fetchCharacters();
@@ -35,6 +69,12 @@ export default function Home() {
           </div>
         ))}
       </div>
+
+      <Pagination
+        currentPage={pagination.currentPage}
+        hasNext={pagination.hasNext}
+        hasPrev={pagination.hasPrev}
+      />
     </main>
   );
 }
