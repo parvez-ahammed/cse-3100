@@ -4,7 +4,9 @@ const statemanage = create((set) => ({
   character:null,
   setCharacter: (character)=>set({character}),
   allCharacter:null,
-  setAllCharacter:(allCharacter)=>set({allCharacter})
+  setAllCharacter:(allCharacter)=>set({allCharacter}),
+  selected:"",
+  setSelected:(selected)=>set({selected})
 }))
 
 export default statemanage
