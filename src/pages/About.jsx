@@ -14,6 +14,12 @@ export default function About() {
 
         <h2 className="text-xl font-semibold mb-2">Made by:</h2>
         <img src={pic} alt="Developer" className="w-[300px] h-auto mb-6" />
+        <p>
+          <strong>Name:</strong> Md. Aribur Rahman Dhruvo <br />
+          <strong>ID:</strong> 20220204003 <br />
+          <strong>Lab Group:</strong> A1
+        </p>
+        <br />
 
         <h2 className="text-xl font-semibold mb-2">
           Favorite Rick and Morty Quote:
