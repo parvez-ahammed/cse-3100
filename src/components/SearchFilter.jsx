@@ -1,45 +1,76 @@
 // idk what this is I just asked Deepseek to convert my code into a workable component
-
+import { TextField, MenuItem, Box, InputAdornment } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function SearchFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Get current filter values from URL (or defaults)
-  const name = searchParams.get("name") || "";
-  const status = searchParams.get("status") || "";
-
-  // Update URL when filters change
-  const handleFilterChange = (key, value) => {
+  const handleNameChange = (e) => {
     const newParams = new URLSearchParams(searchParams);
-    if (value) {
-      newParams.set(key, value);
-    } else {
-      newParams.delete(key);
-    }
+    newParams.set("name", e.target.value);
+    newParams.delete("page");
+    setSearchParams(newParams);
+  };
+
+  const handleStatusChange = (e) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("status", e.target.value);
+    newParams.delete("page");
     setSearchParams(newParams);
   };
 
   return (
-    <div className="search-filter mb-4">
-      {/* Name Search */}
-      <input
-        type="text"
-        placeholder="Search by name..."
-        value={name}
-        onChange={(e) => handleFilterChange("name", e.target.value)}
+    <Box
+      sx={{
+        display: "flex",
+        gap: 2,
+        mb: 4,
+        alignItems: "center",
+      }}
+    >
+      {/* Compact Search Field */}
+      <TextField
+        label="Search"
+        variant="outlined"
+        size="small"
+        value={searchParams.get("name") || ""}
+        onChange={handleNameChange}
+        sx={{
+          width: 200, // Fixed width
+          "& .MuiInputBase-root": {
+            height: 40, // Compact height
+          },
+        }}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon fontSize="small" />
+            </InputAdornment>
+          ),
+        }}
       />
 
-      {/* Status Dropdown */}
-      <select
-        value={status}
-        onChange={(e) => handleFilterChange("status", e.target.value)}
+      {/* Status Filter Dropdown */}
+      <TextField
+        select
+        label="Status"
+        variant="outlined"
+        size="small"
+        value={searchParams.get("status") || ""}
+        onChange={handleStatusChange}
+        sx={{
+          minWidth: 120,
+          "& .MuiInputBase-root": {
+            height: 40, // Match search field height
+          },
+        }}
       >
-        <option value="">All Statuses</option>
-        <option value="alive">Alive</option>
-        <option value="dead">Dead</option>
-        <option value="unknown">Unknown</option>
-      </select>
-    </div>
+        <MenuItem value="">All</MenuItem>
+        <MenuItem value="alive">Alive</MenuItem>
+        <MenuItem value="dead">Dead</MenuItem>
+        <MenuItem value="unknown">Unknown</MenuItem>
+      </TextField>
+    </Box>
   );
 }

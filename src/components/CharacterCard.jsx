@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function CharacterCard({ character }) {
@@ -14,9 +15,18 @@ export default function CharacterCard({ character }) {
           <strong>Status:</strong> {character.status} <br />
           <strong>Species:</strong> {character.species}
         </p>
-        <Link to={`/character/${character.id}`} className="btn btn-primary">
+        <Button
+          component={Link}
+          to={`/character/${character.id}`}
+          variant="outlined"
+          size="small"
+          sx={{
+            mt: 1,
+            textTransform: "none", // Disables ALL CAPS
+          }}
+        >
           View Details
-        </Link>
+        </Button>
       </div>
     </div>
   );

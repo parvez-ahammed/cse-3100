@@ -1,6 +1,11 @@
 // v0.dev blackmagic
-
+import { Button, Box, IconButton } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
+import {
+  KeyboardArrowLeft,
+  KeyboardArrowRight,
+  MoreHoriz,
+} from "@mui/icons-material";
 
 export default function Pagination({
   currentPage,
@@ -16,73 +21,112 @@ export default function Pagination({
     setSearchParams(newParams);
   };
 
-  // Generate page numbers for dot pagination
   const generatePageNumbers = () => {
-    const maxVisiblePages = 7;
+    const maxVisiblePages = 5;
     const pages = [];
+    let startPage = Math.max(1, currentPage - 2);
+    let endPage = Math.min(totalPages, currentPage + 2);
 
-    if (totalPages <= maxVisiblePages) {
-      // Show all pages if total is less than max visible
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-      }
-    } else {
-      // Show first few, current area, and last few pages
-      const startPages = Math.min(3, totalPages);
-      const endPages = Math.max(totalPages - 2, startPages + 1);
-
-      for (let i = 1; i <= startPages; i++) {
-        pages.push(i);
-      }
-
-      if (currentPage > startPages + 1 && currentPage < endPages) {
-        pages.push(currentPage);
-      }
-
-      for (let i = endPages; i <= totalPages; i++) {
-        pages.push(i);
-      }
+    if (currentPage <= 3) {
+      endPage = Math.min(5, totalPages);
+    } else if (currentPage >= totalPages - 2) {
+      startPage = Math.max(totalPages - 4, 1);
     }
 
-    return [...new Set(pages)].sort((a, b) => a - b).slice(0, maxVisiblePages);
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+
+    return pages;
   };
 
   const visiblePages = generatePageNumbers();
 
   return (
-    <div className="flex justify-center items-center space-x-2">
-      <button
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 1,
+        mt: 3,
+      }}
+    >
+      <Button
+        variant="contained"
+        startIcon={<KeyboardArrowLeft />}
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={!hasPrev}
-        className="px-3 py-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        sx={{
+          minWidth: 100,
+          textTransform: "none",
+        }}
       >
         Previous
-      </button>
+      </Button>
 
-      {/* Page Dots */}
-      <div className="flex space-x-1">
+      <Box sx={{ display: "flex", gap: 0.5 }}>
+        {visiblePages[0] > 1 && (
+          <>
+            <IconButton
+              onClick={() => handlePageChange(1)}
+              size="small"
+              sx={{ fontSize: "0.875rem" }}
+            >
+              1
+            </IconButton>
+            {visiblePages[0] > 2 && (
+              <MoreHoriz sx={{ mx: 0.5, color: "text.disabled" }} />
+            )}
+          </>
+        )}
+
         {visiblePages.map((page) => (
-          <button
+          <IconButton
             key={page}
             onClick={() => handlePageChange(page)}
-            className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-              currentPage === page
-                ? "bg-blue-600"
-                : "bg-gray-300 hover:bg-gray-400"
-            }`}
-            aria-label={`Go to page ${page}`}
-          />
+            size="small"
+            sx={{
+              fontSize: "0.875rem",
+              bgcolor: currentPage === page ? "primary.main" : "transparent",
+              color: currentPage === page ? "primary.contrastText" : "inherit",
+              "&:hover": {
+                bgcolor: currentPage === page ? "primary.dark" : "action.hover",
+              },
+            }}
+          >
+            {page}
+          </IconButton>
         ))}
-      </div>
 
-      {/* Next Button */}
-      <button
+        {visiblePages[visiblePages.length - 1] < totalPages && (
+          <>
+            {visiblePages[visiblePages.length - 1] < totalPages - 1 && (
+              <MoreHoriz sx={{ mx: 0.5, color: "text.disabled" }} />
+            )}
+            <IconButton
+              onClick={() => handlePageChange(totalPages)}
+              size="small"
+              sx={{ fontSize: "0.875rem" }}
+            >
+              {totalPages}
+            </IconButton>
+          </>
+        )}
+      </Box>
+
+      <Button
+        variant="contained"
+        endIcon={<KeyboardArrowRight />}
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={!hasNext}
-        className="px-3 py-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        sx={{
+          minWidth: 100,
+          textTransform: "none",
+        }}
       >
         Next
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 }

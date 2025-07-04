@@ -1,10 +1,14 @@
-import Navbar from "../components/Navbar";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 // Idk how formik or yup works since we were advised to use AI for this as it gets messy and complicated
 // so I did exactly that
 
 // This is more deepseek blackmagic
+
+import Navbar from "../components/Navbar";
+import MuiTextField from "../components/MuiTextField";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Button, Box, Typography, Paper } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 export default function Contact() {
   const formik = useFormik({
@@ -30,85 +34,52 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
+      <Box sx={{ maxWidth: 600, mx: "auto", p: 3 }}>
+        <Paper elevation={3} sx={{ p: 4 }}>
+          <Typography variant="h4" component="h2" gutterBottom sx={{ mb: 4 }}>
+            Contact Us
+          </Typography>
+
           <form onSubmit={formik.handleSubmit}>
             {/* Name Field */}
-            <div className="mb-4">
-              <label className="block text-gray-700 mb-2">Name</label>
-              <input
-                type="text"
-                className={`w-full px-3 py-2 border rounded-md ${
-                  formik.touched.name && formik.errors.name
-                    ? "border-red-500"
-                    : "border-gray-300"
-                }`}
-                name="name"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.name}
-              />
-              {formik.touched.name && formik.errors.name && (
-                <p className="text-red-500 text-sm mt-1">
-                  {formik.errors.name}
-                </p>
-              )}
-            </div>
+            <MuiTextField
+              name="name"
+              label="Name"
+              formik={formik}
+              sx={{ mb: 3 }}
+            />
 
             {/* Email Field */}
-            <div className="mb-4">
-              <label className="block text-gray-700 mb-2">Email</label>
-              <input
-                type="email"
-                className={`w-full px-3 py-2 border rounded-md ${
-                  formik.touched.email && formik.errors.email
-                    ? "border-red-500"
-                    : "border-gray-300"
-                }`}
-                name="email"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email}
-              />
-              {formik.touched.email && formik.errors.email && (
-                <p className="text-red-500 text-sm mt-1">
-                  {formik.errors.email}
-                </p>
-              )}
-            </div>
+            <MuiTextField
+              name="email"
+              label="Email"
+              type="email"
+              formik={formik}
+              sx={{ mb: 3 }}
+            />
 
             {/* Message Field */}
-            <div className="mb-6">
-              <label className="block text-gray-700 mb-2">Message</label>
-              <textarea
-                rows="5"
-                className={`w-full px-3 py-2 border rounded-md ${
-                  formik.touched.message && formik.errors.message
-                    ? "border-red-500"
-                    : "border-gray-300"
-                }`}
-                name="message"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.message}
-              ></textarea>
-              {formik.touched.message && formik.errors.message && (
-                <p className="text-red-500 text-sm mt-1">
-                  {formik.errors.message}
-                </p>
-              )}
-            </div>
+            <MuiTextField
+              name="message"
+              label="Message"
+              formik={formik}
+              multiline
+              rows={4}
+              sx={{ mb: 4 }}
+            />
 
-            <button
+            <Button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+              variant="contained"
+              startIcon={<SendIcon />}
+              size="large"
+              fullWidth
             >
               Send Message
-            </button>
+            </Button>
           </form>
-        </div>
-      </div>
+        </Paper>
+      </Box>
     </div>
   );
 }
