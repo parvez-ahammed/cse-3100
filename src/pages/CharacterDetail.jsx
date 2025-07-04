@@ -7,7 +7,7 @@ export default function CharacterDetail() {
   charaterDetails();
 
 
-  if (!character) return <p className="flex justify-center items-center h-secreen 600">Loading...</p>;
+  if (!character) return <p className="flex justify-center items-center h-screen 600">Loading...</p>;
   console.log(character)
 
   return (
