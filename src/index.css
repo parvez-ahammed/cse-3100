@@ -126,3 +126,25 @@ body {
   font-size: 15px; /* Smaller font size */
   color: #888;
 }
+
+.character-detail-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically (if height allows) */
+  min-height: 80vh; /* Minimum height to center vertically in viewport */
+  text-align: center; /* Center text within the container */
+}
+
+.character-detail-center .container {
+  max-width: 500px; /* Adjust max-width as needed for the detail card */
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.character-detail-center .list-group {
+  text-align: left; /* Align list items to the left */
+}
