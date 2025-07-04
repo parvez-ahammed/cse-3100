@@ -1,0 +1,94 @@
+.character-list-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+.character-list-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+  color: #222;
+  letter-spacing: 1px;
+}
+
+.character-list-loading,
+.character-list-error {
+  text-align: center;
+  margin: 20px 0;
+  color: #b00;
+}
+
+.character-list-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.character-list-card {
+  flex: 1 1 260px;
+  max-width: 300px;
+  min-width: 220px;
+}
+
+.character-list-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  gap: 16px;
+}
+
+.character-list-btn {
+  padding: 8px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.character-list-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.character-list-page {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background: #181a1b;
+  color: #f1f1f1;
+}
+
+body.dark-mode .character-list-container {
+  background: #23272a;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .character-list-title {
+  color: #f1f1f1;
+}
+
+body.dark-mode .character-list-page {
+  color: #f1f1f1;
+}
+
+body.dark-mode .character-list-btn {
+  background: #444;
+  color: #f1f1f1;
+}
+
+body.dark-mode .character-list-btn:disabled {
+  background: #222;
+  color: #888;
+}
