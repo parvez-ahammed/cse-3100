@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import Navbar from "../components/Navbar";
 import CharacterCard from "../components/CharacterCard";
 import SearchFilter from "../components/SearchFilter";
 import Pagination from "../components/Pagination";
@@ -57,24 +60,33 @@ export default function Home() {
   }, [searchParams]); // useEffect runs every time the page changes
 
   return (
-    <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
-
-      <SearchFilter />
-
-      <div className="row">
-        {characters.map((char) => (
-          <div className="col-md-4 mb-4" key={char.id}>
-            <CharacterCard character={char} />
-          </div>
-        ))}
+    <div className="min-h-screen bg-gray-50">
+      <div>
+        <Navbar />
       </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Select Character
+          </h2>
 
-      <Pagination
-        currentPage={pagination.currentPage}
-        hasNext={pagination.hasNext}
-        hasPrev={pagination.hasPrev}
-      />
-    </main>
+          <SearchFilter />
+
+          {/* Make this a component later*/}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-8">
+            {characters.map((char) => (
+              <CharacterCard key={char.id} character={char} />
+            ))}
+          </div>
+
+          <Pagination
+            currentPage={pagination.currentPage}
+            totalPages={pagination.totalPages}
+            hasNext={pagination.hasNext}
+            hasPrev={pagination.hasPrev}
+          />
+        </div>
+      </div>
+    </div>
   );
 }
