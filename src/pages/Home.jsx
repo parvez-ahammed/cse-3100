@@ -22,17 +22,14 @@ export default function Home() {
     )
   }
 
-  const filteredData = allCharacter.slice(0, visible).filter(item => {
-    if (selected.length >= 1 && selected!="All") {
-      return item.status.toLowerCase().includes(selected.toLowerCase())
-    }
-    else if(selected=="All"){
-      setSelected("")
-    } else {
-      return item.name.toLowerCase().includes(query.toLowerCase())
-    }
+  let filteredData = allCharacter.slice(0, visible);
+  if (selected === "All") {
+    setSelected("");
+  } else if (selected.length >= 1) {
+    filteredData = filteredData.filter(item => item.status.toLowerCase().includes(selected.toLowerCase()));
+  } else {
+    filteredData = filteredData.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
   }
-  );
 
 
 
