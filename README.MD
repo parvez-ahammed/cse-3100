@@ -52,7 +52,7 @@ Fork the base repository. Then, clone the forked repository to your local machin
 ```bash
 git clone https://github.com/E-o-u-s-u-f/cse-3100.git
 cd cse-3100
-git checkout assignment-1
+git checkout assignment-1-20220204021
 ```
 
 ### Install Dependencies
