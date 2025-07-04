@@ -47,7 +47,7 @@ export default function Home() {
         <Statusdropdown />
       </div>
       <div className="grid gap-4 grid-cols-3">
-        {filteredData.slice(0, visible).map((char) => (
+        {filteredData.map((char) => (
           <div className="col-md-4 mb-4" key={char.id}>
             <CharacterCard character={char} />
           </div>
