@@ -26,8 +26,8 @@ export default function CharacterDetail() {
       </div>
       <div className=" flex flex-col gap-2">
         <div className="underline ">Episodes</div>
-        {character.episode.map((items,index)=>{
-          return <a className="text-blue-600 text-sm" href={items} target="_blank" rel="noopener noreferrer">
+        {character.episode.map((items, index) => {
+          return <a key={items} className="text-blue-600 text-sm" href={items} target="_blank" rel="noopener noreferrer">
                     {index} . {items}
                   </a>
         })}
