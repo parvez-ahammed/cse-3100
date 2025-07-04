@@ -5,7 +5,8 @@ In this project, you'll build a beautiful and interactive single-page applicatio
 You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
 
 ---
-
+## Wakatime Badge
+[![wakatime](https://wakatime.com/badge/user/fcea2923-047d-4b59-8b66-6e342e0673aa/project/3de7982a-3c6a-4cae-b57c-9804107fe6b5.svg)](https://wakatime.com/badge/user/fcea2923-047d-4b59-8b66-6e342e0673aa/project/3de7982a-3c6a-4cae-b57c-9804107fe6b5)
 ## Submission Guidelines
 
 The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
