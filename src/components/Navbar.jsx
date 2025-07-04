@@ -11,7 +11,7 @@ const Navbar = () => {
             <div className='text-white'>Assignment</div>
             <div className='flex gap-10 text-2xl'>
                 <div onClick={() => navigate('/')} className={location.pathname === '/' ? 'text-blue-100 hover:text-gray-400 hover:cursor-pointer' : 'hover:text-gray-400 hover:cursor-pointer'} >Home</div>
-                <div onClick={() => navigate('/Contact')} className={location.pathname === '/Contact' ? 'text-blue-100 hover:text-gray-400 hover:cursor-pointer' : 'hover:text-gray-400 hover:cursor-pointer'}>Contact us</div>
+                <div onClick={() => navigate('/contact')} className={location.pathname === '/contact' ? 'text-blue-100 hover:text-gray-400 hover:cursor-pointer' : 'hover:text-gray-400 hover:cursor-pointer'}>Contact us</div>
                 <div onClick={() => navigate('/About')} className={location.pathname === '/About' ? 'text-blue-100 hover:text-gray-400 hover:cursor-pointer' : 'hover:text-gray-400 hover:cursor-pointer'}>About Us</div>
             </div>
         </div>
