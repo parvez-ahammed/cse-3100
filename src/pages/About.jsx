@@ -9,7 +9,7 @@ export default function About() {
       </p>
 
       <h2>Made by:</h2>
-      <img src={pic} alt="" />
+      <img src={pic} alt="" className="w-[300px] h-auto" />
 
       <h2>Favorite Rick and Morty Quote:</h2>
       <p>
