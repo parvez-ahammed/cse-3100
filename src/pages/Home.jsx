@@ -4,38 +4,42 @@ import { useSearchParams } from "react-router-dom";
 
 export default function Home() {
   const [characters, setCharacters] = useState([]);
+  const [pageInfo, setPageInfo] = useState({}); // for next/prev page detection
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Get query parameters from URL
   const nameQuery = searchParams.get("name") || "";
   const statusQuery = searchParams.get("status") || "";
+  const pageQuery = parseInt(searchParams.get("page")) || 1;
 
-  // Fetch characters
   useEffect(() => {
     const fetchCharacters = async () => {
-      let apiUrl = `https://rickandmortyapi.com/api/character/?`;
+      let apiUrl = `https://rickandmortyapi.com/api/character/?page=${pageQuery}`;
 
-      if (nameQuery) apiUrl += `name=${nameQuery}&`;
-      if (statusQuery) apiUrl += `status=${statusQuery}&`;
+      if (nameQuery) apiUrl += `&name=${nameQuery}`;
+      if (statusQuery) apiUrl += `&status=${statusQuery}`;
 
       try {
         const res = await fetch(apiUrl);
         const data = await res.json();
-        if (data.results) setCharacters(data.results);
-        else setCharacters([]); // No results
+        if (data.results) {
+          setCharacters(data.results);
+          setPageInfo(data.info);
+        } else {
+          setCharacters([]);
+          setPageInfo({});
+        }
       } catch (error) {
-        console.error("Fetch error:", error);
         setCharacters([]);
+        setPageInfo({});
       }
     };
 
     fetchCharacters();
-  }, [nameQuery, statusQuery]);
+  }, [nameQuery, statusQuery, pageQuery]);
 
-  // Handle search and filter change
   const handleSearchChange = (e) => {
     searchParams.set("name", e.target.value);
-    searchParams.set("page", 1); // optional reset page
+    searchParams.set("page", 1); // Reset to page 1 on filter change
     setSearchParams(searchParams);
   };
 
@@ -46,15 +50,22 @@ export default function Home() {
     } else {
       searchParams.set("status", value);
     }
-    searchParams.set("page", 1); // optional reset page
+    searchParams.set("page", 1); // Reset to page 1 on filter change
     setSearchParams(searchParams);
+  };
+
+  const goToPage = (newPage) => {
+    if (newPage >= 1 && (!pageInfo.pages || newPage <= pageInfo.pages)) {
+      searchParams.set("page", newPage);
+      setSearchParams(searchParams);
+    }
   };
 
   return (
     <main className='container my-4'>
       <h1 className='mb-4'>Rick & Morty Explorer</h1>
 
-      {/* Filter UI */}
+      {/* Filter Section */}
       <div className='row mb-3'>
         <div className='col-md-3 mb-2'>
           <select className='form-select' value={statusQuery} onChange={handleStatusChange}>
@@ -64,7 +75,6 @@ export default function Home() {
             <option value='unknown'>Unknown</option>
           </select>
         </div>
-
         <div className='col-md-5 mb-2'>
           <input
             type='text'
@@ -76,7 +86,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Character Grid */}
+      {/* Characters Display */}
       {characters.length === 0 ? (
         <p>No characters found.</p>
       ) : (
@@ -88,6 +98,22 @@ export default function Home() {
           ))}
         </div>
       )}
+
+      {/* Pagination Buttons */}
+      <div className='d-flex justify-content-center my-4'>
+        <button className='btn btn-secondary me-2' onClick={() => goToPage(pageQuery - 1)} disabled={pageQuery <= 1}>
+          Previous
+        </button>
+        <span className='align-self-center px-3'>
+          Page {pageQuery} {pageInfo.pages ? `of ${pageInfo.pages}` : ""}
+        </span>
+        <button
+          className='btn btn-secondary ms-2'
+          onClick={() => goToPage(pageQuery + 1)}
+          disabled={!pageInfo.pages || pageQuery >= pageInfo.pages}>
+          Next
+        </button>
+      </div>
     </main>
   );
 }
