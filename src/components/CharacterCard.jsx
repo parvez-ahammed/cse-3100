@@ -1,19 +1,36 @@
+import { Box, Image, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+
 export default function CharacterCard({ character }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="card">
-      <img
+    <Box
+      borderRadius="md"
+      overflow="hidden"
+      textAlign="center"
+      cursor="pointer"
+      transition="all 0.2s ease"
+      _hover={{ transform: "scale(1.05)" }} 
+      w="220px"           
+      onClick={() => navigate(`/character/${character.id}`)}
+    >
+      <Image
         src={character.image}
-        className="card-img-top"
         alt={character.name}
+        w="100%"
+        h="220px"          
+        objectFit="cover"
+        borderRadius="lg"
+        bg="black"
+        m="8px"
       />
-      <div className="card-body">
-        <h5 className="card-title">{character.name}</h5>
-        <p className="card-text">
-          <strong>Status:</strong> {character.status} <br />
-          <strong>Species:</strong> {character.species}
-        </p>
-        <button>View Details</button>
-      </div>
-    </div>
+      <Text fontWeight="bold" fontSize="md" mt={3}>
+        {character.name}
+      </Text>
+      <Text fontSize="sm" color="gray.500"> 
+        {character.status} • {character.species}
+      </Text>
+    </Box>
   );
 }

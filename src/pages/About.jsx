@@ -2,12 +2,12 @@ import { Box, Heading, Text, Container } from "@chakra-ui/react";
 
 export default function About() {
   return (
-    <Container maxW="container.md" p={4}>
+    <Container maxW="container.md" p={4} mt={[6, 10, 16]}>
       <Heading as="h1" size="lg" mb={4}>
         About Rick & Morty Explorer
       </Heading>
       <Text mb={4}>
-        Rick & Morty Explorer is a fan-made tool built for fans of the iconic animated series, Rick and Morty. This app acts as a detailed resource, providing insights into the show’s expansive world, including its unique characters, exotic locations, and thrilling episodes. Whether you're a seasoned viewer or just starting out, this app offers a fun and immersive way to dive into the wild adventures of Rick and Morty.
+        Rick & Morty Explorer is a fan-made website built for fans of the iconic animated series, Rick and Morty. This app acts as a detailed resource, providing insights into the show’s expansive world, including its unique characters, exotic locations, and thrilling episodes. Whether you're a seasoned viewer or just starting out, this app offers a fun and immersive way to dive into the wild adventures of Rick and Morty.
       </Text>
       <Heading as="h2" size="md" mb={2}>
         Developer
