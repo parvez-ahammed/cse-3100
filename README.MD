@@ -24,7 +24,7 @@ A visually rich React app that fetches character data from the [Rick and Morty A
 
 - **React** with functional components and hooks
 - **Tailwind CSS** for styling
-- **Framer Motion** for animations
+- **Framer Motion** & **Aceternity UI**for animations
 - **Rick and Morty API** for character data
 - **localStorage** for search persistence
 - **React Three Fibre** for 3D Design
