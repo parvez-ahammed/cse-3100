@@ -9,8 +9,7 @@ React and JavaScript skills, along with routing, API fetching, conditional rende
 ## WakaTime URL
 
 https://wakatime.com/@ef2bed71-e8a7-48e8-bb38-ab2aa2859f61/projects/dxvkbzrzsb?start=2025-06-28&end=2025-07-04
-```
----
+
 ## Implemented Features
 
 - Character Details Page
