@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "../rick-and-morty-react/src/assets/component/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import CharacterDetail from "./pages/CharacterDetail";
+import CharacterDetail from "./pages/CharacterDetail"; // add this if not already added
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
