@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 export default function CharacterDetail() {
   const { id } = useParams();
   const [character, setCharacter] = useState(null);
+  p = id;
 
   useEffect(() => {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)

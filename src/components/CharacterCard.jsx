@@ -10,9 +10,14 @@ export default function CharacterCard({ character }) {
         <h5 className="card-title">{character.name}</h5>
         <p className="card-text">
           <strong>Status:</strong> {character.status} <br />
-          <strong>Species:</strong> {character.species}
+          <strong>Species:</strong> {character.species} <br />
+          <strong>ID:</strong> {character.id} <br />
         </p>
-        <button>View Details</button>
+        <button
+        onClick={() => {
+            window.location.href = `/character/${character.id}`;
+          }}
+          >View Details</button>
       </div>
     </div>
   );
