@@ -13,4 +13,4 @@ export default function AppRouter() {
       <Route path="/character/:id" element={<CharacterDetailsPage />} />
     </Routes>
   );
-}
+} 

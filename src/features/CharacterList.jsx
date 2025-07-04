@@ -1,22 +1,11 @@
-import { useEffect, useState } from "react";
 import { useFetchCharacters } from "../hooks/useFetchCharacters";
 import { useQueryParams } from "../hooks/useQueryParams";
 import CharacterCard from "../components/CharacterCard";
-import SearchBar from "../components/SearchBar";
-import FilterDropdown from "../components/FilterDropdown";
 
 export default function CharacterList() {
   const [queryParams, setQueryParams] = useQueryParams();
   const { name, status, page } = queryParams;
   const { characters, info, loading, error } = useFetchCharacters({ name, status, page });
-
-  const handleSearchChange = (searchTerm) => {
-    setQueryParams({ name: searchTerm, page: 1 });
-  };
-
-  const handleStatusChange = (status) => {
-    setQueryParams({ status, page: 1 });
-  };
 
   const handlePrevPage = () => {
     if (page > 1) setQueryParams({ page: page - 1 });
@@ -28,10 +17,7 @@ export default function CharacterList() {
 
   return (
     <div className="max-w-6xl mx-auto py-8 px-4">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
-        <SearchBar onSearchChange={handleSearchChange} />
-        <FilterDropdown onStatusChange={handleStatusChange} />
-      </div>
+      {/* Removed the extra search and filter bar here */}
       {loading && <p className="text-center text-blue-600 font-semibold">Loading...</p>}
       {error && <p className="text-center text-red-600 font-semibold">{error}</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
