@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 export default function Home() {
   const [characters, setCharacters] = useState([]);
-  const [pageInfo, setPageInfo] = useState({}); // for next/prev page detection
+  const [pageInfo, setPageInfo] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
 
   const nameQuery = searchParams.get("name") || "";
@@ -14,7 +14,6 @@ export default function Home() {
   useEffect(() => {
     const fetchCharacters = async () => {
       let apiUrl = `https://rickandmortyapi.com/api/character/?page=${pageQuery}`;
-
       if (nameQuery) apiUrl += `&name=${nameQuery}`;
       if (statusQuery) apiUrl += `&status=${statusQuery}`;
 
@@ -22,8 +21,15 @@ export default function Home() {
         const res = await fetch(apiUrl);
         const data = await res.json();
         if (data.results) {
-          setCharacters(data.results);
-          setPageInfo(data.info);
+          // Limit to 10 characters per page for display, even if API returns more
+          setCharacters(data.results.slice(0, 10));
+          // Adjust pageInfo for client-side 10 characters per page
+          // This calculates the total pages assuming 10 items per page
+          const adjustedPageCount = Math.ceil(data.info.count / 10);
+          setPageInfo({
+            ...data.info,
+            pages: adjustedPageCount,
+          });
         } else {
           setCharacters([]);
           setPageInfo({});
@@ -39,7 +45,7 @@ export default function Home() {
 
   const handleSearchChange = (e) => {
     searchParams.set("name", e.target.value);
-    searchParams.set("page", 1); // Reset to page 1 on filter change
+    searchParams.set("page", 1);
     setSearchParams(searchParams);
   };
 
@@ -50,7 +56,7 @@ export default function Home() {
     } else {
       searchParams.set("status", value);
     }
-    searchParams.set("page", 1); // Reset to page 1 on filter change
+    searchParams.set("page", 1);
     setSearchParams(searchParams);
   };
 
@@ -62,58 +68,60 @@ export default function Home() {
   };
 
   return (
-    <main className='container my-4'>
-      <h1 className='mb-4'>Rick & Morty Explorer</h1>
-
-      {/* Filter Section */}
-      <div className='row mb-3'>
-        <div className='col-md-3 mb-2'>
-          <select className='form-select' value={statusQuery} onChange={handleStatusChange}>
-            <option value=''>Select status</option>
-            <option value='alive'>Alive</option>
-            <option value='dead'>Dead</option>
-            <option value='unknown'>Unknown</option>
-          </select>
-        </div>
-        <div className='col-md-5 mb-2'>
-          <input
-            type='text'
-            placeholder='Search characters'
-            className='form-control'
-            value={nameQuery}
-            onChange={handleSearchChange}
-          />
-        </div>
+    <main className='home-wrapper'>
+      {/* Filter & Search */}
+      <div className='filters'>
+        <select value={statusQuery} onChange={handleStatusChange}>
+          <option value=''>Select status</option>
+          <option value='alive'>Alive</option>
+          <option value='dead'>Dead</option>
+          <option value='unknown'>Unknown</option>
+        </select>
+        <input type='text' placeholder='Search characters' value={nameQuery} onChange={handleSearchChange} />
+        <p className='result-count'>
+          Showing {characters.length} of {pageInfo.count || 0} results
+        </p>
       </div>
 
-      {/* Characters Display */}
-      {characters.length === 0 ? (
-        <p>No characters found.</p>
-      ) : (
-        <div className='row'>
-          {characters.map((char) => (
-            <div className='col-md-4 mb-4' key={char.id}>
-              <CharacterCard character={char} />
-            </div>
-          ))}
+      {/* Character Grid */}
+      <div className='five-col-grid'>
+        {characters.map((char) => (
+          <CharacterCard key={char.id} character={char} />
+        ))}
+      </div>
+
+      {/* Pagination */}
+      {pageInfo.pages && pageInfo.pages > 1 && (
+        <div className='pagination'>
+          <button onClick={() => goToPage(pageQuery - 1)} disabled={pageQuery <= 1}>
+            &lt;
+          </button>
+
+          {[...Array(pageInfo.pages).keys()]
+            .map((n) => n + 1)
+            .filter((p) => p <= 3 || p > pageInfo.pages - 2 || Math.abs(p - pageQuery) <= 2)
+            .reduce((acc, page, i, arr) => {
+              if (i > 0 && page - arr[i - 1] > 1) acc.push("ellipsis");
+              acc.push(page);
+              return acc;
+            }, [])
+            .map((item, idx) =>
+              item === "ellipsis" ? (
+                <span key={idx} className='dots'>
+                  ...
+                </span>
+              ) : (
+                <button key={item} className={item === pageQuery ? "active" : ""} onClick={() => goToPage(item)}>
+                  {item}
+                </button>
+              )
+            )}
+
+          <button onClick={() => goToPage(pageQuery + 1)} disabled={pageQuery >= pageInfo.pages}>
+            &gt;
+          </button>
         </div>
       )}
-
-      {/* Pagination Buttons */}
-      <div className='d-flex justify-content-center my-4'>
-        <button className='btn btn-secondary me-2' onClick={() => goToPage(pageQuery - 1)} disabled={pageQuery <= 1}>
-          Previous
-        </button>
-        <span className='align-self-center px-3'>
-          Page {pageQuery} {pageInfo.pages ? `of ${pageInfo.pages}` : ""}
-        </span>
-        <button
-          className='btn btn-secondary ms-2'
-          onClick={() => goToPage(pageQuery + 1)}
-          disabled={!pageInfo.pages || pageQuery >= pageInfo.pages}>
-          Next
-        </button>
-      </div>
     </main>
   );
 }
