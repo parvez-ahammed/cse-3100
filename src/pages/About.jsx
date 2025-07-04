@@ -49,8 +49,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* Features */}
-
       {/* Contact Link */}
       <div className='text-center'>
         <p>
