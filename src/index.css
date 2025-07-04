@@ -1,12 +1,128 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: #fff;
   margin: 0;
   padding: 0;
+  font-size: 14px; /* Smaller base font size */
 }
 
-.container {
-  max-width: 900px;
+.home-wrapper {
+  padding: 15px 20px; /* Reduced padding */
+  max-width: 1200px; /* Slightly smaller max width */
   margin: auto;
-  padding: 1rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Reduced gap */
+  align-items: center;
+  margin-bottom: 15px; /* Reduced margin */
+}
+
+.filters select,
+.filters input {
+  padding: 8px; /* Reduced padding */
+  font-size: 13px; /* Smaller font size */
+  min-width: 150px; /* Reduced min-width */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Slightly smaller border-radius */
+}
+
+.result-count {
+  margin-left: auto;
+  font-size: 12px; /* Smaller font size */
+  color: #555;
+}
+
+.five-col-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px; /* Reduced gap */
+}
+
+@media (max-width: 1200px) {
+  .five-col-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .five-col-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .five-col-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .five-col-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-body {
+  padding: 10px; /* Reduced padding */
+}
+
+.card-title {
+  font-size: 1.1em; /* Slightly smaller title */
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.card-text {
+  font-size: 0.85em; /* Smaller text */
+  line-height: 1.4;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px; /* Reduced gap */
+  margin-top: 20px; /* Reduced margin */
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 6px 10px; /* Reduced padding */
+  font-size: 13px; /* Smaller font size */
+  border: none;
+  background: #f1f1f1;
+  border-radius: 4px; /* Slightly smaller border-radius */
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #333;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination .dots {
+  padding: 6px;
+  font-size: 15px; /* Smaller font size */
+  color: #888;
 }
