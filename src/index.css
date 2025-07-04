@@ -154,8 +154,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  background-color: #333;
+  padding: 2px 40px;
+  background-color: #85a41f;
   color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -197,6 +197,21 @@ body {
 .nav-link:hover,
 .nav-link:focus {
   color: #a0a0a0; /* Lighter color on hover */
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 5px 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #0d1103; /* Lighter color on hover */
+  transform: translateY(-2px); /* Move slightly up */
 }
 
 /* Responsive adjustments for Navbar */
