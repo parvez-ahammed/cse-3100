@@ -15,7 +15,7 @@ export default function About() {
       </p>
 
       <h3>Developer</h3>
-      <p>This application was developed by **[Your Name Here]** as part of the CSE-3100 course curriculum.</p>
+      <p>This application was developed by Mahir Faisal as part of the CSE-3100 course curriculum.</p>
 
       <h3>Favorite Rick & Morty Quote</h3>
       <blockquote>
