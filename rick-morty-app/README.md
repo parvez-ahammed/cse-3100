@@ -46,6 +46,11 @@ _____
 
 _____
 
+
+## Wakatime Badge 
+
+[![wakatime](https://wakatime.com/badge/user/4fa9f674-c05d-4479-9ce8-7b819ad5992b/project/fac7bf9f-2d71-403f-8ebd-df6325f05820.svg)](https://wakatime.com/badge/user/4fa9f674-c05d-4479-9ce8-7b819ad5992b/project/fac7bf9f-2d71-403f-8ebd-df6325f05820)
+
 ## Additional improvements made 
 
 - Clean responsive layout using Bootstrap.
@@ -61,7 +66,7 @@ _____
 
 '''bash 
 
-git clone https://github.com/Anupoma-Haque/rick-morty-app.git
+git clone https://github.com/Anupoma-Haque/cse-3100/tree/assignment-1-20220204015
 
 cd rick-morty-app
 
