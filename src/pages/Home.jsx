@@ -16,7 +16,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start p-4 pb-10 text-bold bg-green-100">
-      <h1 className="my-10 font-bold text-4xl">Rick & Morty Explorer</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
         {characters.map((char) => (
           <div className="col-md-4 mb-4" key={char.id}>
