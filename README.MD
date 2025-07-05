@@ -4,7 +4,8 @@ _Ahsanullah University of Science and Technology_
 **Fall 2024**
 
 ---
-## wakatime badges
+## Wakatime Badges
+
 [![wakatime](https://wakatime.com/badge/user/25bd1379-89ac-47c1-8743-d56b2288f599/project/ef66ad79-a9b8-47e0-810d-b3bd802cb5bd.svg)](https://wakatime.com/badge/user/25bd1379-89ac-47c1-8743-d56b2288f599/project/ef66ad79-a9b8-47e0-810d-b3bd802cb5bd)
 ## Course Overview
 
