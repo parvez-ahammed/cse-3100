@@ -1,25 +1,35 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/?search=${encodeURIComponent(search)}`);
+  };
+
 
   return (
     <nav className="w-full px-8 py-4 flex items-center justify-between bg-green-200">
       <div className="flex items-center">
         <Link to="/" className="text-2xl font-bold">Rick & Morty Explorer</Link>
       </div>
-      <div>
+      <form onSubmit={handleSearch}>
         <label className="block text-lg">
           <input
             type="text"
             placeholder="Enter character name"
-            className="border p-1 rounded "
-            id="search"
+            className="border p-1 rounded"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </label>
-      </div>
+      </form>
       <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
         <Link to="/" className="hover:text-gray-900 font-bold">
           Home
