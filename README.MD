@@ -51,7 +51,6 @@ An elegant and dynamic single-page application that empowers users to seamlessly
 ## 🐞 Known Issues
 
 - ❗ No custom message for API errors (e.g., no search results).
-- 🌐 Lottie loader depends on an internet connection.
 - ✉️ Contact form is front-end only — messages are not actually sent.
 
 ---
