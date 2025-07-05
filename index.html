@@ -16,14 +16,8 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
-      const dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (dark) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     </script>
   </body>
 </html>

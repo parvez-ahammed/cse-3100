@@ -1,5 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import CharacterChatBot from "../components/CharacterChatBot";
+import EpisodeList from "../features/EpisodeList";
 
 export default function CharacterDetailsPage() {
   const { id } = useParams();
@@ -47,36 +49,38 @@ export default function CharacterDetailsPage() {
   if (!character) return null;
 
   return (
-    <div className="max-w-2xl mx-auto my-12 p-8 rounded-2xl bg-white dark:bg-gray-900 shadow-2xl flex flex-col items-center relative overflow-hidden">
-      <div className="absolute -top-10 -right-10 opacity-10 pointer-events-none select-none text-[10rem] font-extrabold text-blue-400 dark:text-blue-700">
+    <div className="max-w-3xl mx-auto my-16 p-10 rounded-3xl bg-white dark:bg-gray-900 shadow-2xl flex flex-col items-center relative overflow-hidden">
+      <div className="absolute -top-12 -right-12 opacity-10 pointer-events-none select-none text-[12rem] font-extrabold text-blue-400 dark:text-blue-700">
         #{character.id}
       </div>
-      <img
-        src={character.image}
-        alt={character.name}
-        className="w-40 h-40 rounded-full border-8 border-blue-400 dark:border-blue-600 shadow-xl mb-6 bg-white object-cover"
-      />
-      <h2 className="text-4xl font-extrabold text-blue-700 dark:text-blue-400 mb-2 drop-shadow">
-        {character.name}
-      </h2>
-      <div className="flex flex-wrap gap-4 justify-center mb-6">
-        <span className={`px-4 py-2 rounded-full text-lg font-semibold shadow
-          ${character.status === "Alive"
-            ? "bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200"
-            : character.status === "Dead"
-            ? "bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-200"
-            : "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200"
-          }`}>
-          {character.status}
-        </span>
-        <span className="px-4 py-2 rounded-full bg-purple-100 text-purple-700 dark:bg-purple-800 dark:text-purple-200 text-lg font-semibold shadow">
-          {character.species}
-        </span>
-        {character.type && (
-          <span className="px-4 py-2 rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-800 dark:text-yellow-200 text-lg font-semibold shadow">
-            {character.type}
+      <div className="flex flex-col items-center mb-8">
+        <img
+          src={character.image}
+          alt={character.name}
+          className="w-56 h-56 rounded-full border-8 border-blue-400 dark:border-blue-600 shadow-2xl bg-white object-cover mb-4 transition-transform duration-300 hover:scale-105"
+        />
+        <h2 className="text-5xl font-extrabold text-blue-700 dark:text-blue-400 mb-2 drop-shadow-lg">
+          {character.name}
+        </h2>
+        <div className="flex flex-wrap gap-4 justify-center mb-4">
+          <span className={`px-6 py-2 rounded-full text-xl font-semibold shadow
+            ${character.status === "Alive"
+              ? "bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200"
+              : character.status === "Dead"
+              ? "bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-200"
+              : "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200"
+            }`}>
+            {character.status}
           </span>
-        )}
+          <span className="px-6 py-2 rounded-full bg-purple-100 text-purple-700 dark:bg-purple-800 dark:text-purple-200 text-xl font-semibold shadow">
+            {character.species}
+          </span>
+          {character.type && (
+            <span className="px-6 py-2 rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-800 dark:text-yellow-200 text-xl font-semibold shadow">
+              {character.type}
+            </span>
+          )}
+        </div>
       </div>
       <div className="w-full bg-blue-50 dark:bg-blue-950 rounded-xl p-6 shadow-inner mb-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
@@ -107,6 +111,11 @@ export default function CharacterDetailsPage() {
       >
         Back to Home
       </Link>
+      {character && <CharacterChatBot character={character} />}
+      <div className="mt-8 w-full">
+        <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">Episodes Featuring {character.name}</h3>
+        <EpisodeList episodeIds={character.episode?.map(ep => ep.split('/').pop())} />
+      </div>
     </div>
   );
 }

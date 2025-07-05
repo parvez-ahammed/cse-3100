@@ -1,6 +1,7 @@
 import { useFetchCharacters } from "../hooks/useFetchCharacters";
 import { useQueryParams } from "../hooks/useQueryParams";
 import CharacterCard from "../components/CharacterCard";
+import Pagination from "../components/Pagination";
 
 export default function CharacterList() {
   const [queryParams, setQueryParams] = useQueryParams();
@@ -25,23 +26,13 @@ export default function CharacterList() {
           <CharacterCard character={char} key={char.id} />
         ))}
       </div>
-      <div className="flex justify-center items-center gap-4 mt-8">
-        <button
-          onClick={handlePrevPage}
-          disabled={page <= 1}
-          className="px-4 py-2 rounded bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-semibold disabled:opacity-50"
-        >
-          Previous
-        </button>
-        <span className="text-lg font-bold text-gray-700 dark:text-gray-200">Page {page}</span>
-        <button
-          onClick={handleNextPage}
-          disabled={!info.pages || page >= info.pages}
-          className="px-4 py-2 rounded bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-semibold disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div>
+      <Pagination
+        page={page}
+        totalPages={info.pages || 1}
+        onPageChange={(p) => {
+          if (p >= 1 && p <= (info.pages || 1)) setQueryParams({ page: p });
+        }}
+      />
     </div>
   );
 }
