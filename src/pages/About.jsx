@@ -12,6 +12,9 @@ export default function About() {
         <h2 className="text-2xl font-semibold text-gray-700">Developer</h2>
         <p>Made by Mohammad Ashfaq Hossain Bhuiyan</p>
         <p>ID: 2022020002</p>
+
+        <h2>Favourite Quote:</h2>
+        <p>The universe is basically an animal. It grazes on the ordinary. It creates infinite idiots just to eat them.</p>
         <h2>[PS: I Have no idea how my assignment looks so bear it with me]</h2>
       </div>
     </div>
