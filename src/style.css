@@ -161,17 +161,56 @@ body {
   cursor: not-allowed;
 }
 
-/* ========== Media Queries for Better Responsiveness ========== */
-@media (max-width: 768px) {
-  .home-header h1 {
-    font-size: 1.8rem;
-  }
+/* ========== Contact Page Enhanced Styles ========== */
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background: linear-gradient(to right, #e0f7fa, #fdfbfb);
+}
 
-  .character-grid {
-    gap: 1rem;
-  }
+.contact-card {
+  width: 100%;
+  max-width: 550px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 2rem 2rem 2.5rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
 
-  .search-input {
-    max-width: 100%;
+.contact-card h2 {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.form-control:focus {
+  border-color: #5dade2;
+  box-shadow: 0 0 0 0.15rem rgba(93, 173, 226, 0.3);
+}
+
+.btn-primary {
+  background-color: #5dade2;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #3498db;
+}
+
+.invalid-feedback {
+  font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
