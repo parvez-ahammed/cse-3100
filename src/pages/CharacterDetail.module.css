@@ -1,0 +1,178 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.characterHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.characterName {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.characterImage {
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 300px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.characterImage:hover {
+  transform: scale(1.03);
+}
+
+.infoCard {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.infoTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #3498db;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.infoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.infoItem {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #ecf0f1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoItem:last-child {
+  border-bottom: none;
+}
+
+.infoLabel {
+  font-weight: 600;
+  color: #7f8c8d;
+}
+
+.infoValue {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.statusIndicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.statusAlive {
+  background-color: #4CAF50;
+}
+
+.statusDead {
+  background-color: #F44336;
+}
+
+.statusUnknown {
+  background-color: #9E9E9E;
+}
+
+.episodesCard {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.episodesList {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.episodeItem {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.episodeItem:hover {
+  transform: translateX(5px);
+  background-color: #e8f4fc;
+}
+
+.loadingText {
+  text-align: center;
+  padding: 2rem;
+  color: #7f8c8d;
+  font-size: 1.2rem;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.backButton:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Dark mode styles */
+:global(.dark-mode) .characterName {
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .infoCard,
+:global(.dark-mode) .episodesCard {
+  background-color: #2c3e50;
+}
+
+:global(.dark-mode) .infoValue {
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .episodeItem {
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .episodeItem:hover {
+  background-color: #2c3e50;
+}
+
+:global(.dark-mode) .loadingText {
+  color: #bdc3c7;
+}
