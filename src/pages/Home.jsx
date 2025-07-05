@@ -1,54 +1,64 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import CharacterCard from "../components/CharacterCard";
+import SearchFilterBar from "../components/SearchFilterBar";
+import Pagination from "../components/Pagination";
 
 export default function Home() {
-  const [allCharacters, setAllCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [totalFrontendPages, setTotalFrontendPages] = useState(1);
 
-  const pageSize = 10;
   const location = useLocation();
-  const navigate = useNavigate();
 
-  // Parse the page number from the URL
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const page = parseInt(params.get("page") || "1", 10);
-    setCurrentPage(page);
-  }, [location]);
+  const searchParams = new URLSearchParams(location.search);
+  const name = searchParams.get("name") || "";
+  const status = searchParams.get("status") || "";
+  const page = parseInt(searchParams.get("page") || "1", 10);
+
+  const apiPage = Math.ceil(page / 2); // API page (20 per page)
 
   useEffect(() => {
     const controller = new AbortController();
 
-    const fetchAllCharacters = async () => {
+    const fetchCharacters = async () => {
       setLoading(true);
       setError("");
+
       try {
-        let all = [];
-        let page = 1;
-        let hasMore = true;
+        const res = await fetch(
+          `https://rickandmortyapi.com/api/character?page=${apiPage}&name=${name}&status=${status}`,
+          { signal: controller.signal }
+        );
 
-        while (hasMore) {
-          const res = await fetch(
-            `https://rickandmortyapi.com/api/character?page=${page}`,
-            { signal: controller.signal }
-          );
-
-          if (!res.ok) throw new Error("Error fetching characters");
-
-          const data = await res.json();
-          all = all.concat(data.results);
-
-          if (data.info.next) {
-            page++;
-          } else {
-            hasMore = false;
+        if (!res.ok) {
+          if (res.status === 404) {
+            setCharacters([]);
+            setTotalFrontendPages(1);
+            return;
           }
+          throw new Error("Error fetching characters");
         }
 
-        setAllCharacters(all);
+        const data = await res.json();
+        const allResults = data.results;
+
+        // Determine frontend page content (10 per page)
+        const isFirstHalf = page % 2 !== 0;
+        const startIdx = isFirstHalf ? 0 : 10;
+        const endIdx = isFirstHalf ? 10 : 20;
+        setCharacters(allResults.slice(startIdx, endIdx));
+
+        // Dynamic calculation
+        if (data.info.next === null) {
+
+          const realTotalCharacters = (data.info.count || 0);
+          setTotalFrontendPages(Math.ceil(realTotalCharacters / 10));
+        } else {
+          setTotalFrontendPages(Math.ceil(data.info.count / 10));
+
+        }
       } catch (err) {
         if (err.name !== "AbortError") {
           setError("Failed to fetch characters.");
@@ -58,82 +68,30 @@ export default function Home() {
       }
     };
 
-    fetchAllCharacters();
+    fetchCharacters();
     return () => controller.abort();
-  }, []);
-
-  const totalPages = Math.ceil(allCharacters.length / pageSize);
-  const paginatedCharacters = allCharacters.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
-
-  const changePage = (page) => {
-    setCurrentPage(page);
-    navigate(`?page=${page}`); // Update URL with the new page
-  };
+  }, [name, status, page, apiPage]);
 
   return (
-    <main className="max-w-7xl mx-auto px-4 py-8">
-      {error && (
-        <p className="text-red-500 font-semibold mb-4">{error}</p>
-      )}
+    <main className="max-w-7xl mx-auto px-4 py-10">
+      <SearchFilterBar />
 
-      {loading && <p>Loading all characters...</p>}
+      {error && <p className="text-red-500 font-semibold mb-4">{error}</p>}
+      {loading && <p>Loading characters...</p>}
 
       {!loading && !error && (
         <>
           <p className="mb-4 text-sm text-gray-600">
-            Showing {paginatedCharacters.length} of {allCharacters.length} results
+            Showing {characters.length} results on page {page} of {totalFrontendPages}
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-8">
-            {paginatedCharacters.map((char) => (
+            {characters.map((char) => (
               <CharacterCard key={char.id} character={char} />
             ))}
           </div>
 
-          <div className="flex justify-center items-center space-x-1 text-sm text-gray-700">
-            <button
-              onClick={() => changePage(Math.max(currentPage - 1, 1))}
-              disabled={currentPage === 1}
-              className="px-3 py-1 border rounded disabled:opacity-50"
-            >
-              &lt;
-            </button>
-
-            {Array.from({ length: totalPages }, (_, index) => {
-              if (
-                index + 1 === 1 ||
-                index + 1 === totalPages ||
-                Math.abs(index + 1 - currentPage) <= 1
-              ) {
-                return (
-                  <button
-                    key={index}
-                    onClick={() => changePage(index + 1)}
-                    className={`px-3 py-1 border rounded ${currentPage === index + 1 ? "bg-black text-white" : ""}`}
-                  >
-                    {index + 1}
-                  </button>
-                );
-              } else if (
-                (index === 1 && currentPage > 3) ||
-                (index === totalPages - 2 && currentPage < totalPages - 2)
-              ) {
-                return <span key={index}>...</span>;
-              }
-              return null;
-            })}
-
-            <button
-              onClick={() => changePage(Math.min(currentPage + 1, totalPages))}
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 border rounded disabled:opacity-50"
-            >
-              &gt;
-            </button>
-          </div>
+          <Pagination currentPage={page} totalPages={totalFrontendPages} />
         </>
       )}
     </main>
