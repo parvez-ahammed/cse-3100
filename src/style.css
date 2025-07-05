@@ -1,4 +1,4 @@
-/* Reset some base styles */
+/* ========== Base Reset & Typography ========== */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -6,7 +6,7 @@ body {
   color: #333;
 }
 
-/* Container for character details */
+/* ========== Character Detail Page ========== */
 .character-details {
   max-width: 600px;
   margin: 3rem auto;
@@ -17,14 +17,12 @@ body {
   text-align: center;
 }
 
-/* Character name */
 .character-details h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #2c3e50;
 }
 
-/* Character image */
 .character-details img {
   width: 200px;
   height: 200px;
@@ -39,7 +37,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Paragraph styling */
 .character-details p {
   font-size: 1.1rem;
   margin: 0.5rem 0;
@@ -50,7 +47,7 @@ body {
   color: #34495e;
 }
 
-/* Responsive tweaks */
+/* Responsive for character details */
 @media (max-width: 640px) {
   .character-details {
     margin: 1rem;
@@ -63,24 +60,47 @@ body {
   }
 }
 
-.search-container {
-  margin: 1rem auto;
+/* ========== Home Page Layout ========== */
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.home-header {
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+.home-header .subtitle {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* ========== Filter Section ========== */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-container,
+.status-filter {
+  text-align: center;
+  flex: 1 1 300px;
+  min-width: 250px;
 }
 
 .search-input {
-  width: 300px;
-  max-width: 90%;
+  width: 100%;
+  max-width: 400px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.status-filter {
-  margin: 1rem auto;
-  text-align: center;
 }
 
 .status-dropdown {
@@ -89,4 +109,69 @@ body {
   border-radius: 6px;
   border: 1px solid #ccc;
   margin-left: 0.5rem;
+}
+
+/* ========== Character Grid Section ========== */
+.character-section {
+  margin-bottom: 2rem;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* ========== Error Message ========== */
+.error {
+  color: red;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* ========== Pagination Controls ========== */
+.pagination-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.pagination-controls button {
+  padding: 0.5rem 1.2rem;
+  background-color: #5dade2;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #3498db;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ========== Media Queries for Better Responsiveness ========== */
+@media (max-width: 768px) {
+  .home-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .character-grid {
+    gap: 1rem;
+  }
+
+  .search-input {
+    max-width: 100%;
+  }
 }
