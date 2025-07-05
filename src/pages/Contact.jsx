@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const isDark = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setDarkMode(isDark);
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -33,66 +40,142 @@ export default function Contact() {
     }
   };
 
+  const colors = {
+    background: darkMode ? "#121212" : "#f8f9fa",
+    cardBg: darkMode ? "#1e1e1e" : "#ffffff",
+    text: darkMode ? "#e4e4e4" : "#212529",
+    border: darkMode ? "#333" : "#ccc",
+    error: "#dc3545",
+    success: "#198754",
+    primary: "#0d6efd",
+    inputBg: darkMode ? "#2c2c2c" : "#fff"
+  };
+
   return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-8 col-lg-6">
-          <div className="card shadow-lg rounded-4 p-4 border-0">
-            <h3 className="text-center mb-4 text-primary">Contact Us</h3>
+    <div
+      style={{
+        backgroundColor: colors.background,
+        minHeight: "100vh",
+        padding: "40px 16px",
+        fontFamily: "'Segoe UI', sans-serif",
+        color: colors.text,
+        transition: "all 0.3s ease"
+      }}
+    >
+      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+        <div
+          style={{
+            backgroundColor: colors.cardBg,
+            borderRadius: "16px",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+            padding: "30px",
+            border: `1px solid ${colors.border}`,
+            transition: "all 0.3s ease"
+          }}
+        >
+          <h2 style={{ textAlign: "center", marginBottom: "24px", color: colors.primary }}>
+            Contact Us
+          </h2>
 
-            {submitted && (
-              <div className="alert alert-success text-center" role="alert">
-                Thank you! Your message has been sent.
-              </div>
-            )}
+          {submitted && (
+            <div
+              style={{
+                backgroundColor: colors.success,
+                color: "#fff",
+                padding: "12px 20px",
+                borderRadius: "8px",
+                marginBottom: "20px",
+                textAlign: "center"
+              }}
+            >
+              Thank you! Your message has been sent.
+            </div>
+          )}
 
-            <form onSubmit={handleSubmit} noValidate>
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input
-                  className={`form-control ${errors.name ? "is-invalid" : ""}`}
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your full name"
-                />
-                {errors.name && <div className="invalid-feedback">{errors.name}</div>}
-              </div>
+          <form onSubmit={handleSubmit} noValidate>
+            {["name", "email", "message"].map((field, idx) => (
+              <div key={idx} style={{ marginBottom: "20px" }}>
+                <label
+                  htmlFor={field}
+                  style={{
+                    display: "block",
+                    marginBottom: "6px",
+                    fontWeight: "600"
+                  }}
+                >
+                  {field.charAt(0).toUpperCase() + field.slice(1)}
+                </label>
 
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input
-                  className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="example@example.com"
-                />
-                {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-              </div>
+                {field === "message" ? (
+                  <textarea
+                    name="message"
+                    rows="5"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Write your message here..."
+                    style={{
+                      width: "100%",
+                      padding: "12px",
+                      fontSize: "16px",
+                      borderRadius: "8px",
+                      border: `1px solid ${errors.message ? colors.error : colors.border}`,
+                      backgroundColor: colors.inputBg,
+                      color: colors.text,
+                      resize: "vertical",
+                      outline: "none",
+                      transition: "border 0.2s ease"
+                    }}
+                  />
+                ) : (
+                  <input
+                    type={field === "email" ? "email" : "text"}
+                    name={field}
+                    value={form[field]}
+                    onChange={handleChange}
+                    placeholder={
+                      field === "name" ? "Your full name" : "example@example.com"
+                    }
+                    style={{
+                      width: "100%",
+                      padding: "12px",
+                      fontSize: "16px",
+                      borderRadius: "8px",
+                      border: `1px solid ${errors[field] ? colors.error : colors.border}`,
+                      backgroundColor: colors.inputBg,
+                      color: colors.text,
+                      outline: "none",
+                      transition: "border 0.2s ease"
+                    }}
+                  />
+                )}
 
-              <div className="mb-3">
-                <label className="form-label">Message</label>
-                <textarea
-                  className={`form-control ${errors.message ? "is-invalid" : ""}`}
-                  name="message"
-                  rows="5"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Write your message here..."
-                ></textarea>
-                {errors.message && <div className="invalid-feedback">{errors.message}</div>}
+                {errors[field] && (
+                  <div style={{ color: colors.error, marginTop: "6px", fontSize: "14px" }}>
+                    {errors[field]}
+                  </div>
+                )}
               </div>
+            ))}
 
-              <div className="d-grid">
-                <button className="btn btn-primary btn-lg" type="submit">
-                  Send Message
-                </button>
-              </div>
-            </form>
-          </div>
+            <div style={{ display: "grid" }}>
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: colors.primary,
+                  color: "#fff",
+                  padding: "12px",
+                  borderRadius: "8px",
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s ease"
+                }}
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

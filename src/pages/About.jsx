@@ -1,3 +1,5 @@
+import '/src/style.css';
+
 export default function About() {
   return (
     <div className="container my-5" style={{ maxWidth: '700px' }}>
@@ -23,9 +25,10 @@ export default function About() {
 
       <section className="mb-4">
         <h3>Favorite Rick & Morty Quote</h3>
-        <blockquote style={{ fontStyle: 'italic', backgroundColor: '#f0f8ff', padding: '15px', borderLeft: '5px solid #4caf50' }}>
-          "Wubba Lubba Dub Dub! — Rick Sanchez"
-        </blockquote>
+        <blockquote className="quote">
+  "Wubba Lubba Dub Dub! — Rick Sanchez"
+</blockquote>
+
       </section>
     </div>
   );

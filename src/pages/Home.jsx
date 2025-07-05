@@ -3,8 +3,12 @@ import CharacterCard from "../components/CharacterCard";
 import SearchBar from "../components/SearchBar";
 import FilterDropdown from "../components/FilterDropDown";
 import "/src/style.css";
+import {useNavigate} from 'react-router-dom';
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function Home() {
+  
+  const navigate = useNavigate();
   const [apiPage, setApiPage] = useState(1);
   const [subPage, setSubPage] = useState(1);
   const [characters, setCharacters] = useState([]);
@@ -74,13 +78,19 @@ export default function Home() {
   const isPrevDisabled = apiPage === 1 && subPage === 1;
   const isNextDisabled = (subPage === 2 && !hasNextApiPage) || characters.length <= 10;
 
-  return (
+ return (
     <div className="home-container">
       <header className="home-header">
-        <h1>Rick & Morty Characters</h1>
-        <p className="subtitle">Browse, filter, and explore characters from the multiverse!</p>
-      </header>
+  <h1>Rick & Morty Characters</h1>
+  <p className="subtitle">Browse, filter, and explore characters from the multiverse!</p>
 
+  {/* Navigation + Theme Toggle */}
+  <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
+    <button onClick={() => navigate("/about")}>About Us</button>
+    <button onClick={() => navigate("/contact")}>Contact</button>
+    <ThemeToggle /> 
+  </div>
+</header>
       <section className="filters">
         <SearchBar search={search} setSearch={setSearch} />
         <FilterDropdown status={status} setStatus={setStatus} />
