@@ -1,0 +1,33 @@
+.appContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mainContent {
+  flex: 1;
+  padding-bottom: 2rem;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 1.5rem 0;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+/* Dark mode styles */
+:global(.dark-mode) .appContainer {
+  background-color: #1a1a2e;
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .footer {
+  background-color: #151521;
+  border-top-color: #2c3e50;
+  color: #bdc3c7;
+}
