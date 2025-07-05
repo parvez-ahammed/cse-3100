@@ -1,11 +1,11 @@
 <p align="center">
   <a href="https://rick-eight-psi.vercel.app/" target="_blank">
-    <img src="https://img.shields.io/badge/Live%20Site-Visit-blue?style=for-the-badge&logo=vercel" alt="Live Site" />
+    <img src="https://img.shields.io/badge/Live%20Site-Visit-blue?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Site" />
   </a>
   <a href="https://youtu.be/VAFG6upmVYY" target="_blank">
-    <img src="https://img.shields.io/badge/YouTube-Demo-red?style=for-the-badge&logo=youtube" alt="YouTube Demo" />
+    <img src="https://img.shields.io/badge/YouTube-Video-red?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Demo" />
   </a>
-  <a href="https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/d387ec9c-977d-445b-9279-53e31339bc87">
+  <a href="https://wakatime.com/@85250f49-8411-4f72-ad26-74aa6d9032ec/projects/wtilyconap?start=2025-06-29&end=2025-07-05" target="_blank">
     <img src="https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/d387ec9c-977d-445b-9279-53e31339bc87.svg" alt="wakatime" />
   </a>
 </p>
@@ -92,7 +92,7 @@ A modern React application to explore characters and episodes from the Rick & Mo
 ## ⏱️ Time Tracking
 
 - **WakaTime** was used to track development time for transparency and effort reporting.
-- [![wakatime](https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/3e7a3e15-119e-422e-a335-666fd69a449b.svg)](https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/3e7a3e15-119e-422e-a335-666fd69a449b)
+- [![wakatime](https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/d387ec9c-977d-445b-9279-53e31339bc87.svg)](https://wakatime.com/@85250f49-8411-4f72-ad26-74aa6d9032ec/projects/wtilyconap?start=2025-06-29&end=2025-07-05)
 
 ---
 
