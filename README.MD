@@ -1,6 +1,14 @@
-[Live Site](https://rick-eight-psi.vercel.app/)  
-[YouTube Demo](https://youtu.be/VAFG6upmVYY)  
-[![wakatime](https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/3e7a3e15-119e-422e-a335-666fd69a449b.svg)](https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/3e7a3e15-119e-422e-a335-666fd69a449b)
+<p align="center">
+  <a href="https://rick-eight-psi.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live%20Site-Visit-blue?style=for-the-badge&logo=vercel" alt="Live Site" />
+  </a>
+  <a href="https://youtu.be/VAFG6upmVYY" target="_blank">
+    <img src="https://img.shields.io/badge/YouTube-Demo-red?style=for-the-badge&logo=youtube" alt="YouTube Demo" />
+  </a>
+  <a href="https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/d387ec9c-977d-445b-9279-53e31339bc87">
+    <img src="https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/d387ec9c-977d-445b-9279-53e31339bc87.svg" alt="wakatime" />
+  </a>
+</p>
 
 # Rick & Morty Explorer
 
