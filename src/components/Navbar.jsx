@@ -1,23 +1,47 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../context/Theme";
 
 const Navbar = () => {
+  const location = useLocation();
+  const { isDarkMode, toggleTheme } = useTheme();
+
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <nav className="bg-blue-600 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold">
+    <nav className="navbar">
+      <div className="nav-container">
+        <Link to="/" className="nav-logo">
           Rick & Morty Explorer
         </Link>
-        <div className="space-x-4">
-          <Link to="/" className="hover:text-blue-200">
+
+        <div className="nav-links">
+          <Link
+            to="/"
+            className={`nav-link ${isActive("/") ? "active" : ""}`}
+          >
             Home
           </Link>
-          <Link to="/about" className="hover:text-blue-200">
+          <Link
+            to="/about"
+            className={`nav-link ${isActive("/about") ? "active" : ""}`}
+          >
             About
           </Link>
-          <Link to="/contact" className="hover:text-blue-200">
+          <Link
+            to="/contact"
+            className={`nav-link ${isActive("/contact") ? "active" : ""}`}
+          >
             Contact
           </Link>
+
+          <button
+            onClick={toggleTheme}
+            className="theme-toggle"
+            aria-label="Toggle theme"
+          >
+            {isDarkMode ? "☀️" : "🌙"}
+          </button>
         </div>
       </div>
     </nav>

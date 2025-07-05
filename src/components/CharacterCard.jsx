@@ -1,57 +1,50 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CharacterCard = ({ character }) => {
-  const navigate = useNavigate();
-
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
       case "alive":
-        return "bg-green-500";
+        return "#55cc44";
       case "dead":
-        return "bg-red-500";
+        return "#d63d2e";
       default:
-        return "bg-gray-500";
+        return "#9e9e9e";
     }
   };
 
-  const handleClick = () => {
-    navigate(`/character/${character.id}`);
-  };
-
   return (
-    <div
-      className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
-      onClick={handleClick}
-    >
-      <div className="relative">
-        <img
-          src={character.image}
-          alt={character.name}
-          className="w-full h-48 object-cover"
-        />
-        <div className="absolute top-2 right-2 flex items-center gap-1">
-          <div
-            className={`w-2 h-2 rounded-full ${getStatusColor(
-              character.status
-            )}`}
-          ></div>
-          <span className="text-xs bg-black bg-opacity-50 text-white px-2 py-1 rounded">
-            {character.status}
-          </span>
+    <div className="character-card">
+      <Link to={`/character/${character.id}`} className="character-link">
+        <div className="character-image-container">
+          <img
+            src={character.image}
+            alt={character.name}
+            className="character-image"
+            loading="lazy"
+          />
+          <div className="character-status">
+            <span
+              className="status-indicator"
+              style={{ backgroundColor: getStatusColor(character.status) }}
+            ></span>
+            <span className="status-text">{character.status}</span>
+          </div>
         </div>
-      </div>
-      <div className="p-4">
-        <h3 className="font-bold text-lg mb-2 text-gray-800 truncate">
-          {character.name}
-        </h3>
-        <p className="text-sm text-gray-600 mb-1">
-          <span className="font-semibold">Species:</span> {character.species}
-        </p>
-        <p className="text-sm text-gray-600 truncate">
-          <span className="font-semibold">Origin:</span> {character.origin.name}
-        </p>
-      </div>
+
+        <div className="character-info">
+          <h3 className="character-name">{character.name}</h3>
+          <p className="character-species">{character.species}</p>
+          <p className="character-origin">
+            <span className="label">Origin:</span>
+            <span className="value">{character.origin.name}</span>
+          </p>
+          <p className="character-location">
+            <span className="label">Last seen:</span>
+            <span className="value">{character.location.name}</span>
+          </p>
+        </div>
+      </Link>
     </div>
   );
 };
