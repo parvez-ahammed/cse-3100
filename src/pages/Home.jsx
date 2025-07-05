@@ -90,7 +90,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-
         <Pagination
           page={page}
           setPage={setPage}
