@@ -1,8 +1,13 @@
+
 # Rick & Morty Explorer
 
 A beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
 
 ---
+## Live Demo
+
+Curious to see it in action? 🚀
+👉 [Explore the Rick & Morty Explorer Live!](https://rick2406.netlify.app/)
 
 ## Wakatime Badge
 
