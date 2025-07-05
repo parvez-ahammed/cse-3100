@@ -1,12 +1,269 @@
+/* --- Global Styles & Layout --- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+
+:root {
+  --background-color: #f8f9fa;
+  --container-bg: #ffffff;
+  --text-color: #212529;
+  --heading-color: #000000;
+  --border-color: #e9ecef;
+  --button-bg: #000000;
+  --button-text: #ffffff;
+  --navbar-gray: #f8f9fa;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
   margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* --- App Container & Footer --- */
+.app-wrapper {
   padding: 0;
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 1rem;
+.app-container {
+  background-color: var(--container-bg);
+  padding: 20px 40px;
+  min-height: calc(100vh - 70px); /* Adjusted for navbar height only */
+}
+
+/* DELETED: The .app-footer CSS rule has been removed from here */
+
+/* --- Navbar (MODIFIED SECTION) --- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--navbar-gray);
+  padding: 15px 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--heading-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 25px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: font-weight 0.2s ease-in-out;
+}
+
+.navbar-links a:hover {
+  font-weight: 700;
+}
+
+/* --- Home Page: Filters, Grid, Pagination --- */
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+  background-color: var(--container-bg);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  width: 100%;
+  display: block;
+}
+
+.card-body {
+  padding: 15px;
+  color: var(--text-color);
+}
+
+.card-title {
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+  padding-bottom: 20px; /* Add some space at the bottom */
+}
+
+.pagination button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.pagination button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* --- About & Contact Page --- */
+.static-page h2,
+.contact-page h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--heading-color);
+}
+
+.static-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.static-page h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: var(--heading-color);
+}
+
+.static-page p {
+  line-height: 1.6;
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 30px;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  align-self: center;
+  width: 120px;
+}
+
+/* --- Character Detail Page --- */
+.detail-page-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.detail-page-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.detail-page-container img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 30px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item span:first-child {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 4px;
+}
+
+.detail-item span:last-child {
+  font-weight: 500;
+  font-size: 1.1rem;
 }

@@ -26,6 +26,8 @@ The following items are **strongly recommended** to ensure a professional, well-
   If you have used any AI-powered tools during development, please include:
   - A short description of which AI tool(s) were used
   - A brief explanation of how they were used
+  ## Readme badges
+  [![wakatime](https://wakatime.com/badge/user/2ad53666-4746-4971-a4a1-c07bf36819a7/project/d228ffed-6a07-4808-b611-3b5539636601.svg)](https://wakatime.com/badge/user/2ad53666-4746-4971-a4a1-c07bf36819a7/project/d228ffed-6a07-4808-b611-3b5539636601)
 
 ## Requirements
 
