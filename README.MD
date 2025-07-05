@@ -1,17 +1,19 @@
 # Rick & Morty Explorer – Assignment 1
 
-In this project, you'll build a beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
-
-You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
+Rick and Morty Explorer is a fun and responsive web app that lets users search, filter, and browse characters from the Rick and Morty universe using the public Rick and Morty API. Built with React and Tailwind CSS, the app features pagination, search filters, and a clean, cartoon-inspired UI.
 
 ---
 ## Wakatime Badge
 
 [![wakatime](https://wakatime.com/badge/user/fcea2923-047d-4b59-8b66-6e342e0673aa/project/3de7982a-3c6a-4cae-b57c-9804107fe6b5.svg)](https://wakatime.com/badge/user/fcea2923-047d-4b59-8b66-6e342e0673aa/project/3de7982a-3c6a-4cae-b57c-9804107fe6b5)
 
-## Submission Guidelines
+## Implemented Features
 
-The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
+- Character Details Page
+- Character Search & Filtering
+- Pagination (with a max of 10 characters per page)
+- Contact Us Page
+- About Us Page
 
 - **Time Tracking (Recommended):**  
   Use tools like [WakaTime](https://wakatime.com/) to track your development time. This provides visibility into the effort invested.
