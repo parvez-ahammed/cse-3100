@@ -23,7 +23,7 @@ export default function ContactForm(){
                         {/* NAME */}
                         <div>
                             <label htmlFor="name" className="block text-grey-700 font-medium mb-1">
-                                name
+                                Name
                             </label>
                             <Field
                                 name="name"
