@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
-import CharacterCard from "../components/CharacterCard"; // Correctly import the component
+import CharacterCard from "../components/CharacterCard";
 
 function Home() {
-  // State for data and loading
-  const [characters, setCharacters] = useState([]);
+  const [apiCharacters, setApiCharacters] = useState([]);
+  const [info, setInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // State for API info, pagination, and filtering
-  const [info, setInfo] = useState({});
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [nameFilter, setNameFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
 
-  useEffect(() => {
-    const apiUrl = `https://rickandmortyapi.com/api/character/?page=${page}&name=${nameFilter}&status=${statusFilter}`;
+  // ... the rest of your Home.jsx code remains the same ...
 
+  useEffect(() => {
+    const apiPage = Math.ceil(currentPage / 2);
+    const apiUrl = `https://rickandmortyapi.com/api/character/?page=${apiPage}&name=${nameFilter}&status=${statusFilter}`;
     const fetchCharacters = async () => {
       setLoading(true);
       setError(null);
@@ -25,35 +24,38 @@ function Home() {
           throw new Error("No characters found. Try different filters.");
         }
         const data = await response.json();
-        setCharacters(data.results);
+        setApiCharacters(data.results);
         setInfo(data.info);
       } catch (error) {
         setError(error.message);
-        setCharacters([]);
+        setApiCharacters([]);
         setInfo({});
       } finally {
         setLoading(false);
       }
     };
-
     fetchCharacters();
-  }, [page, nameFilter, statusFilter]); // Re-fetch when page or filters change
+  }, [currentPage, nameFilter, statusFilter]);
 
   const handleNameChange = (e) => {
     setNameFilter(e.target.value);
-    setPage(1); // Reset to page 1 on a new search
+    setCurrentPage(1);
   };
 
   const handleStatusChange = (e) => {
     setStatusFilter(e.target.value);
-    setPage(1); // Reset to page 1 on a new filter
+    setCurrentPage(1);
   };
 
-  return (
-    <div className="home-container">
-      <h1>Rick & Morty Characters</h1>
+  const isFirstHalf = currentPage % 2 === 1;
+  const charactersToShow = isFirstHalf
+    ? apiCharacters.slice(0, 10)
+    : apiCharacters.slice(10, 20);
 
-      {/* Filter Controls */}
+  const totalUiPages = info.pages ? info.pages * 2 : 1;
+
+  return (
+    <div>
       <div className="filters">
         <input
           type="text"
@@ -68,27 +70,31 @@ function Home() {
           <option value="unknown">Unknown</option>
         </select>
       </div>
-
-      {/* Character Display */}
       {loading && <p>Loading...</p>}
-      {error && <p className="error-message">{error}</p>}
-      {!loading && !error && (
+      {error && <p>{error}</p>}
+      {!loading && !error && charactersToShow.length > 0 && (
         <>
           <div className="character-grid">
-            {characters.map((character) => (
+            {charactersToShow.map((character) => (
               <CharacterCard key={character.id} character={character} />
             ))}
           </div>
-
-          {/* Pagination Controls */}
           <div className="pagination">
-            <button onClick={() => setPage(page - 1)} disabled={!info.prev}>
+            <button
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
               Previous
             </button>
             <span>
-              Page {page} of {info.pages || 1}
+              Page {currentPage} of {totalUiPages}
             </span>
-            <button onClick={() => setPage(page + 1)} disabled={!info.next}>
+            <button
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={
+                currentPage === totalUiPages || (!info.next && !isFirstHalf)
+              }
+            >
               Next
             </button>
           </div>

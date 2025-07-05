@@ -1,6 +1,7 @@
-/* --- Global Styles & Layout --- */
+/* --- Global Styles & THEME VARIABLES --- */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
 
+/* Default Light Theme Variables */
 :root {
   --background-color: #f8f9fa;
   --container-bg: #ffffff;
@@ -10,29 +11,61 @@
   --button-bg: #000000;
   --button-text: #ffffff;
   --navbar-gray: #f8f9fa;
+  --accent-color: #0d6efd;
+}
+
+/* Dark Theme Variables */
+body.dark {
+  --background-color: #121212;
+  --container-bg: #1e1e1e;
+  --text-color: #e0e0e0;
+  --heading-color: #ffffff;
+  --border-color: #333333;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+  --navbar-gray: #1e1e1e;
 }
 
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background-color: var(--background-color);
+  background-color: var(
+    --background-color
+  ); /* Default background for all pages */
   color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+
+  /* Reset background properties in case they were set by a previous page */
+  background-image: none;
+  background-color: var(
+    --background-color
+  ); /* Ensure default body background is theme-controlled */
+  background-size: auto;
+  background-position: initial;
+  background-repeat: initial;
+  background-attachment: initial;
 }
 
-/* --- App Container & Footer --- */
+/* Reset overlay for pages that don't have a background image */
+body::before {
+  content: none;
+}
+
+/* --- App Layout --- */
 .app-wrapper {
   padding: 0;
 }
 
 .app-container {
-  background-color: var(--container-bg);
+  background-color: var(
+    --container-bg
+  ); /* Default solid background for all pages */
   padding: 20px 40px;
-  min-height: calc(100vh - 70px); /* Adjusted for navbar height only */
+  min-height: calc(100vh - 70px);
+  transition: background-color 0.3s; /* Smooth transition for background color */
 }
 
-/* DELETED: The .app-footer CSS rule has been removed from here */
-
-/* --- Navbar (MODIFIED SECTION) --- */
+/* --- Navbar --- */
 .navbar {
   position: sticky;
   top: 0;
@@ -43,6 +76,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.3s;
 }
 
 .navbar-logo {
@@ -58,6 +92,7 @@ body {
 .navbar-links {
   display: flex;
   gap: 25px;
+  align-items: center;
 }
 
 .navbar-links a {
@@ -69,6 +104,19 @@ body {
 
 .navbar-links a:hover {
   font-weight: 700;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
 }
 
 /* --- Home Page: Filters, Grid, Pagination --- */
@@ -86,11 +134,15 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 1rem;
+  background-color: var(
+    --container-bg
+  ); /* Filters will match the container background */
+  color: var(--text-color);
 }
 
 .character-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
 }
 
@@ -133,7 +185,7 @@ body {
   align-items: center;
   gap: 15px;
   margin-top: 30px;
-  padding-bottom: 20px; /* Add some space at the bottom */
+  padding-bottom: 20px;
 }
 
 .pagination button {
@@ -148,45 +200,46 @@ body {
 
 .pagination button:disabled {
   background-color: #6c757d;
+  color: #e0e0e0;
   cursor: not-allowed;
 }
 
-/* --- About & Contact Page --- */
-.static-page h2,
-.contact-page h2 {
+/* --- About & Contact Pages --- */
+.contact-page h2,
+.static-page h2 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 30px;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
   color: var(--heading-color);
 }
 
-.static-page {
-  max-width: 800px;
+.contact-intro {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 40px auto;
+  color: #f0f0f0;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.form-container {
+  max-width: 650px;
   margin: 0 auto;
+  padding: 40px;
+  background-color: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
-.static-page h3 {
-  margin-top: 25px;
-  margin-bottom: 10px;
-  color: var(--heading-color);
-}
-
-.static-page p {
-  line-height: 1.6;
-}
-
-.disclaimer {
-  font-size: 0.8rem;
-  color: #6c757d;
-  margin-top: 30px;
+body.dark .form-container {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .contact-form {
-  max-width: 500px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
 .form-group {
@@ -197,73 +250,214 @@ body {
 .form-group label {
   margin-bottom: 8px;
   font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-color);
 }
 
 .form-group input,
 .form-group textarea {
-  padding: 12px;
+  padding: 14px;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
 }
 
 .form-group textarea {
-  height: 120px;
+  height: 140px;
   resize: vertical;
+  font-family: "Inter", sans-serif;
 }
 
 .submit-btn {
   background-color: var(--button-bg);
   color: var(--button-text);
   border: none;
-  padding: 12px;
-  border-radius: 6px;
+  padding: 15px;
+  border-radius: 8px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
   align-self: center;
-  width: 120px;
+  width: 150px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.static-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.static-page h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: var(--heading-color);
+}
+
+.static-page p {
+  line-height: 1.7;
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 30px;
 }
 
 /* --- Character Detail Page --- */
+
 .detail-page-container {
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .detail-page-container h2 {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  color: var(--heading-color);
 }
 
-.detail-page-container img {
+.detail-image-container {
+  max-width: 400px;
+  margin: 0 auto 40px auto;
+}
+
+.detail-image-container img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid var(--border-color);
-  margin-bottom: 30px;
+}
+
+.detail-info-container {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .detail-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border-color);
+  gap: 0;
 }
 
 .detail-item {
   display: flex;
   flex-direction: column;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.detail-item:nth-child(odd) {
+  padding-right: 20px;
+  border-right: 1px solid var(--border-color);
+}
+
+.detail-item:nth-child(even) {
+  padding-left: 20px;
+}
+
+.detail-item:nth-last-child(-n + 2) {
+  border-bottom: none;
 }
 
 .detail-item span:first-child {
   font-size: 0.9rem;
-  color: #6c757d;
-  margin-bottom: 4px;
+  color: #8c96a3;
+  margin-bottom: 5px;
+  font-weight: 500;
 }
 
 .detail-item span:last-child {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.back-button {
+  display: block;
+  width: fit-content;
+  margin: 40px auto 0 auto;
+  padding: 12px 24px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  text-decoration: none;
+  border-radius: 8px;
   font-weight: 500;
-  font-size: 1.1rem;
+  transition: transform 0.2s;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+}
+
+/* --- NEW: Page-specific Backgrounds --- */
+
+/* About Page Background */
+body.about-background {
+  background-image: url("./assets/about-bg.png"); /* Use your about page image here */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Contact Page Background */
+body.contact-background {
+  background-image: url("./assets/ricky.png"); /* Using ricky.png for contact page */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Overlay for pages with background images */
+body.about-background::before,
+body.contact-background::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity for visibility */
+  z-index: -1;
+}
+
+/* Darker overlay for dark mode */
+body.dark.about-background::before,
+body.dark.contact-background::before {
+  background-color: rgba(0, 0, 0, 0.838); /* Darker overlay in dark mode */
+}
+
+/* Make the .app-container transparent on pages with a background image */
+body.about-background .app-container,
+body.contact-background .app-container {
+  background-color: transparent; /* Makes the main content area transparent */
+  box-shadow: none; /* Removes any unwanted shadows */
+}
+
+/* Ensure filter inputs on Home page are solid as before */
+.filters input,
+.filters select {
+  background-color: var(--container-bg);
+  color: var(--text-color);
 }

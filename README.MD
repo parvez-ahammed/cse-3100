@@ -1,167 +1,125 @@
-# Rick & Morty Explorer – Assignment 1
+# Rick & Morty Explorer 🚀
 
-In this project, you'll build a beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
-
-You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
-
----
-
-## Submission Guidelines
-
-The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
-
-- **Time Tracking (Recommended):**  
-  Use tools like [WakaTime](https://wakatime.com/) to track your development time. This provides visibility into the effort invested.
-
-- **Updated README (Mandatory):**  
-  Include a clear and updated `README.md` in your repository with:
-
-  - Summary of implemented features
-  - Any additional improvements made
-  - Setup and run instructions
-  - Known issues or limitations
-  - Notes for the instructor
-
-- **AI Tool Usage (If Used):**  
-  If you have used any AI-powered tools during development, please include:
-  - A short description of which AI tool(s) were used
-  - A brief explanation of how they were used
-  ## Readme badges
-  [![wakatime](https://wakatime.com/badge/user/2ad53666-4746-4971-a4a1-c07bf36819a7/project/d228ffed-6a07-4808-b611-3b5539636601.svg)](https://wakatime.com/badge/user/2ad53666-4746-4971-a4a1-c07bf36819a7/project/d228ffed-6a07-4808-b611-3b5539636601)
-
-## Requirements
-
-Make sure you have the following installed:
-
-- [Node.js (preferably v22.16.5)](https://nodejs.org/en/download/)
-- [Code editor – VSCode](https://code.visualstudio.com/)
-- [NVM (optional)](https://github.com/coreybutler/nvm-windows)
-- [WakaTime extension for VSCode (to track total time invested in this project)](https://wakatime.com/plugins/vscode)
+A single-page React app built as part of the \*\*CSE-3100 Assignment-20220204053.  
+It uses the public [Rick and Morty API](https://rickandmortyapi.com/) to fetch and display character data with filtering, pagination, and routing features.
 
 ---
 
-## Setup Instructions
+## Implemented Features
 
-### Clone the Repository
+### 1. Character Details Page
 
-Fork the base repository. Then, clone the forked repository to your local machine and switch to the branch assignment-1
+- Click on any character to view full details in a separate page.
+- Route: `/character/:id`
+- Details shown: name, image, gender, status, origin, species, and location.
 
-```bash
-git clone git@github.com:parvez-ahammed/cse-3100.git
-cd cse-3100
-git checkout assignment-1
-```
+### 2. Filtering Options
 
-### Install Dependencies
+- **Search bar** to filter characters by name (case-insensitive).
+- **Dropdown** to filter characters by status ('All status','Alive', 'Dead, 'unknown').
+- Filters can be used together.
 
-Run the following to install npm dependencies
+### 3. 📄 Pagination
 
-```bash
-npm install
-```
+- Characters are shown 10 per page.
+- “Next” and “Previous” buttons are available and auto-disabled on first/last page.
 
-### Run the Development Server
+### 4. 📬 Contact Us Page
 
-```bash
-npm run dev
-```
+- Route: '/contact'
+- Includes a form with Name, Email, and Message fields.
 
----
+### 5. ℹ️ About Us Page
 
-## Assignment Instructions
+- Route: '/about'
+- Static page with description of the project.
 
-You'll enhance the base Rick & Morty character explorer app with the following features and pages.
+### **Code Quality**
 
-### 1. Character Details Page (2 marks)
-
-On the main list, clicking a character should navigate to a dynamic route (e.g., /character/1) and display:
-
-- Name
-- Image
-- Status
-- Species
-- Origin
-- Last known location
-- Number of episodes they appeared in
-
-You must use React Router’s dynamic routing with the character ID.
-
-### 2. Search + Filter Functionality (2 marks)
-
-- Add a search box to filter characters by name.
-
-- Add a dropdown to filter by status (Alive, Dead, Unknown).
-
-- Filters must work together and persist in the URL via query parameters (e.g., ?name=rick&status=alive).
-
-### 3. Pagination (2 marks)
-
-- Use the API’s built-in pagination (?page=2) to add a “Next” and “Previous” button at the bottom.
-
-- Show only 10 characters per page.
-
-- Prevent going past first/last page.
-
-### 4. Contact Us Page (2 marks)
-
-Create a separate route /contact with a form that includes:
-
-- Name
-- Email
-- Message
-- Submit button
-- Form validation (e.g., required fields, valid email format)
-- On submit, display a success message and reset the form.
-
-### 5. About Us Page (1 mark)
-
-Static page /about with:
-
-- Info about the app
-- Developer
-- Favorite Rick & Morty quote
-
-### 6. Code Quality (1 mark)
-
-- Clean code structure
-- Reusable components (e.g., CharacterCard)
-- Proper comments, meaningful names, formatting
+Clean structure, reusable components, and added comments
 
 ---
 
-## Bonus Challenges (Optional)
+## 🛠 Technologies Used
 
-Not required but impressive if done:
-
-- Add episode titles in the character detail view by fetching additional data
-- Add a dark/light mode toggle
-- Store search/filter preferences in localStorage
+- React (Functional components + Hooks)
+- React Router DOM (Routing)
+- Fetch API (for consuming Rick & Morty API)
+- VS Code + WakaTime for tracking time
 
 ---
 
-## API Reference
+## Setup & Run Instructions
 
-- List characters:  
-  <https://rickandmortyapi.com/api/character>
+1. **Clone the repository**
+   '''bash
+   git clone https://github.com/<arany677>/cse-3100.git
+   cd cse-3100
 
-- Search by name:  
-  <https://rickandmortyapi.com/api/character/?name=rick>
+2. Checkout the assignment branch:
+   git checkout assignment-1
+   git checkout -b assignment-1-20220204053
 
-- Filter by status:  
-  <https://rickandmortyapi.com/api/character/?status>
+3. Install dependencies:
+   npm install
 
-## Recommeded Project Structure (Optional and Flexible)
+4. Run the project:
+   npm run dev
 
-To keep your project organized, consider the following structure:
+### Additional Improvements Made :
 
-- `src/assets`: Static assets (e.g., images, icons)
-- `src/common`: Common utilities and constants (e.g., API endpoints, constants, apis)
-- `src/components`: Reusable components (e.g., CharacterCard, SearchBar, FilterDropdown)
-- `src/config`: Configuration files (e.g., API configuration or app settings)
-- `src/context`: Context providers (e.g., ThemeContext, FilterContext)
-- `src/features`: Feature-specific components (e.g., CharacterList, CharacterDetails, ContactForm)
-- `src/pages`: Page components (e.g., HomePage, CharacterDetailsPage, ContactPage, AboutPage)
-- `src/hooks`: Custom hooks (e.g., useFetchCharacters, useQueryParams)
-- `src/utils`: Utility functions (e.g., formatCharacterData, validateEmail)
-- `src/styles`: CSS files or styled components
-- `src/routes`: Route definitions (e.g., AppRouter)
+--Organized file structure for scalability
+
+--Responsive design adjustments for smaller screens
+
+--Used environment-friendly API handling (loading states, error checks)
+
+### Known Issues or Limitations:
+
+--The contact form is static and doesn’t send data
+
+--No filter reset button
+
+--Responsiveness is basic and may need improvement on tablets
+
+### Notes for the Instructor:
+
+--All 6 required features are implemented
+
+--Functional on Chrome, Firefox, and Edge
+
+--All React features were used following best practices
+
+--All time was tracked using WakaTime
+
+### Time Tracking (WakaTime):
+
+Tool Used: WakaTime (VS Code Extension)
+Total Tracked Time:
+
+### Screen Shoot:
+
+![alt text](<Screenshot 2025-07-05 212121.png>)
+
+### AI Tool Usage:
+
+Tools Used:
+
+--ChatGPT (OpenAI)
+
+### How They Were Used:
+
+ChatGPT was used to:
+
+--Understand how to implement filtering with controlled components
+
+--Design pagination logic using React states and URL parameters
+
+All generated code was reviewed, edited, and customized before final use.
+
+### Student Info:
+
+Name: Arany Hasan
+Student ID: 20220204053
+University: Ahsanullah University of Science and Technology
+Course: Web Application Development with DevOps (CSE-3100)

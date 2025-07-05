@@ -1,10 +1,20 @@
-import React from "react";
+// src/pages/About.jsx (MODIFIED: Added background useEffect)
+
+import React, { useEffect } from "react";
 
 function About() {
+  useEffect(() => {
+    document.body.classList.add("about-background");
+
+    // Cleanup function: remove the class when the component unmounts
+    return () => {
+      document.body.classList.remove("about-background");
+    };
+  }, []); // Empty array ensures this effect runs once on mount/unmount
+
   return (
     <div className="static-page">
       <h2>About Rick & Morty Explorer</h2>
-
       <p>
         Rick & Morty Explorer is a fan-made application designed for enthusiasts
         of the popular animated series, Rick and Morty. This app serves as a
@@ -14,7 +24,6 @@ function About() {
         provides an engaging way to explore the intricate details of Rick and
         Morty's adventures.
       </p>
-
       <h3>Developer</h3>
       <p>
         Rick & Morty Explorer was developed by Ethan Carter, a passionate fan of
@@ -24,13 +33,11 @@ function About() {
         vibrant community surrounding Rick and Morty and a tribute to its
         imaginative storytelling.
       </p>
-
       <h3>Favorite Quote</h3>
       <p>
         "To live is to risk it all, otherwise, you're just an inert chunk of
         randomly assembled molecules drifting wherever the universe blows you."
       </p>
-
       <p className="disclaimer">
         This application is not affiliated with or endorsed by the creators of
         Rick and Morty. It is a fan-made project intended for entertainment and

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function CharacterDetail() {
   const { id } = useParams();
@@ -27,35 +27,50 @@ function CharacterDetail() {
 
   return (
     <div className="detail-page-container">
+      {/* The name now acts as a title for the entire component */}
       <h2>{character.name}</h2>
-      <img src={character.image} alt={character.name} />
 
-      <div className="detail-grid">
-        <div className="detail-item">
-          <span>Status</span>
-          <span>{character.status}</span>
+      {/* This new wrapper will hold our two columns */}
+      <div className="detail-content-wrapper">
+        {/* Column 1: The Image */}
+        <div className="detail-image-container">
+          <img src={character.image} alt={character.name} />
         </div>
-        <div className="detail-item">
-          <span>Species</span>
-          <span>{character.species}</span>
-        </div>
-        <div className="detail-item">
-          <span>Origin</span>
-          <span>{character.origin.name}</span>
-        </div>
-        <div className="detail-item">
-          <span>Last Known Location</span>
-          <span>{character.location.name}</span>
-        </div>
-        <div className="detail-item">
-          <span>Gender</span>
-          <span>{character.gender}</span>
-        </div>
-        <div className="detail-item">
-          <span>Number of episodes</span>
-          <span>{character.episode.length}</span>
+
+        {/* Column 2: The Information */}
+        <div className="detail-info-container">
+          <div className="detail-grid">
+            <div className="detail-item">
+              <span>Status</span>
+              <span>{character.status}</span>
+            </div>
+            <div className="detail-item">
+              <span>Species</span>
+              <span>{character.species}</span>
+            </div>
+            <div className="detail-item">
+              <span>Gender</span>
+              <span>{character.gender}</span>
+            </div>
+            <div className="detail-item">
+              <span>Origin</span>
+              <span>{character.origin.name}</span>
+            </div>
+            <div className="detail-item">
+              <span>Last Known Location</span>
+              <span>{character.location.name}</span>
+            </div>
+            <div className="detail-item">
+              <span>Number of episodes</span>
+              <span>{character.episode.length}</span>
+            </div>
+          </div>
         </div>
       </div>
+      {/* The "Back to Home" link can be outside the two-column wrapper */}
+      <Link to="/" className="back-button">
+        ← Back to Home
+      </Link>
     </div>
   );
 }
