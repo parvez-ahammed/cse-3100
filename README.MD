@@ -10,7 +10,7 @@ I have applied React and JavaScript skills, routing, API fetching, conditional r
 
 [![wakatime](https://wakatime.com/badge/user/05c510cd-06a7-4f8e-9e91-7e8a6f5cbee9/project/03e4557f-7c62-46ed-8e32-1ce240ef8a93.svg)](https://wakatime.com/badge/user/05c510cd-06a7-4f8e-9e91-7e8a6f5cbee9/project/03e4557f-7c62-46ed-8e32-1ce240ef8a93)
 
-## Implemented Features:##
+## Implemented Features:
   - About Page
   - Contact Form
   - Search and Filter Bar to quickly find characters
@@ -18,16 +18,16 @@ I have applied React and JavaScript skills, routing, API fetching, conditional r
   - Character Detail Page
   - Navbar with a hamburger icon (only when the screen size is small)
 
-## Additional Improvements:##
+## Additional Improvements:
   - Used Tailwind to make the app more appealing
   - Used Formik and Yup for form validation
   - a sidebar coming form the hamburger icon was added to make it more responsive
   - Routing
 
-## Known Issues:##
+## Known Issues:
   - Sometimes takes time to load the characters
 
-## AI Tool Usage :##  
+## AI Tool Usage : 
   - Used Chat-GPT
   - Used for the css in navbar and for pagination logic
   - Used for some basic outline code of a page or component
