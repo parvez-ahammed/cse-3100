@@ -1,0 +1,72 @@
+.container1{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px;
+}
+.card-row{
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(230px,1fr)) ;
+    gap: 20px;
+}
+
+.card-row img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  padding: 8px 9px;
+  font-size: 16px;
+  border: 1px solid ;
+  border-radius: 4px;
+  
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: green;
+  outline: none;
+}
+
+.filters input, .filters select{
+  border-color: green;
+  
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 30px;
+}
+.pagination button{
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px 16px;
+    font-size: 16px;
+}
+
+.pagination button:hover:not(:disabled){
+    background-color: rgb(5, 157, 5);
+}
+.pagination button:hover:disabled{
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+.pagination span{
+    font-weight: bold;
+}
+ 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import "./CharacterCard.css"
 export default function CharacterCard({ character }) {
   return (
     <div className="card">
@@ -7,12 +9,15 @@ export default function CharacterCard({ character }) {
         alt={character.name}
       />
       <div className="card-body">
-        <h5 className="card-title">{character.name}</h5>
+        <p className="card-title">{character.name}</p>
+  
         <p className="card-text">
           <strong>Status:</strong> {character.status} <br />
           <strong>Species:</strong> {character.species}
         </p>
-        <button>View Details</button>
+        <Link to={`/character/${character.id}`}>
+         <button>View Details</button>
+        </Link>
       </div>
     </div>
   );

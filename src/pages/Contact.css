@@ -1,0 +1,61 @@
+.container{
+    max-width: 600px;
+    background-color: rgb(151, 221, 151);
+    padding: 30px;
+    margin: 30px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0,1);
+    margin-top: 60px;
+}
+.container h2{
+    font-size: 30px;
+    text-align: center;
+    color: black;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form label{
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.form input,textarea{
+    border-radius: 5px;
+    font-size: 15px;
+     border: 2px solid;
+}
+
+.submit{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: darkgreen;
+    color: white;
+    padding: 10px 12px;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    width: 85px;
+}
+
+.submit:hover{
+    background-color: green;
+}
+   
+.error{
+    color: red;
+    text-align: center;
+  
+}
+.success{
+    color: darkgreen;
+    text-align: center;
+
+}

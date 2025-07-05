@@ -1,0 +1,41 @@
+.about{
+    margin: 30px auto;
+    max-width: 800px;
+    padding: 30px;
+    background-color: rgb(151, 221, 151);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) ;
+}
+
+.about h2{
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+.aboutApp{
+       background-color: rgb(112, 202, 112);
+       font-size: 20px;
+       padding: 15px;
+       margin-bottom: 20px;
+       line-height: 1.5;
+       border: 2px solid darkgreen;
+       border-radius: 12px;
+      
+}
+
+.developer{
+     background-color: rgb(112, 202, 112);
+      border: 2px solid darkgreen;
+       border-radius: 12px;
+       font-size: 15px;
+       padding: 15px;
+}
+.quote{
+    font-style: italic;
+    font-size: 15px;
+    border: 2px solid darkgreen;
+       border-radius: 12px;
+       padding: 10px;
+       background-color: rgb(112, 202, 112);
+}

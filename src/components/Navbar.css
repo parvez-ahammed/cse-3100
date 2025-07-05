@@ -1,0 +1,27 @@
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:15px ;
+    margin-bottom: 25px;
+    background-color: darkgreen;
+    padding: 20px;
+    height: 70px;
+}
+.navbar p{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    padding-left: 20px;
+}
+.navbarLink a{
+      margin-left: 25px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+}
+
+.navbarLink a:hover{
+    text-decoration: underline;
+}
