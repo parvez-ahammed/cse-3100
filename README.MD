@@ -1,64 +1,124 @@
+[Live Site](https://rick-eight-psi.vercel.app/)  
+[YouTube Demo](https://youtu.be/VAFG6upmVYY)  
+[![wakatime](https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/3e7a3e15-119e-422e-a335-666fd69a449b.svg)](https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/3e7a3e15-119e-422e-a335-666fd69a449b)
+
 # Rick & Morty Explorer
 
-## Overview
-Rick & Morty Explorer is a React application that allows users to explore characters from the popular animated series "Rick and Morty." Users can view character details, search for characters by name, filter them by status, and navigate through different pages of characters.
+A modern React application to explore characters and episodes from the Rick & Morty universe, featuring advanced search, filtering, beautiful UI with Tailwind CSS, and an AI-powered character chatbot.
 
-## Features
-- **Character List**: Browse through a list of characters with their images, names, statuses, and species.
-- **Character Details**: Click on a character to view detailed information, including their origin, last known location, and the number of episodes they appeared in.
-- **Search Functionality**: Search for characters by name using a search bar.
-- **Filter by Status**: Filter characters based on their status (Alive, Dead, Unknown).
-- **Pagination**: Navigate through pages of characters with "Next" and "Previous" buttons, displaying 10 characters per page.
-- **Contact Us Page**: A form for users to submit their contact information and messages.
-- **About Us Page**: Information about the app, the developer, and a favorite quote from the series.
+---
 
-## Project Structure
-```
-rick-and-morty-explorer
-├── src
-│   ├── assets
-│   ├── common
-│   ├── components
-│   ├── config
-│   ├── context
-│   ├── features
-│   ├── hooks
-│   ├── pages
-│   ├── routes
-│   ├── styles
-│   ├── utils
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── package.json
-└── README.md
-```
+## 🚀 Features
 
-## Installation
-1. Clone the repository:
+- **Character Search & Filter:**  
+  Search by name and filter by status (Alive, Dead, Unknown).
+
+- **Character Details:**  
+  View detailed info, episodes, and a large profile card for each character.
+
+- **Episode List:**  
+  See all episodes a character appears in, with stylish cards.
+
+- **Pagination:**  
+  Clean, modern pagination for browsing all characters.
+
+- **AI Chatbot:**  
+  Chat with any character using an AI bot that mimics their personality.
+
+- **Responsive Design:**  
+  Fully responsive and beautiful on all devices, with light/dark mode toggle.
+
+- **About & Contact Pages:**  
+  Includes developer info (with GitHub & LinkedIn), and a styled contact form.
+
+---
+
+## 🛠️ Setup & Run Instructions
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/sakibul-shovon/cse-3100.git
+   cd cse-3100
    ```
-   git clone https://github.com/yourusername/rick-and-morty-explorer.git
-   ```
-2. Navigate to the project directory:
-   ```
-   cd rick-and-morty-explorer
-   ```
-3. Install the dependencies:
-   ```
+
+2. **Install dependencies:**
+   ```sh
    npm install
-   ```
-4. Start the development server:
-   ```
-   npm start
+   # or
+   yarn
    ```
 
-## Usage
-- Open your browser and go to `http://localhost:3000` to view the application.
-- Use the search bar to find characters by name.
-- Use the filter dropdown to filter characters by their status.
-- Click on a character card to view more details about the character.
-- Navigate to the "Contact Us" page to send a message or feedback.
-- Visit the "About Us" page for more information about the app.
+3. **Set up environment variables:**
+   - Copy `.env.example` to `.env`
+   - Add your OpenRouter API key:
+     ```
+     VITE_OPENROUTER_API_KEY=your-openrouter-api-key
+     ```
 
-## License
-This project is licensed under the MIT License.
+4. **Run locally:**
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. **Build for production:**
+   ```sh
+   npm run build
+   # or
+   yarn build
+   ```
+
+---
+
+## 🌐 Deployment
+
+- **Hosted on Vercel:**  
+  [Live Demo](https://rick-eight-psi.vercel.app/)
+
+- **Environment Variables:**  
+  Set `VITE_OPENROUTER_API_KEY` in Vercel dashboard for production.
+
+---
+
+## ⏱️ Time Tracking
+
+- **WakaTime** was used to track development time for transparency and effort reporting.
+- [![wakatime](https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/3e7a3e15-119e-422e-a335-666fd69a449b.svg)](https://wakatime.com/badge/user/85250f49-8411-4f72-ad26-74aa6d9032ec/project/3e7a3e15-119e-422e-a335-666fd69a449b)
+
+---
+
+## 📝 AI Tool Usage
+
+- **GitHub Copilot** was used for:
+  - Generating Tailwind CSS-based UI components and layouts.
+  - Implementing the AI chatbot integration.
+  - Generating this README file and other documentation.
+
+---
+
+## 🧑‍💻 Developer
+
+- **Sakibul Hassan Shovon**
+  - [GitHub](https://github.com/sakibul-shovon)
+  - [LinkedIn](https://www.linkedin.com/in/sakibul-hassan-shovon/)
+
+---
+
+## ⚠️ Known Issues / Limitations
+
+- The AI chatbot requires a valid OpenRouter API key.
+- Free OpenRouter keys may have usage limits.
+- Some edge-case API errors may not be fully handled.
+
+---
+
+## 📬 Notes for the Instructor
+
+- All features are implemented as per the assignment requirements.
+- The project is fully responsive and tested on both light and dark themes.
+- Please check the About page for developer info and the Contact page for a styled form.
+
+---
+
+Enjoy exploring the multiverse!
