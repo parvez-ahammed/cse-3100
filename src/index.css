@@ -1,12 +1,326 @@
+/* General styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background: #f5f6fa;
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
 .container {
   max-width: 900px;
-  margin: auto;
-  padding: 1rem;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 32px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+h1, h2 {
+  font-weight: 700;
+}
+
+
+.mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.col-md-3, .col-md-4, .col-md-5 {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.col-md-3 { flex: 0 0 25%; max-width: 25%; }
+.col-md-4 { flex: 0 0 33.3333%; max-width: 33.3333%; }
+.col-md-5 { flex: 0 0 41.6667%; max-width: 41.6667%; }
+
+@media (max-width: 768px) {
+  .col-md-3, .col-md-4, .col-md-5 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Card styles */
+.card {
+  background: #f1f2f6;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  overflow: hidden;
+  transition: transform 0.15s;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #dfe6e9;
+}
+
+.card-body {
+  padding: 16px;
+  flex: 1 1 auto;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #0984e3;
+}
+
+.card-text {
+  color: #636e72;
+  font-size: 1rem;
+}
+
+/* Form styles */
+.form-control, .form-select, textarea {
+  border-radius: 6px;
+  border: 1px solid #b2bec3;
+  padding: 8px 12px;
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+  outline: none;
+  border-color: #0984e3;
+  box-shadow: 0 0 0 2px #dff9fb;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+/* Button styles */
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-decoration: none !important;
+
+}
+
+.btn-primary {
+  background: #0984e3;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #74b9ff;
+}
+
+.btn-secondary {
+  background: #636e72;
+  color: #fff;
+}
+
+.btn-secondary:disabled {
+  background: #b2bec3;
+  cursor: not-allowed;
+}
+
+/* Utility */
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+
+
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.pagination-btn {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+  outline: none;
+}
+
+.pagination-btn.active,
+.pagination-btn:disabled {
+  background: #f0f0f0;
+  color: #222;
+  font-weight: bold;
+  cursor: default;
+}
+
+.pagination-btn:not(.active):hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.pagination-ellipsis {
+  padding: 0 4px;
+  color: #aaa;
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+/* ...existing code... */
+
+body.dark-mode {
+  background: #181a1b;
+  color: #f1f1f1;
+}
+
+body.dark-mode .container {
+  background: #23272a;
+  color: #f1f1f1;
+}
+
+body.dark-mode .card {
+  background: #23272a;
+  color: #f1f1f1;
+}
+
+body.dark-mode .card-title {
+  color: #74b9ff;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select,
+body.dark-mode textarea {
+  background: #23272a;
+  color: #f1f1f1;
+  border-color: #444;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus,
+body.dark-mode textarea:focus {
+  border-color: #0984e3;
+  box-shadow: 0 0 0 2px #222;
+}
+
+body.dark-mode .btn,
+body.dark-mode .btn-primary,
+body.dark-mode .btn-secondary,
+body.dark-mode .pagination-btn {
+  background: #23272a;
+  color: #f1f1f1;
+  border-color: #444;
+}
+
+body.dark-mode .btn-primary {
+  background: #0984e3;
+  color: #fff;
+}
+
+body.dark-mode .btn-primary:hover {
+  background: #74b9ff;
+}
+
+body.dark-mode .btn-secondary {
+  background: #636e72;
+  color: #fff;
+}
+
+body.dark-mode .pagination-btn.active,
+body.dark-mode .pagination-btn:disabled {
+  background: #353b48;
+  color: #fff;
+}
+
+body.dark-mode .pagination-btn:not(.active):hover:not(:disabled) {
+  background: #353b48;
+}
+
+body.dark-mode .navbar {
+  background: #23272a;
+  border-bottom: 1px solid #353b48;
+}
+
+body.dark-mode .navbar-title {
+  color: #fff;
+}
+
+body.dark-mode .navbar-link {
+  color: #f1f1f1;
+}
+
+body.dark-mode .navbar-link:hover {
+  color: #74b9ff;
+}
+
+body.dark-mode .navbar-mobile {
+  background: #23272a;
+  border-top: 1px solid #353b48;
+}
+
+/* Dark mode toggle button */
+.dark-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  color: #0984e3;
+  transition: color 0.2s;
+}
+
+body.dark-mode .dark-toggle {
+  color: #fff;
+}
+
+.col-md-5th {
+  flex: 0 0 20%;
+  max-width: 20%;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.toast-message {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: #0984e3;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  font-weight: bold;
+  z-index: 9999;
+  animation: fadein 0.3s, fadeout 0.3s 2.2s;
 }
