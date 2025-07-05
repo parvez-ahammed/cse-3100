@@ -32,6 +32,7 @@ A modern React application to explore characters and episodes from the Rick & Mo
 
 - **AI Chatbot:**  
   Chat with any character using an AI bot that mimics their personality.
+  (Note: Currently addressing an issue in the deployed version and working on a solution.)
 
 - **Responsive Design:**  
   Fully responsive and beautiful on all devices, with light/dark mode toggle.
