@@ -12,7 +12,7 @@ export default function About() {
       <h4>Developer</h4>
       <p>
         <strong> Salman Faresi</strong><br />
-        Student, CSE-3100 Software Development Lab
+        ID- 20220104007, CSE-3100 Software Development Lab
       </p>
       <hr />
       {/* Favorite quote section */}
