@@ -1,0 +1,420 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  text-align: center;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: #3498db;
+  border-radius: 2px;
+}
+
+/* Updated Search Form Styles */
+.searchForm {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .searchContainer {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .searchInputWrapper {
+    flex: 1;
+  }
+}
+
+/* Enhanced Search Input */
+.searchInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIconWrapper {
+  position: absolute;
+  left: 16px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  border-radius: 50px;
+  border: 2px solid var(--border);
+  padding: 0.9rem 1rem 0.9rem 3rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(22, 160, 133, 0.15);
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.clearButton {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--danger);
+}
+
+/* Status Filter Buttons */
+.statusFilterWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.statusButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.statusButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 50px;
+  border: 2px solid var(--border);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.statusButton:hover {
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.statusActive {
+  border-color: var(--primary);
+  background-color: rgba(22, 160, 133, 0.1);
+  font-weight: 600;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #95a5a6;
+}
+
+.statusAlive {
+  background-color: var(--success);
+  box-shadow: 0 0 5px var(--success);
+}
+
+.statusDead {
+  background-color: var(--danger);
+  box-shadow: 0 0 5px var(--danger);
+}
+
+.statusUnknown {
+  background-color: var(--warning);
+  box-shadow: 0 0 5px var(--warning);
+}
+
+/* Active Filters */
+.activeFilters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.filtersLabel {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.filterTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.filterTag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 50px;
+  background-color: var(--primary);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.filterTagAlive {
+  background-color: var(--success);
+}
+
+.filterTagDead {
+  background-color: var(--danger);
+}
+
+.filterTagUnknown {
+  background-color: var(--warning);
+  color: var(--text-primary);
+}
+
+.filterTagText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.filterTagRemove {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.filterTagRemove:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.clearFiltersButton {
+  background: none;
+  border: 2px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearFiltersButton:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+  background-color: rgba(231, 76, 60, 0.05);
+}
+
+/* Dark mode adjustments */
+:global(.dark-mode) .clearButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.dark-mode) .statusButton:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark-mode) .filterTagUnknown {
+  color: var(--bg-secondary);
+}
+
+:global(.dark-mode) .clearFiltersButton:hover {
+  background-color: rgba(231, 76, 60, 0.15);
+}
+
+.filterSelect {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.filterSelect:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.characterGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Changed from auto-fill to exactly 5 columns */
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 992px) {
+  .characterGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .characterGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .characterGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.pageInfo {
+  font-weight: 600;
+  color: #7f8c8d;
+}
+
+.pageButton {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pageButton:hover:not(:disabled) {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.pageButton:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.loadingContainer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 2rem;
+  color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* Dark mode styles */
+:global(.dark-mode) .title {
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .searchForm {
+  background-color: #2c3e50;
+}
+
+:global(.dark-mode) .searchInput,
+:global(.dark-mode) .filterSelect {
+  background-color: #34495e;
+  border-color: #2c3e50;
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .pageInfo {
+  color: #bdc3c7;
+}
+
+:global(.dark-mode) .errorContainer {
+  background-color: rgba(231, 76, 60, 0.2);
+}
+
+/* Add this to the end of the file */
+:global(.col-md-2-4) {
+  width: 20%;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  :global(.col-md-2-4) {
+    width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  :global(.col-md-2-4) {
+    width: 100%;
+  }
+}
