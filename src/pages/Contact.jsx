@@ -7,16 +7,42 @@ const Contact = () => {
     message: "",
   });
   const [errors, setErrors] = useState({});
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
 
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -25,142 +51,151 @@ const Contact = () => {
     }
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
-      // Show success message
-      setShowSuccess(true);
+    if (!validateForm()) {
+      return;
+    }
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
+    setIsSubmitting(true);
 
-      // Hide success message after 3 seconds
-      setTimeout(() => {
-        setShowSuccess(false);
-      }, 3000);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      console.log("Form submitted:", formData);
+
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      setErrors({});
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-8">Contact Us</h1>
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setFormData({ name: "", email: "", message: "" });
+    setErrors({});
+  };
 
-        {showSuccess && (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-            <p className="font-semibold">Success!</p>
-            <p>
-              Your message has been sent successfully. We'll get back to you
-              soon!
-            </p>
-          </div>
-        )}
-
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label
-                htmlFor="name"
-                className="block text-gray-700 text-sm font-bold mb-2"
-              >
-                Name *
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.name ? "border-red-500" : "border-gray-300"
-                }`}
-                placeholder="Enter your full name"
-              />
-              {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-              )}
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-gray-700 text-sm font-bold mb-2"
-              >
-                Email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.email ? "border-red-500" : "border-gray-300"
-                }`}
-                placeholder="Enter your email address"
-              />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-              )}
-            </div>
-
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="block text-gray-700 text-sm font-bold mb-2"
-              >
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows="5"
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.message ? "border-red-500" : "border-gray-300"
-                }`}
-                placeholder="Enter your message here..."
-              />
-              {errors.message && (
-                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-            >
-              Send Message
-            </button>
-          </form>
+  if (isSubmitted) {
+    return (
+      <div className="contact-container">
+        <div className="success-message">
+          <div className="success-icon">✅</div>
+          <h2>Thank You!</h2>
+          <p>
+            Your message has been sent successfully. We'll get back to you soon!
+          </p>
+          <button onClick={resetForm} className="new-message-btn">
+            Send Another Message
+          </button>
         </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="contact-container">
+      <div className="contact-header">
+        <h1>Contact Us</h1>
+        <p>Get in touch with the Rick & Morty Explorer team</p>
+      </div>
+
+      <div className="contact-content">
+        <div className="contact-info">
+          <h3>Let's Connect</h3>
+          <p>
+            Have questions about the app? Found a bug? Want to suggest a new
+            feature? We'd love to hear from you!
+          </p>
+
+          <div className="contact-details">
+            <div className="contact-item">
+              <span className="icon">📧</span>
+              <span>support@rickandmortyexplorer.com</span>
+            </div>
+            <div className="contact-item">
+              <span className="icon">🌐</span>
+              <span>rickandmortyapi.com</span>
+            </div>
+            <div className="contact-item">
+              <span className="icon">⏰</span>
+              <span>Response time: 24-48 hours</span>
+            </div>
+          </div>
+        </div>
+
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="name">Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              className={errors.name ? "error" : ""}
+              placeholder="Enter your full name"
+            />
+            {errors.name && (
+              <span className="error-message">{errors.name}</span>
+            )}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className={errors.email ? "error" : ""}
+              placeholder="Enter your email address"
+            />
+            {errors.email && (
+              <span className="error-message">{errors.email}</span>
+            )}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="message">Message *</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              className={errors.message ? "error" : ""}
+              placeholder="Tell us what's on your mind..."
+              rows="6"
+            />
+            {errors.message && (
+              <span className="error-message">{errors.message}</span>
+            )}
+            <div className="character-count">
+              {formData.message.length}/500
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="submit-btn"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <>
+                <div className="spinner"></div>
+                Sending...
+              </>
+            ) : (
+              "Send Message"
+            )}
+          </button>
+        </form>
       </div>
     </div>
   );

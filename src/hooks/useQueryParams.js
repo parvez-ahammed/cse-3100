@@ -1,36 +1,39 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useCallback } from "react";
+import { useSearchParams } from 'react-router-dom';
+import { useCallback } from 'react';
 
 export const useQueryParams = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const getQueryParam = useCallback(
-    (key) => {
-      const params = new URLSearchParams(location.search);
-      return params.get(key) || "";
-    },
-    [location.search]
-  );
+  const getParam = useCallback((key) => {
+    return searchParams.get(key) || '';
+  }, [searchParams]);
 
-  const setQueryParams = useCallback(
-    (params) => {
-      const searchParams = new URLSearchParams(location.search);
+  const setParam = useCallback((key, value) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (value) {
+      newParams.set(key, value);
+    } else {
+      newParams.delete(key);
+    }
+    setSearchParams(newParams);
+  }, [searchParams, setSearchParams]);
 
-      Object.entries(params).forEach(([key, value]) => {
-        if (value) {
-          searchParams.set(key, value);
-        } else {
-          searchParams.delete(key);
-        }
-      });
+  const setMultipleParams = useCallback((params) => {
+    const newParams = new URLSearchParams(searchParams);
+    Object.entries(params).forEach(([key, value]) => {
+      if (value) {
+        newParams.set(key, value);
+      } else {
+        newParams.delete(key);
+      }
+    });
+    setSearchParams(newParams);
+  }, [searchParams, setSearchParams]);
 
-      navigate(`${location.pathname}?${searchParams.toString()}`, {
-        replace: true,
-      });
-    },
-    [location.pathname, location.search, navigate]
-  );
-
-  return { getQueryParam, setQueryParams };
+  return {
+    getParam,
+    setParam,
+    setMultipleParams,
+    searchParams
+  };
 };
