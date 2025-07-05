@@ -7,61 +7,91 @@ _Ahsanullah University of Science and Technology_
 ## Wakatime Badges
 
 [![wakatime](https://wakatime.com/badge/user/25bd1379-89ac-47c1-8743-d56b2288f599/project/ef66ad79-a9b8-47e0-810d-b3bd802cb5bd.svg)](https://wakatime.com/badge/user/25bd1379-89ac-47c1-8743-d56b2288f599/project/ef66ad79-a9b8-47e0-810d-b3bd802cb5bd)
-## Course Overview
 
-This course introduces modern web application development with a strong emphasis on DevOps principles and practices. Students will learn both front-end and back-end development, version control, containerization, and continuous integration/development.
 
-**By the end of this course, you will be able to:**
+# Rick & Morty Explorer – Assignment 1
 
-- Design visually appealing, responsive, and user-friendly websites.
-- Develop dynamic, data-driven web applications using the **Laravel framework**.
-- Implement RESTful APIs and manage application logic effectively.
-- Collaborate using Git and GitHub, applying advanced branching and merging techniques.
-- Set up containerized environments using Docker.
-- Understand and implement CI/CD pipelines and their role in modern development.
-- Automate development workflows using DevOps best practices.
-- Deliver a full-stack web application deployed in a containerized environment.
+An interactive, responsive React app to explore characters from the Rick & Morty universe using the public Rick & Morty API. Built as part of the **Web Application Development with DevOps** course.
 
 ---
 
-## Repository Structure
+## 🚀 Features
 
-This repository is organized into multiple branches. Each branch corresponds to a lecture or assignment.
+### 🧪 Main Functionality
+- 🔍 **Search & Filter** by character name and status (Alive, Dead, Unknown)
+- 📄 **Character Details Page** with full information and episode titles
+- 📄 **Pagination** with API-based previous/next navigation
+- 📬 **Contact Us Page** with validation and success message
+- ℹ️ **About Us Page** with app info, developer name, and favorite quote
 
-**To switch branches:**
-
-```bash
-git checkout <branch-name>
-```
-
-Replace `<branch-name>` with the appropriate lecture or assignment identifier (e.g., `lecture-1`, `assignment-2`, etc.).
-
----
-
-## Marks Distribution
-
-| Component                | Weight (%) |
-| ------------------------ | ---------- |
-| Attendance               | 20%        |
-| Assignment               | 10%        |
-| Project Proposal         | 5%         |
-| Project Checkpoint 1     | 15%        |
-| Project Checkpoint 2     | 15%        |
-| Final Project Submission | 20%        |
-| Lab Exam                 | 15%        |
-| **Total**                | **100%**   |
+### 💄 UI/UX
+- Built using **React + Vite**
+- Styled with **Tailwind CSS v4 + ShadCN UI**
+- 🌗 **Dark/Light mode toggle**
+- ✅ Responsive and accessible design
 
 ---
 
-## Topics Covered
+## 📦 Tech Stack
 
-- HTML, CSS, Bootstrap, JavaScript, PHP, and Version Control
-- Laravel Basics: CSR vs SSR, Routing, View Engine
-- Middleware, Authentication & Authorization, Request Lifecycle
-- MySQL, ORM, Service Providers, DevOps & CI/CD Concepts
-- Docker & Containerization, Cloud Deployment
-- Application Monitoring & Security
+- React + Vite
+- Tailwind CSS v4
+- ShadCN UI (Component library)
+- React Router
+- Rick & Morty API (https://rickandmortyapi.com)
 
 ---
 
-## Course Materials
+## 🔧 Setup Instructions
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/MdWasifAli99/cse-3100.git
+   cd cse-3100
+   git checkout assignment-1-20220204054
+2. Install dependencies:
+
+    npm install
+
+3. Start the development server:
+     
+     npm run dev   
+
+
+## 📊 Time Tracking
+
+        Development time tracked using WakaTime
+
+ ## 🤖 AI Usage
+
+| Tool             | Purpose                                                                        |
+| ---------------- | ------------------------------------------------------------------------------ |
+| ChatGPT (GPT-4o) | Assisted in UI/UX design, dynamic routing, state logic, and ShadCN integration |
+                              |
+## ⚠️ Known Issues
+Contact form has no backend storage (yet)
+
+## 🖼️ Screenshots
+
+### 🏠 Home Page
+![Home](./screenshots/homepage.png)
+
+### 📄 Character Details
+![Details](./screenshots/details.png)
+
+### 📬 Contact Us
+![Contact](./screenshots/contact.png)
+
+## 📬 About Us
+![Anout](./screenshots/about.png)
+
+## Pagination
+![](./screenshots/pagination.png)
+
+### 🌗 Dark Mode
+![Dark Mode](./screenshots/homepage-dark.png)
+
+![Dark Mode](./screenshots/about-dark.png)
+
+
+
