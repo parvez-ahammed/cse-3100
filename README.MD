@@ -1,31 +1,50 @@
-# Rick & Morty Explorer – Assignment 1
+# Rick & Morty Explorer
 
-In this project, you'll build a beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
-
-You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
+A beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
 
 ---
 
-## Submission Guidelines
+## Wakatime Badge
 
-The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
+[![wakatime](https://wakatime.com/badge/user/652acd96-cfb8-4029-a662-a80978f37e02/project/a035ceb1-95ca-482f-91d4-07c66622e8f2.svg)](https://wakatime.com/badge/user/652acd96-cfb8-4029-a662-a80978f37e02/project/a035ceb1-95ca-482f-91d4-07c66622e8f2)
 
-- **Time Tracking (Recommended):**  
-  Use tools like [WakaTime](https://wakatime.com/) to track your development time. This provides visibility into the effort invested.
+## Implemented Features
+- Character Details Page (dynamic route, full info, episode titles)
+- Character Search & Filtering (by name and status, persists in localStorage)
+- Pagination (10 characters per page, prevents going past first/last page)
+- Contact Us Page (form validation, toast message)
+- About Us Page (static info, developer, honest quote)
+- Navbar for swift and easy navigation (responsive, dark mode toggle)
+- Dark/Light Mode Toggle (persists in localStorage)
+- Loading Animation (Lottie, centered)
 
-- **Updated README (Mandatory):**  
-  Include a clear and updated `README.md` in your repository with:
+## Improvements
+- Episode titles shown in character details
+- Search/filter preferences stored in localStorage
+- Responsive design: 5 cards per row on desktop
+- Attractive, classic CSS for all pages
+- Toast message on contact form submit
 
-  - Summary of implemented features
-  - Any additional improvements made
-  - Setup and run instructions
-  - Known issues or limitations
-  - Notes for the instructor
+## Known Issues
+- API errors (e.g., no results) do not show a custom error message
+- Lottie loading animation requires internet access
+- No backend for contact form (messages not actually sent)
 
-- **AI Tool Usage (If Used):**  
-  If you have used any AI-powered tools during development, please include:
-  - A short description of which AI tool(s) were used
-  - A brief explanation of how they were used
+## AI Tools & Usage
+- GitHub Copilot: Used for code suggestions, refactoring, and CSS generation
+- ChatGPT: Used for code review, bug fixing, and feature planning
+
+## Short Bullet Points
+- Dynamic character detail pages
+- Search and filter with localStorage persistence
+- 10 characters per page, paginated
+- Responsive grid (5 per row)
+- Dark/light mode toggle
+- Lottie loading animation
+- Toast notification on contact form
+- Clean, commented, and modular code
+
+---
 
 ## Requirements
 
@@ -45,9 +64,9 @@ Make sure you have the following installed:
 Fork the base repository. Then, clone the forked repository to your local machine and switch to the branch assignment-1
 
 ```bash
-git clone git@github.com:parvez-ahammed/cse-3100.git
+git clone https://github.com/Bijoy2406/cse-3100.git
 cd cse-3100
-git checkout assignment-1
+git checkout assignment-1-20220204157
 ```
 
 ### Install Dependencies
@@ -65,101 +84,3 @@ npm run dev
 ```
 
 ---
-
-## Assignment Instructions
-
-You'll enhance the base Rick & Morty character explorer app with the following features and pages.
-
-### 1. Character Details Page (2 marks)
-
-On the main list, clicking a character should navigate to a dynamic route (e.g., /character/1) and display:
-
-- Name
-- Image
-- Status
-- Species
-- Origin
-- Last known location
-- Number of episodes they appeared in
-
-You must use React Router’s dynamic routing with the character ID.
-
-### 2. Search + Filter Functionality (2 marks)
-
-- Add a search box to filter characters by name.
-
-- Add a dropdown to filter by status (Alive, Dead, Unknown).
-
-- Filters must work together and persist in the URL via query parameters (e.g., ?name=rick&status=alive).
-
-### 3. Pagination (2 marks)
-
-- Use the API’s built-in pagination (?page=2) to add a “Next” and “Previous” button at the bottom.
-
-- Show only 10 characters per page.
-
-- Prevent going past first/last page.
-
-### 4. Contact Us Page (2 marks)
-
-Create a separate route /contact with a form that includes:
-
-- Name
-- Email
-- Message
-- Submit button
-- Form validation (e.g., required fields, valid email format)
-- On submit, display a success message and reset the form.
-
-### 5. About Us Page (1 mark)
-
-Static page /about with:
-
-- Info about the app
-- Developer
-- Favorite Rick & Morty quote
-
-### 6. Code Quality (1 mark)
-
-- Clean code structure
-- Reusable components (e.g., CharacterCard)
-- Proper comments, meaningful names, formatting
-
----
-
-## Bonus Challenges (Optional)
-
-Not required but impressive if done:
-
-- Add episode titles in the character detail view by fetching additional data
-- Add a dark/light mode toggle
-- Store search/filter preferences in localStorage
-
----
-
-## API Reference
-
-- List characters:  
-  <https://rickandmortyapi.com/api/character>
-
-- Search by name:  
-  <https://rickandmortyapi.com/api/character/?name=rick>
-
-- Filter by status:  
-  <https://rickandmortyapi.com/api/character/?status>
-
-## Recommeded Project Structure (Optional and Flexible)
-
-To keep your project organized, consider the following structure:
-
-- `src/assets`: Static assets (e.g., images, icons)
-- `src/common`: Common utilities and constants (e.g., API endpoints, constants, apis)
-- `src/components`: Reusable components (e.g., CharacterCard, SearchBar, FilterDropdown)
-- `src/config`: Configuration files (e.g., API configuration or app settings)
-- `src/context`: Context providers (e.g., ThemeContext, FilterContext)
-- `src/features`: Feature-specific components (e.g., CharacterList, CharacterDetails, ContactForm)
-- `src/pages`: Page components (e.g., HomePage, CharacterDetailsPage, ContactPage, AboutPage)
-- `src/hooks`: Custom hooks (e.g., useFetchCharacters, useQueryParams)
-- `src/utils`: Utility functions (e.g., formatCharacterData, validateEmail)
-- `src/styles`: CSS files or styled components
-- `src/routes`: Route definitions (e.g., AppRouter)
