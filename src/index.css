@@ -499,7 +499,7 @@ a {
   color: #333;
   transition: all 0.3s ease;
 }
-
+/* hello world */
 .fancy-search-input::placeholder {
   color: #aaa;
 }
