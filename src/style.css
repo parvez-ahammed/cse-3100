@@ -1,0 +1,64 @@
+/* Reset some base styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Container for character details */
+.character-details {
+  max-width: 600px;
+  margin: 3rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Character name */
+.character-details h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* Character image */
+.character-details img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 4px solid #5dade2;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.character-details img:hover {
+  transform: scale(1.05);
+}
+
+/* Paragraph styling */
+.character-details p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.character-details strong {
+  color: #34495e;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .character-details {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .character-details img {
+    width: 150px;
+    height: 150px;
+  }
+}

@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <main className="container">
       <h1 className="my-4">Rick & Morty Explorer</h1>
-      <div className="row">
+      <div className="character-grid">
         {characters.map((char) => (
           <div className="col-md-4 mb-4" key={char.id}>
             <CharacterCard character={char} />
