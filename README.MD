@@ -77,15 +77,3 @@ An elegant and dynamic single-page application that empowers users to seamlessly
 - ✅ Clean, modular, and well-commented codebase  
 
 ---
-
-
-## Requirements
-
-Make sure you have the following installed:
-
-- [Node.js (preferably v22.16.5)](https://nodejs.org/en/download/)
-- [Code editor – VSCode](https://code.visualstudio.com/)
-- [NVM (optional)](https://github.com/coreybutler/nvm-windows)
-- [WakaTime extension for VSCode (to track total time invested in this project)](https://wakatime.com/plugins/vscode)
-
----
