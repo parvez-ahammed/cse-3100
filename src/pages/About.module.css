@@ -1,0 +1,119 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100px;
+  height: 4px;
+  background-color: #3498db;
+  border-radius: 2px;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #3498db;
+}
+
+.appDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+.developerInfo {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.developerName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.developerRole {
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.quoteContainer {
+  background-color: #e8f4fc;
+  border-left: 5px solid #3498db;
+  padding: 1.5rem;
+  border-radius: 0 12px 12px 0;
+  margin: 2rem 0;
+}
+
+.quote {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.quoteAuthor {
+  font-weight: 600;
+  color: #7f8c8d;
+  text-align: right;
+}
+
+.divider {
+  height: 2px;
+  background-color: #ecf0f1;
+  margin: 2rem 0;
+  border-radius: 2px;
+}
+
+/* Dark mode styles */
+:global(.dark-mode) .title {
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .appDescription {
+  color: #bdc3c7;
+}
+
+:global(.dark-mode) .developerInfo {
+  background-color: #2c3e50;
+}
+
+:global(.dark-mode) .developerName {
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .quoteContainer {
+  background-color: #34495e;
+  border-left-color: #3498db;
+}
+
+:global(.dark-mode) .quote {
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .divider {
+  background-color: #34495e;
+}
