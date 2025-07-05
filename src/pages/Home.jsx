@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { api } from "../common/api";
 import { useQueryParams } from "../hooks/useQueryParams";
 import CharacterCard from "../components/CharacterCard";
@@ -7,65 +7,80 @@ import Pagination from "../components/Pagination";
 
 const Home = () => {
   const { getParam } = useQueryParams();
+
+  // Main state
   const [characters, setCharacters] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [pagination, setPagination] = useState({
+  const [paginationInfo, setPaginationInfo] = useState({
     currentPage: 1,
     totalPages: 1,
     totalCount: 0,
   });
 
+  // Get initial values from URL params
+  const pageFromUrl = parseInt(getParam("page")) || 1;
+  const nameFromUrl = getParam("name") || "";
+  const statusFromUrl = getParam("status") || "";
 
-  const initialPage = parseInt(getParam("page")) || 1;
-  const initialName = getParam("name") || "";
-  const initialStatus = getParam("status") || "";
+  // Current filter state
+  const [searchQuery, setSearchQuery] = useState(nameFromUrl);
+  const [statusFilter, setStatusFilter] = useState(statusFromUrl);
+  const [currentPage, setCurrentPage] = useState(pageFromUrl);
 
-  const [searchName, setSearchName] = useState(initialName);
-  const [statusFilter, setStatusFilter] = useState(initialStatus);
-  const [currentPage, setCurrentPage] = useState(initialPage);
-
-  const fetchCharacters = async (page = 1, name = "", status = "") => {
+  // Fetch characters with current filters
+  const loadCharacters = useCallback(async (page = 1, name = "", status = "") => {
     try {
-      setLoading(true);
+      setIsLoading(true);
       setError(null);
 
-      const data = await api.getCharacters(page, name, status);
+      const response = await api.getCharacters(page, name, status);
 
-      setCharacters(data.results || []);
-      setPagination({
+      setCharacters(response.results || []);
+      setPaginationInfo({
         currentPage: page,
-        totalPages: data.info?.pages || 1,
-        totalCount: data.info?.count || 0,
+        totalPages: response.info?.pages || 1,
+        totalCount: response.info?.count || 0,
       });
     } catch (err) {
-      setError(err.message || "Failed to fetch characters");
+      // Handle both API errors and network issues
+      const errorMsg = err.message || "Something went wrong while fetching characters";
+      setError(errorMsg);
       setCharacters([]);
-      setPagination({ currentPage: 1, totalPages: 1, totalCount: 0 });
+      setPaginationInfo({ currentPage: 1, totalPages: 1, totalCount: 0 });
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
-  };
+  }, []);
 
+  // Load data when filters change
   useEffect(() => {
-    fetchCharacters(currentPage, searchName, statusFilter);
-  }, [currentPage, searchName, statusFilter]);
+    loadCharacters(currentPage, searchQuery, statusFilter);
+  }, [loadCharacters, currentPage, searchQuery, statusFilter]);
 
-  const handleSearchChange = (name) => {
-    setSearchName(name);
-    setCurrentPage(1);
+  // Event handlers
+  const handleSearchSubmit = (searchTerm) => {
+    setSearchQuery(searchTerm);
+    setCurrentPage(1); // Always reset to first page when searching
   };
 
-  const handleFilterChange = (status) => {
-    setStatusFilter(status);
-    setCurrentPage(1);
+  const handleStatusFilterChange = (newStatus) => {
+    setStatusFilter(newStatus);
+    setCurrentPage(1); // Reset page when filter changes
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    // Scroll to top when changing pages - better UX
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (loading) {
+  const retryFetch = () => {
+    loadCharacters(1, "", ""); // Reset everything and try again
+  };
+
+  // Loading state
+  if (isLoading) {
     return (
       <div className="home-container">
         <div className="loading-container">
@@ -76,22 +91,23 @@ const Home = () => {
     );
   }
 
+  // Error state
   if (error) {
     return (
       <div className="home-container">
         <div className="error-container">
           <h2>Oops! Something went wrong</h2>
           <p>{error}</p>
-          <button
-            onClick={() => fetchCharacters(1, "", "")}
-            className="retry-btn"
-          >
+          <button onClick={retryFetch} className="retry-btn">
             Try Again
           </button>
         </div>
       </div>
     );
   }
+
+  const hasResults = characters.length > 0;
+  const showFilters = searchQuery || statusFilter;
 
   return (
     <div className="home-container">
@@ -101,21 +117,25 @@ const Home = () => {
       </div>
 
       <SearchAndFilter
-        onSearchChange={handleSearchChange}
-        onFilterChange={handleFilterChange}
+        onSearchChange={handleSearchSubmit}
+        onFilterChange={handleStatusFilterChange}
       />
 
-      {characters.length === 0 ? (
+      {!hasResults ? (
         <div className="no-results">
           <h3>No characters found</h3>
-          <p>Try adjusting your search terms or filters</p>
+          <p>
+            {showFilters
+              ? "Try adjusting your search terms or filters"
+              : "Unable to load characters at the moment"}
+          </p>
         </div>
       ) : (
         <>
           <div className="results-info">
             <p>
-              Showing {characters.length} of {pagination.totalCount} characters
-              {searchName && ` matching "${searchName}"`}
+              Showing {characters.length} of {paginationInfo.totalCount} characters
+              {searchQuery && ` matching "${searchQuery}"`}
               {statusFilter && ` with status "${statusFilter}"`}
             </p>
           </div>
@@ -127,8 +147,8 @@ const Home = () => {
           </div>
 
           <Pagination
-            currentPage={pagination.currentPage}
-            totalPages={pagination.totalPages}
+            currentPage={paginationInfo.currentPage}
+            totalPages={paginationInfo.totalPages}
             onPageChange={handlePageChange}
           />
         </>

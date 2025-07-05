@@ -21,37 +21,160 @@ const About = () => {
 
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon">🔍</div>
+              <div className="feature-icon">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="8"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="m21 21-4.35-4.35"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <h3>Smart Search</h3>
               <p>Search characters by name with real-time filtering</p>
             </div>
 
             <div className="feature-card">
-              <div className="feature-icon">📊</div>
+              <div className="feature-icon">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 6H21L19 20H5L3 6Z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M8 6V4C8 2.89543 8.89543 2 10 2H14C15.1046 2 16 2.89543 16 4V6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <h3>Advanced Filtering</h3>
               <p>Filter characters by status (Alive, Dead, Unknown)</p>
             </div>
 
             <div className="feature-card">
-              <div className="feature-icon">📱</div>
+              <div className="feature-icon">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="2"
+                    y="4"
+                    width="20"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <path d="M10 4V2" stroke="currentColor" strokeWidth="2" />
+                  <path d="M14 4V2" stroke="currentColor" strokeWidth="2" />
+                </svg>
+              </div>
               <h3>Responsive Design</h3>
               <p>Optimized for all devices and screen sizes</p>
             </div>
 
             <div className="feature-card">
-              <div className="feature-icon">🌙</div>
+              <div className="feature-icon">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </div>
               <h3>Dark Mode</h3>
               <p>Toggle between light and dark themes</p>
             </div>
 
             <div className="feature-card">
-              <div className="feature-icon">📺</div>
+              <div className="feature-icon">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <polyline
+                    points="14,2 14,8 20,8"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </div>
               <h3>Episode Details</h3>
               <p>View detailed episode information for each character</p>
             </div>
 
             <div className="feature-card">
-              <div className="feature-icon">💾</div>
+              <div className="feature-icon">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <polyline
+                    points="17,21 17,13 7,13 7,21"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <polyline
+                    points="7,3 7,8 15,8"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </div>
               <h3>Persistent Preferences</h3>
               <p>Your search preferences are saved locally</p>
             </div>

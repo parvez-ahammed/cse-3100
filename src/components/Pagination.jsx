@@ -4,92 +4,115 @@ import { useQueryParams } from '../hooks/useQueryParams';
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const { setParam } = useQueryParams();
 
-  const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      setParam('page', page);
-      onPageChange(page);
+  const goToPage = (pageNumber) => {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setParam('page', pageNumber);
+      onPageChange(pageNumber);
+      // Smooth scroll to top for better UX
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  const renderPageNumbers = () => {
-    const pages = [];
+  const buildPageNumbers = () => {
+    const pageElements = [];
     const maxVisiblePages = 5;
+
+    // Calculate the range of pages to show
     let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
     let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
+    // Adjust if we're near the end
     if (endPage - startPage < maxVisiblePages - 1) {
       startPage = Math.max(1, endPage - maxVisiblePages + 1);
     }
 
+    // Show first page if not in range
     if (startPage > 1) {
-      pages.push(
+      pageElements.push(
         <button
           key={1}
-          onClick={() => handlePageChange(1)}
+          onClick={() => goToPage(1)}
           className="page-btn"
+          aria-label="Go to page 1"
         >
           1
         </button>
       );
+
+      // Add ellipsis if there's a gap
       if (startPage > 2) {
-        pages.push(<span key="ellipsis1" className="ellipsis">...</span>);
+        pageElements.push(
+          <span key="ellipsis-start" className="ellipsis">...</span>
+        );
       }
     }
 
+    // Add the visible page numbers
     for (let i = startPage; i <= endPage; i++) {
-      pages.push(
+      pageElements.push(
         <button
           key={i}
-          onClick={() => handlePageChange(i)}
+          onClick={() => goToPage(i)}
           className={`page-btn ${i === currentPage ? 'active' : ''}`}
+          aria-label={`Go to page ${i}`}
+          aria-current={i === currentPage ? 'page' : undefined}
         >
           {i}
         </button>
       );
     }
 
+    // Show last page if not in range
     if (endPage < totalPages) {
+      // Add ellipsis if there's a gap
       if (endPage < totalPages - 1) {
-        pages.push(<span key="ellipsis2" className="ellipsis">...</span>);
+        pageElements.push(
+          <span key="ellipsis-end" className="ellipsis">...</span>
+        );
       }
-      pages.push(
+
+      pageElements.push(
         <button
           key={totalPages}
-          onClick={() => handlePageChange(totalPages)}
+          onClick={() => goToPage(totalPages)}
           className="page-btn"
+          aria-label={`Go to page ${totalPages}`}
         >
           {totalPages}
         </button>
       );
     }
 
-    return pages;
+    return pageElements;
   };
 
+  // Don't render pagination if there's only one page
   if (totalPages <= 1) return null;
+
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
 
   return (
     <div className="pagination-container">
       <div className="pagination">
         <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
+          onClick={() => goToPage(currentPage - 1)}
+          disabled={isFirstPage}
           className="nav-btn prev-btn"
-          aria-label="Previous page"
+          aria-label="Go to previous page"
         >
           ← Previous
         </button>
 
         <div className="page-numbers">
-          {renderPageNumbers()}
+          {buildPageNumbers()}
         </div>
 
         <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
+          onClick={() => goToPage(currentPage + 1)}
+          disabled={isLastPage}
           className="nav-btn next-btn"
-          aria-label="Next page"
+          aria-label="Go to next page"
         >
           Next →
         </button>
