@@ -6,26 +6,33 @@ You'll apply React and JavaScript skills, routing, API fetching, conditional ren
 
 ---
 
-## Submission Guidelines
-
-The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
-
-- **Time Tracking (Recommended):**  
-  Use tools like [WakaTime](https://wakatime.com/) to track your development time. This provides visibility into the effort invested.
+-##wakatime
+[![wakatime](https://wakatime.com/badge/user/a0bdd3d2-b1db-4c31-b28d-4fb8fae51ec4/project/cf345b15-29bc-43cc-9f87-d4a691ca343b.svg)](https://wakatime.com/badge/user/a0bdd3d2-b1db-4c31-b28d-4fb8fae51ec4/project/cf345b15-29bc-43cc-9f87-d4a691ca343b)
 
 - **Updated README (Mandatory):**  
   Include a clear and updated `README.md` in your repository with:
 
-  - Summary of implemented features
-  - Any additional improvements made
-  - Setup and run instructions
-  - Known issues or limitations
-  - Notes for the instructor
+  - ## Implemented Features
 
-- **AI Tool Usage (If Used):**  
-  If you have used any AI-powered tools during development, please include:
-  - A short description of which AI tool(s) were used
-  - A brief explanation of how they were used
+- Character Details Page
+- Character Search & Filtering
+- Pagination (with a max of 10 characters per page)
+- Contact Us Page
+- About Us Page
+- Navbar for swift and easy navigation
+
+## Improvements
+
+- Redesigned
+- Responsive design
+
+## Known issues
+
+- known to my knowledge
+
+## AI Tools & Usage
+
+-I used chatgpt to generate basic template of pages then I edit the page
 
 ## Requirements
 
