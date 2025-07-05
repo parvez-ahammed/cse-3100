@@ -1,0 +1,14 @@
+.App {
+    min-height: 100vh;
+    background-color: #f8fafc;
+  }
+  
+  .container {
+    max-width: 1200px;
+  }
+  
+  /* Loading animation */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
