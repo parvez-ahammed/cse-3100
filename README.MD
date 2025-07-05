@@ -1,8 +1,52 @@
 # Rick & Morty Explorer – Assignment 1
 
-In this project, you'll build a beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
+# Rick & Morty Explorer (CSE-3100 Assignment)
 
-You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
+A simple and interactive React application for browsing and filtering characters from the [Rick and Morty API](https://rickandmortyapi.com/). Developed as part of the CSE-3100 coursework.
+
+---
+
+## Features
+
+## Character List with Filters
+- Browse characters from the Rick and Morty universe
+- Search by name
+- Filter by status: **Alive**, **Dead**, **Unknown**
+- Filters and search state persist via URL query parameters
+
+## Character Detail Page
+- Dynamic routing using React Router (`/character/:id`)
+- Displays:
+  - Name, Image, Status, Species
+  - Origin, Last known location
+  - Number of episodes
+
+## Pagination
+- Shows **10 characters per page**
+- API returns 20, app slices to show half
+- Next and Previous buttons
+- Prevents going past first/last page
+
+## Contact Page
+- Form with:
+  - Name, Email, Message
+  - Validation for required fields and valid email
+  - Success message on submission
+
+## About Page
+- Overview of the app
+- Developer info
+- Favorite Rick and Morty quote
+
+## Navigation
+- Responsive Bootstrap navbar with links to:
+  - Home
+  - About
+  - Contact
+
+---
+
+
 
 ---
 ## Wakatime Badge
