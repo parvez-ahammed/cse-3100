@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -12,24 +12,24 @@ export default function Contact() {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    if (!formData.message.trim()) newErrors.message = "Message is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
-    setErrors(prev => ({ ...prev, [e.target.name]: '' }));
+    setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
   };
 
   const handleSubmit = (e) => {
@@ -37,14 +37,16 @@ export default function Contact() {
     if (!validate()) return;
 
     setSuccess(true);
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: "", email: "", message: "" });
     setTimeout(() => setSuccess(false), 5000);
   };
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-12 px-4">
-      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8 sm:p-10">
-        <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">Contact Us</h2>
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-6 sm:p-10">
+        <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
+          Contact Us
+        </h2>
 
         {success && (
           <div className="mb-6 p-4 rounded-lg bg-green-100 text-green-800 border border-green-300 text-sm text-center">
@@ -54,42 +56,51 @@ export default function Contact() {
 
         <form onSubmit={handleSubmit} noValidate className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold text-gray-700">Name</label>
             <input
               type="text"
               name="name"
-              id="name"
-              className={`mt-2 w-full px-4 py-3 rounded-lg border text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Name"
+              className={`w-full px-4 py-3 rounded-lg border text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                errors.name ? "border-red-500" : "border-gray-300"
+              }`}
               value={formData.name}
               onChange={handleChange}
             />
-            {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
+            {errors.name && (
+              <p className="text-xs text-red-500 mt-1">{errors.name}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold text-gray-700">Email</label>
             <input
               type="email"
               name="email"
-              id="email"
-              className={`mt-2 w-full px-4 py-3 rounded-lg border text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+              placeholder="Email"
+              className={`w-full px-4 py-3 rounded-lg border text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              }`}
               value={formData.email}
               onChange={handleChange}
             />
-            {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
+            {errors.email && (
+              <p className="text-xs text-red-500 mt-1">{errors.email}</p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-semibold text-gray-700">Message</label>
             <textarea
               name="message"
-              id="message"
+              placeholder="Your message"
               rows="5"
-              className={`mt-2 w-full px-4 py-3 rounded-lg border text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full px-4 py-3 rounded-lg border text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                errors.message ? "border-red-500" : "border-gray-300"
+              }`}
               value={formData.message}
               onChange={handleChange}
             ></textarea>
-            {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
+            {errors.message && (
+              <p className="text-xs text-red-500 mt-1">{errors.message}</p>
+            )}
           </div>
 
           <div className="text-center">
