@@ -9,10 +9,10 @@ export default function About() {
           3100 for the Fall-24 semester at Ahsanullah University of Science and
           Technology. Built with React. 
           </p>
-          <p>Tools used include: VS Code,
-          GitHub. ChatGPT & Gemini AI were used for code generation.
-        </p>
-          
+        <h2 className="text-2xl font-semibold text-gray-700">Developer</h2>
+        <p>Made by Mohammad Ashfaq Hossain Bhuiyan</p>
+        <p>ID: 2022020002</p>
+        <h2>[PS: I Have no idea how my assignment looks so bear it with me]</h2>
       </div>
     </div>
   );

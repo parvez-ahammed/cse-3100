@@ -1,14 +1,16 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Custom styles if needed */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
+  @apply font-sans bg-gray-100 m-0 p-0;
 }
 
+/* Only use this if you must have a custom container */
 .container {
   max-width: 900px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 1rem;
 }
