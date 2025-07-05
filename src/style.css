@@ -62,3 +62,31 @@ body {
     height: 150px;
   }
 }
+
+.search-container {
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.search-input {
+  width: 300px;
+  max-width: 90%;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-filter {
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.status-dropdown {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-left: 0.5rem;
+}
