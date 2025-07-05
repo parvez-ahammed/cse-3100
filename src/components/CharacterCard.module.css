@@ -1,0 +1,96 @@
+.card {
+  border-radius: 12px; /* Reduced from 16px */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  max-width: 250px; /* Added max-width to limit card size */
+  margin: 0 auto; /* Center the card */
+}
+
+.card:hover {
+  transform: translateY(-3px); /* Reduced from -5px */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Reduced shadow */
+}
+
+.cardImg {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  max-height: 180px; /* Added max-height to make image smaller */
+}
+
+.cardBody {
+  padding: 0.75rem; /* Reduced from 1.25rem */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: 1rem; /* Reduced from 1.25rem */
+  font-weight: 700;
+  margin-bottom: 0.5rem; /* Reduced from 0.75rem */
+  color: #2c3e50;
+}
+
+.cardText {
+  margin-bottom: 0.75rem; /* Reduced from 1rem */
+  flex-grow: 1;
+  font-size: 0.85rem; /* Added smaller font size */
+}
+
+.statusIndicator {
+  display: inline-block;
+  width: 8px; /* Reduced from 10px */
+  height: 8px; /* Reduced from 10px */
+  border-radius: 50%;
+  margin-right: 4px; /* Reduced from 6px */
+}
+
+.statusAlive {
+  background-color: #4CAF50;
+}
+
+.statusDead {
+  background-color: #F44336;
+}
+
+.statusUnknown {
+  background-color: #9E9E9E;
+}
+
+.viewButton {
+  background-color: #3498db;
+  border: none;
+  border-radius: 6px; /* Reduced from 8px */
+  padding: 0.4rem 0.75rem; /* Reduced from 0.5rem 1rem */
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  font-size: 0.85rem; /* Added smaller font size */
+}
+
+.viewButton:hover {
+  background-color: #2980b9;
+}
+
+/* Dark mode styles */
+:global(.dark-mode) .cardTitle {
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .card {
+  background-color: #2c3e50;
+}
+
+:global(.dark-mode) .viewButton {
+  background-color: #2980b9;
+}
+
+:global(.dark-mode) .viewButton:hover {
+  background-color: #3498db;
+}
