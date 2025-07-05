@@ -1,0 +1,181 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  text-align: center;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: #3498db;
+  border-radius: 2px;
+}
+
+.searchForm {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.searchInput {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.filterSelect {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.filterSelect:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.characterGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Changed from auto-fill to exactly 5 columns */
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 992px) {
+  .characterGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .characterGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .characterGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.pageInfo {
+  font-weight: 600;
+  color: #7f8c8d;
+}
+
+.pageButton {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pageButton:hover:not(:disabled) {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.pageButton:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.loadingContainer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 2rem;
+  color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* Dark mode styles */
+:global(.dark-mode) .title {
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .searchForm {
+  background-color: #2c3e50;
+}
+
+:global(.dark-mode) .searchInput,
+:global(.dark-mode) .filterSelect {
+  background-color: #34495e;
+  border-color: #2c3e50;
+  color: #ecf0f1;
+}
+
+:global(.dark-mode) .pageInfo {
+  color: #bdc3c7;
+}
+
+:global(.dark-mode) .errorContainer {
+  background-color: rgba(231, 76, 60, 0.2);
+}
+
+/* Add this to the end of the file */
+:global(.col-md-2-4) {
+  width: 20%;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  :global(.col-md-2-4) {
+    width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  :global(.col-md-2-4) {
+    width: 100%;
+  }
+}
