@@ -6,15 +6,20 @@ function Home() {
   const [info, setInfo] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const urlPage = parseInt(searchParams.get("page")) || 1;
+  const [visiblePage, setVisiblePage] = useState(urlPage);
+
   const name = searchParams.get("name") || "";
   const status = searchParams.get("status") || "";
-  const page = parseInt(searchParams.get("page")) || 1;
+
+  const apiPage = Math.ceil(visiblePage / 2);
+  const isFirstHalf = visiblePage % 2 !== 0;
 
   useEffect(() => {
     const url = new URL("https://rickandmortyapi.com/api/character");
     if (name) url.searchParams.append("name", name);
     if (status) url.searchParams.append("status", status);
-    url.searchParams.append("page", page);
+    url.searchParams.append("page", apiPage);
 
     fetch(url)
       .then((res) => res.json())
@@ -27,7 +32,15 @@ function Home() {
           setInfo(null);
         }
       });
-  }, [name, status, page]);
+  }, [apiPage, name, status]);
+
+  useEffect(() => {
+    setSearchParams((prev) => {
+      const params = new URLSearchParams(prev);
+      params.set("page", visiblePage);
+      return params;
+    });
+  }, [visiblePage, setSearchParams]);
 
   const updateSearchParams = (key, value) => {
     setSearchParams((prev) => {
@@ -37,18 +50,33 @@ function Home() {
       } else {
         params.delete(key);
       }
-
-      if (key === "name" || key === "status") {
-        params.set("page", "1");
-      }
+      params.set("page", "1");
       return params;
     });
+    setVisiblePage(1);
   };
 
   const handleSearchChange = (e) => updateSearchParams("name", e.target.value);
   const handleStatusChange = (e) =>
     updateSearchParams("status", e.target.value);
-  const goToPage = (newPage) => updateSearchParams("page", newPage);
+
+  const handleNext = () => {
+    const totalPages = info ? Math.ceil(info.count / 10) : 1;
+    if (visiblePage < totalPages) {
+      setVisiblePage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (visiblePage > 1) {
+      setVisiblePage((prev) => prev - 1);
+    }
+  };
+
+  const displayedCharacters = characters.slice(
+    isFirstHalf ? 0 : 10,
+    isFirstHalf ? 10 : 20
+  );
 
   return (
     <div className="p-6">
@@ -76,10 +104,10 @@ function Home() {
         </select>
       </div>
 
-      {characters.length > 0 ? (
+      {displayedCharacters.length > 0 ? (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {characters.map((character) => (
+            {displayedCharacters.map((character) => (
               <Link
                 to={`/character/${character.id}`}
                 key={character.id}
@@ -102,23 +130,23 @@ function Home() {
 
           <div className="mt-8 flex justify-center gap-4">
             <button
-              onClick={() => goToPage(page - 1)}
-              disabled={!info?.prev}
+              onClick={handlePrevious}
+              disabled={visiblePage === 1}
               className={`px-4 py-2 rounded-md ${
-                info?.prev
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                visiblePage === 1
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-blue-600 text-white hover:bg-blue-700"
               }`}
             >
               Previous
             </button>
             <button
-              onClick={() => goToPage(page + 1)}
-              disabled={!info?.next}
+              onClick={handleNext}
+              disabled={!info || visiblePage >= Math.ceil(info.count / 10)}
               className={`px-4 py-2 rounded-md ${
-                info?.next
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                !info || visiblePage >= Math.ceil(info.count / 10)
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-blue-600 text-white hover:bg-blue-700"
               }`}
             >
               Next
