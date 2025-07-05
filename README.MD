@@ -6,6 +6,10 @@ You'll apply React and JavaScript skills, routing, API fetching, conditional ren
 
 ---
 
+## Wakatime badge
+
+[![wakatime](https://wakatime.com/badge/user/744e9c10-3c2b-4064-b477-29247d78e375/project/15ed71b0-6e08-4e8f-a757-f799a4a87cd3.svg)](https://wakatime.com/badge/user/744e9c10-3c2b-4064-b477-29247d78e375/project/15ed71b0-6e08-4e8f-a757-f799a4a87cd3)
+
 ## Submission Guidelines
 
 The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
@@ -163,3 +167,6 @@ To keep your project organized, consider the following structure:
 - `src/utils`: Utility functions (e.g., formatCharacterData, validateEmail)
 - `src/styles`: CSS files or styled components
 - `src/routes`: Route definitions (e.g., AppRouter)
+ 
+ ## END
+ ## END
