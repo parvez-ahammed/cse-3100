@@ -1,0 +1,48 @@
+.darkmode-toggle-btn {
+  position: fixed;
+  top: 22px;
+  right: 32px;
+  z-index: 2000;
+  background: #fff;
+  color: #1e40af;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  box-shadow: 0 2px 12px rgba(30,64,175,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.darkmode-toggle-btn:hover {
+  background: #e0e7ff;
+  color: #6366f1;
+}
+
+body.dark-mode {
+  background: #181a23 !important;
+  color: #e5e7eb !important;
+}
+body.dark-mode .container {
+  background: #23263a !important;
+  color: #e5e7eb !important;
+  box-shadow: 0 4px 32px rgba(30,64,175,0.18) !important;
+}
+body.dark-mode input, body.dark-mode textarea {
+  background: #23263a !important;
+  color: #e5e7eb !important;
+  border: 1px solid #374151 !important;
+}
+body.dark-mode .carousel-img.center {
+  background: #23263a !important;
+}
+body.dark-mode .bottom-nav-bar {
+  background: #23263a !important;
+  box-shadow: 0 2px 16px rgba(30,64,175,0.18) !important;
+}
+body.dark-mode .nav-link.active {
+  background: #6366f1 !important;
+  color: #fff !important;
+}
