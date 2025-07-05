@@ -1,12 +1,86 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
+/* src/index.css */
+
+/* Default Vite/React styles (can be adjusted) */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 1rem;
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f8f9fa; 
+  color: #212529;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-3d {
+
+  border-radius: 0; 
+  
+ 
+  border: 1px solid #1a1a1a;
+
+
+  box-shadow: 0 4px 0 #555;
+
+
+  position: relative;
+
+
+  transition: all 0.08s ease-in-out;
+}
+
+
+.btn-3d:active {
+
+  top: 4px;
+
+  
+  box-shadow: 0 0 0 #6d2c2c;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between; /* Pushes title to left, nav to right */
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #343a40; /* A dark background for the header */
+  color: white;
+  margin-bottom: 2rem; /* Adds space between header and page content */
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.app-title {
+  color: white;
+  text-decoration: none; /* Removes underline from the link */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem; /* Adds space between the buttons */
 }
