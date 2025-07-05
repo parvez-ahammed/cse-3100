@@ -1,102 +1,126 @@
 import React, { useState } from "react";
 
 const Contact = () => {
+  // Form state
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-  const [errors, setErrors] = useState({});
+  const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const validateForm = () => {
-    const newErrors = {};
+  // Form validation - could probably move this to a custom hook later
+  const validateFormData = () => {
+    const errors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
+    // Name validation
+    const nameValue = formData.name.trim();
+    if (!nameValue) {
+      errors.name = "Name is required";
+    } else if (nameValue.length < 2) {
+      errors.name = "Name must be at least 2 characters";
+    } else if (nameValue.length > 50) {
+      errors.name = "Name is too long";
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+    // Email validation - using a simple regex for now
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailValue = formData.email.trim();
+    if (!emailValue) {
+      errors.email = "Email is required";
+    } else if (!emailPattern.test(emailValue)) {
+      errors.email = "Please enter a valid email address";
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
+    // Message validation
+    const messageValue = formData.message.trim();
+    if (!messageValue) {
+      errors.message = "Message is required";
+    } else if (messageValue.length < 10) {
+      errors.message = "Message must be at least 10 characters";
+    } else if (messageValue.length > 500) {
+      errors.message = "Message is too long (max 500 characters)";
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
 
-    if (errors[name]) {
-      setErrors((prev) => ({
+    // Clear error for this field when user starts typing
+    if (validationErrors[name]) {
+      setValidationErrors((prev) => ({
         ...prev,
         [name]: "",
       }));
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    if (!validateFormData()) {
       return;
     }
 
     setIsSubmitting(true);
 
     try {
+      // Simulate API call - in real app this would go to a backend
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      console.log("Form submitted:", formData);
+      // Log for debugging (remove in production)
+      console.log("Contact form submitted:", formData);
 
       setIsSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-      setErrors({});
+      resetForm();
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error submitting contact form:", error);
+      // In a real app, you'd show an error message to the user
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const resetForm = () => {
-    setIsSubmitted(false);
     setFormData({ name: "", email: "", message: "" });
-    setErrors({});
+    setValidationErrors({});
   };
 
+  const startNewMessage = () => {
+    setIsSubmitted(false);
+    resetForm();
+  };
+
+  // Success screen
   if (isSubmitted) {
     return (
       <div className="contact-container">
         <div className="success-message">
           <div className="success-icon">✅</div>
-          <h2>Thank You!</h2>
+          <h2>Thanks for reaching out!</h2>
           <p>
             Your message has been sent successfully. We'll get back to you soon!
           </p>
-          <button onClick={resetForm} className="new-message-btn">
+          <button onClick={startNewMessage} className="new-message-btn">
             Send Another Message
           </button>
         </div>
       </div>
     );
   }
+
+  const remainingChars = 500 - formData.message.length;
+  const isFormValid = Object.keys(validationErrors).length === 0;
 
   return (
     <div className="contact-container">
@@ -115,21 +139,76 @@ const Contact = () => {
 
           <div className="contact-details">
             <div className="contact-item">
-              <span className="icon">📧</span>
+              <span className="icon">
+                {/* Email icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <polyline
+                    points="22,6 12,13 2,6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </span>
               <span>support@rickandmortyexplorer.com</span>
             </div>
+
             <div className="contact-item">
-              <span className="icon">🌐</span>
+              <span className="icon">
+                {/* Website icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M2 12H22"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </span>
               <span>rickandmortyapi.com</span>
             </div>
+
             <div className="contact-item">
-              <span className="icon">⏰</span>
+              <span className="icon">
+                {/* Clock icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <polyline
+                    points="12,6 12,12 16,14"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
               <span>Response time: 24-48 hours</span>
             </div>
           </div>
         </div>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-form" onSubmit={handleFormSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name *</label>
             <input
@@ -138,11 +217,12 @@ const Contact = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className={errors.name ? "error" : ""}
+              className={validationErrors.name ? "error" : ""}
               placeholder="Enter your full name"
+              maxLength="50"
             />
-            {errors.name && (
-              <span className="error-message">{errors.name}</span>
+            {validationErrors.name && (
+              <span className="error-message">{validationErrors.name}</span>
             )}
           </div>
 
@@ -154,11 +234,11 @@ const Contact = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className={errors.email ? "error" : ""}
+              className={validationErrors.email ? "error" : ""}
               placeholder="Enter your email address"
             />
-            {errors.email && (
-              <span className="error-message">{errors.email}</span>
+            {validationErrors.email && (
+              <span className="error-message">{validationErrors.email}</span>
             )}
           </div>
 
@@ -169,22 +249,26 @@ const Contact = () => {
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              className={errors.message ? "error" : ""}
+              className={validationErrors.message ? "error" : ""}
               placeholder="Tell us what's on your mind..."
               rows="6"
+              maxLength="500"
             />
-            {errors.message && (
-              <span className="error-message">{errors.message}</span>
+            {validationErrors.message && (
+              <span className="error-message">{validationErrors.message}</span>
             )}
             <div className="character-count">
-              {formData.message.length}/500
+              {formData.message.length}/500 characters
+              {remainingChars < 50 && (
+                <span className="warning"> ({remainingChars} remaining)</span>
+              )}
             </div>
           </div>
 
           <button
             type="submit"
             className="submit-btn"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !isFormValid}
           >
             {isSubmitting ? (
               <>
@@ -196,6 +280,20 @@ const Contact = () => {
             )}
           </button>
         </form>
+
+        {/* Developer Credit Section */}
+        <div className="developer-credit">
+          <div className="developer-credit-content">
+            <h4>💻 Built by Md. Rubayet Islam</h4>
+            <p>CSE Student at Ahsanullah University of Science and Technology</p>
+            <p>3rd Year, 1st Semester | Student ID: 20220204069</p>
+            <p>
+              <span className="tech-stack">
+                Built with React • Vite • Rick & Morty API
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
