@@ -1,12 +1,110 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
   margin: 0;
   padding: 0;
+}
+
+.light {
+  background-color: #f2f2f2;
+  color: #000;
+}
+
+.dark {
+  background-color: #333;
+  color: #fff;
 }
 
 .container {
   max-width: 900px;
   margin: auto;
   padding: 1rem;
+}
+
+.card {
+  background-color: #fff;
+}
+
+.dark .card {
+  background-color: #444;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.dark .alert-success {
+  background-color: #2a9d8f;
+  color: #e9ecef;
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+}
+
+.bg-dark-blue {
+  background-color: #001f4d;
+}
+
+.footer {
+  background-color: #001f4d;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+/* Gradient button style for colorful buttons */
+.btn-gradient {
+  background: linear-gradient(45deg, #ff6b6b, #f06595, #845ef7);
+  color: white;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.btn-gradient:hover,
+.btn-gradient:focus {
+  background: linear-gradient(45deg, #f06595, #845ef7, #ff6b6b);
+  color: white;
+  outline: none;
+  box-shadow: 0 0 8px rgba(240, 101, 149, 0.7);
+}
+
+/* Navbar gradient background */
+.bg-gradient {
+  background: linear-gradient(90deg, #845ef7, #f06595);
+}
+
+/* Text gradient for title */
+.text-gradient {
+  background: linear-gradient(90deg, #ff6b6b, #f06595, #845ef7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navbar subtitle style */
+.navbar-subtitle {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Additional styling for navbar links */
+.navbar-links .btn-gradient {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Card shadow for character cards */
+.card.shadow-sm {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Pagination ellipsis style */
+.pagination-ellipsis {
+  padding: 0 10px;
+  font-size: 1.2rem;
+  color: #6c757d;
 }

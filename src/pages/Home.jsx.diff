@@ -1,0 +1,41 @@
+<button
+            className="btn btn-secondary btn-lg"
+            onClick={() => handlePageChange(page - 1)}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+          <button
+            className="btn btn-secondary btn-lg"
+            onClick={() => handlePageChange(page + 1)}
+            disabled={!info?.next || (page % 2 === 0 && !info.next)}
+          >
+            Next
+          </button>
+        </div>
+=======
+        <div className="d-flex justify-content-center gap-3 my-4">
+          <button
+            className="btn btn-secondary btn-lg"
+            onClick={() => handlePageChange(page - 1)}
+            disabled={page === 1}
+          >
+            Previous
+          </button>
+          {[1, 2, 3, 4].map((num) => (
+            <button
+              key={num}
+              className={`btn btn-lg ${page === num ? "btn-primary" : "btn-secondary"}`}
+              onClick={() => handlePageChange(num)}
+            >
+              {num}
+            </button>
+          ))}
+          <button
+            className="btn btn-secondary btn-lg"
+            onClick={() => handlePageChange(page + 1)}
+            disabled={!info?.next || (page % 2 === 0 && !info.next)}
+          >
+            Next
+          </button>
+        </div>
