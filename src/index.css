@@ -1,12 +1,28 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Poppins:wght@400;600&display=swap');
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 1rem;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0D1B2A; /* midnight-black */
+    color: #FFC857; /* golden-rod */
+    font-family: 'Poppins', 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #FF5E5B; /* sunset-orange */
+  }
+  a {
+    transition: color 0.3s ease;
+    color: #00FFF7; /* electric-cyan */
+  }
+  a:hover, a:focus {
+    color: #FF6F91; /* coral-pink */
+    outline: none;
+  }
 }
