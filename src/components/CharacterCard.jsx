@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function CharacterCard({ character }) {
   return (
     <div className="card">
@@ -12,7 +14,9 @@ export default function CharacterCard({ character }) {
           <strong>Status:</strong> {character.status} <br />
           <strong>Species:</strong> {character.species}
         </p>
-        <button>View Details</button>
+        <Link to={`/character/${character.id}`} className="btn btn-primary">
+          View Details
+        </Link>
       </div>
     </div>
   );
