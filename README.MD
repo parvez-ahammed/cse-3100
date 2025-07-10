@@ -41,3 +41,6 @@ npm run dev
 ## AI Tool Usage
 - ChatGPT : Used to style the pages, debug code.
 - Copilot : Code completions and imports.
+
+## Wakatime Badge
+- [![wakatime](https://wakatime.com/badge/user/41f37653-8fc2-4ae4-b4c5-d7c1f8df20d3/project/34d27d19-a56b-4f7a-afe5-1b982263247d.svg)](https://wakatime.com/badge/user/41f37653-8fc2-4ae4-b4c5-d7c1f8df20d3/project/34d27d19-a56b-4f7a-afe5-1b982263247d)
