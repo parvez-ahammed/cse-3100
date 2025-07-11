@@ -1,6 +1,10 @@
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+
 export default function Contact() {
   return (
-    <div className="container my-4">
+    <div>
+      <NavBar></NavBar>
       <h2>Contact Us</h2>
       <form>
         <div className="mb-3">
@@ -19,6 +23,7 @@ export default function Contact() {
           Send
         </button>
       </form>
+      <Footer></Footer>
     </div>
   );
 }
