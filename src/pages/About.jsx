@@ -3,8 +3,8 @@ export default function About() {
     <div className="container my-4">
       <h2>About Rick & Morty Explorer</h2>
       <p>
-        This is a simple React app that lets you browse characters from the Rick
-        & Morty universe. Built with students of CSE-3100.
+        An react app made by Mohsina Rahman Mirza a student of Department of Computer Science and Technology
+        currently at 3rd Year 1st semsester.
       </p>
     </div>
   );
