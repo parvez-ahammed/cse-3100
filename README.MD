@@ -56,6 +56,18 @@ The Whole app is Wrapped with Dynamic Routing of React
 
 Used Tailwind CSS
 
+## AI Tool Usage :
+
+I used ChatGPT during the Assignment.
+
+## How used AI :
+
+1.To Generate clean code structure for React components/pages(SearchBox,PaginationControls,StatusFilter,Contact).
+
+2.To learn Clarify complex logic such as pagination, filtering with query parameters, and use of React hooks.
+
+3.Save time by quickly debugging syntax issues and optimizing component design.
+
 ## To Setup:
 
 open a new terminal in the file directory and write :
