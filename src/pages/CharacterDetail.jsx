@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { assets } from "../assets/assets";
 
 export default function CharacterDetail() {
   const { id } = useParams();
@@ -14,23 +15,53 @@ export default function CharacterDetail() {
   if (!character) return <p className="text-center mt-10">Loading...</p>;
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="flex flex-col md:flex-row gap-8 items-center">
+    <div className="min-h-screen flex flex-col items-center justify-start bg-gray-100 pt-24 pb-10">
+      <h1 className="text-4xl font-bold text-gray-800 mb-6">Character Details:</h1>
+
+      <div className="bg-white/60 backdrop-blur-md rounded-2xl shadow-2xl max-w-3xl w-full p-8 flex flex-col md:flex-row gap-8 items-center">
         <img
           src={character.image}
           alt={character.name}
-          className="rounded-lg shadow-lg w-72 h-72 object-cover"
+          className="rounded-xl shadow-md w-64 h-64 object-cover"
         />
-        <div>
-          <h2 className="text-3xl font-bold mb-4">{character.name}</h2>
-          <p><strong>Status:</strong> {character.status}</p>
-          <p><strong>Species:</strong> {character.species}</p>
-          <p><strong>Origin:</strong> {character.origin.name}</p>
-          <p><strong>Last Known Location:</strong> {character.location.name}</p>
-          <p><strong>Number of Episodes:</strong> {character.episode.length}</p>
+        <div className="text-center md:text-left space-y-2">
+          <h2 className="text-3xl font-bold text-gray-800">{character.name}</h2>
+
+          <p>
+            <span className="font-semibold text-gray-700">Status:</span>{" "}
+            <span
+              className={
+                character.status.toLowerCase() === "alive"
+                  ? "text-green-600 font-bold"
+                  : character.status.toLowerCase() === "dead"
+                  ? "text-red-600 font-bold"
+                  : "text-gray-600 font-semibold"
+              }
+            >
+              {character.status}
+            </span>
+          </p>
+
+          <p>
+            <span className="font-semibold text-gray-700">Species:</span> {character.species}
+          </p>
+          <p>
+            <span className="font-semibold text-gray-700">Origin:</span> {character.origin.name}
+          </p>
+          <p>
+            <span className="font-semibold text-gray-700">Last Known Location:</span>{" "}
+            {character.location.name}
+          </p>
+          <p>
+            <span className="font-semibold text-gray-700">Number of Episodes:</span>{" "}
+            {character.episode.length}
+          </p>
         </div>
       </div>
     </div>
   );
 }
+
+
+
 
