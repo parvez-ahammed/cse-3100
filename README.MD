@@ -98,5 +98,5 @@ This project was developed with the help of **ChatGPT** by **OpenAI**.
 
 ---
 
-Thanks for exploring!
+Thanks for exploring.
 
