@@ -1,26 +1,24 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function CharacterDetail() {
-  const { id } = useParams();
-  const [character, setCharacter] = useState(null);
-
-  useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((res) => res.json())
-      .then(setCharacter);
-  }, [id]);
-
-  if (!character) return <p>Loading...</p>;
-
+export default function CharacterCard({ character }) {
   return (
-    <div className="container my-4">
-      <h2>{character.name}</h2>
-      <img src={character.image} alt={character.name} className="img-fluid" />
-      <p>
-        <strong>Status:</strong> {character.status} <br />
-        <strong>Species:</strong> {character.species} <br />
-      </p>
+    <div className="card shadow-sm h-100">
+      <img
+        src={character.image}
+        className="card-img-top"
+        alt={character.name}
+        style={{ objectFit: "cover", height: "250px" }}
+      />
+      <div className="card-body d-flex flex-column">
+        <h5 className="card-title">{character.name}</h5>
+        <p className="card-text mb-3">
+          <strong>Status:</strong> {character.status} <br />
+          <strong>Species:</strong> {character.species}
+        </p>
+        <Link to={`/character/${character.id}`} className="btn btn-primary mt-auto w-100">
+          View Details
+        </Link>
+      </div>
     </div>
   );
 }
