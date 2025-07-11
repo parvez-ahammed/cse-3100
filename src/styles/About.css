@@ -1,19 +1,14 @@
+/* Base styles (used as fallback or general) */
 .about-container {
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
   min-height: 100vh;
   padding: 4rem 2rem;
-  background-color: #0f172a;
-  color: #f1f5f9;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-sizing: border-box;
 }
 
 .about-heading {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #facc15;
   text-align: center;
 }
 
@@ -27,7 +22,6 @@
 .about-subheading {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #38bdf8;
 }
 
 .about-text {
@@ -39,9 +33,21 @@
 .about-quote {
   font-style: italic;
   font-size: 1.2rem;
-  color: #7dd3fc;
-  border-left: 4px solid #38bdf8;
+  border-left: 4px solid;
   padding-left: 1rem;
+}
+
+/* Developer card layout */
+.developer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .about-image-wrapper {
@@ -51,44 +57,21 @@
 }
 
 .about-image {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   object-fit: cover;
   border-radius: 12px;
-  border: 4px solid #38bdf8;
+  border: 4px solid;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.hoverable-image:hover {
-  transform: scale(1.05);
-}
-
-/* Developer Section Layout */
-.developer-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem 0;
-}
-
-.no-box {
-  background: none;
-  box-shadow: none;
-  padding: 0;
 }
 
 .developer-text {
   text-align: center;
-  color: #f1f5f9;
 }
 
 .developer-name {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #7dd3fc;
   margin-bottom: 0.5rem;
 }
 
@@ -99,7 +82,6 @@
 
 .developer-email {
   font-size: 1rem;
-  color: #38bdf8;
   text-decoration: none;
 }
 
@@ -107,9 +89,64 @@
   text-decoration: underline;
 }
 
-/* Responsive */
-@media (min-width: 768px) {
-  .developer-text {
-    text-align: center;
-  }
+/* ========== Theme: DARK ========== */
+body[data-theme="dark"] .about-container {
+  background-color: #000000;
+  color: #f1f5f9;
+}
+
+body[data-theme="dark"] .about-heading {
+  color: #facc15;
+}
+
+body[data-theme="dark"] .about-subheading {
+  color: #38bdf8;
+}
+
+body[data-theme="dark"] .about-quote {
+  color: #7dd3fc;
+  border-color: #38bdf8;
+}
+
+body[data-theme="dark"] .about-image {
+  border-color: #38bdf8;
+}
+
+body[data-theme="dark"] .developer-name {
+  color: #7dd3fc;
+}
+
+body[data-theme="dark"] .developer-email {
+  color: #38bdf8;
+}
+
+/* ========== Theme: LIGHT ========== */
+body[data-theme="light"] .about-container {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+body[data-theme="light"] .about-heading {
+  color: #d97706;
+}
+
+body[data-theme="light"] .about-subheading {
+  color: #0284c7;
+}
+
+body[data-theme="light"] .about-quote {
+  color: #0369a1;
+  border-color: #0ea5e9;
+}
+
+body[data-theme="light"] .about-image {
+  border-color: #0ea5e9;
+}
+
+body[data-theme="light"] .developer-name {
+  color: #0369a1;
+}
+
+body[data-theme="light"] .developer-email {
+  color: #0ea5e9;
 }

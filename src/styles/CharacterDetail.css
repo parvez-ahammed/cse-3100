@@ -1,7 +1,6 @@
 .character-page {
   min-height: 100vh;
   width: 100%;
-  background: radial-gradient(circle at top, #ffffff, #ffffff);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +8,53 @@
   box-sizing: border-box;
 }
 
+/* Light Theme */
+body[data-theme="light"] .character-page {
+  background: radial-gradient(circle at top, #ffffff, #ffffff);
+  color: #2d3748;
+}
+
+body[data-theme="light"] .character-detail {
+  color: #2d3748;
+}
+
+body[data-theme="light"] .detail-item strong {
+  color: #1a202c;
+}
+
+body[data-theme="light"] .back-home {
+  background-color: #3182ce;
+  color: white;
+}
+
+body[data-theme="light"] .back-home:hover {
+  background-color: #2b6cb0;
+}
+
+/* Dark Theme */
+body[data-theme="dark"] .character-page {
+  background: radial-gradient(circle at top, #0000, #0000);
+  color: #f1f5f9;
+}
+
+body[data-theme="dark"] .character-detail {
+  color: #f1f5f9;
+}
+
+body[data-theme="dark"] .detail-item strong {
+  color: #facc15;
+}
+
+body[data-theme="dark"] .back-home {
+  background-color: #facc15;
+  color: #0f172a;
+}
+
+body[data-theme="dark"] .back-home:hover {
+  background-color: #eab308;
+}
+
+/* Shared Styles */
 .character-profile {
   display: flex;
   flex-direction: column;
@@ -17,12 +63,6 @@
   width: 100%;
   text-align: center;
   gap: 2.5rem;
-}
-
-.character-title {
-  font-size: 3.4rem; /* increased */
-  font-weight: 800;
-  color: #1a202c;
 }
 
 .character-pic {
@@ -41,10 +81,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.8rem; /* more spacing */
-  font-size: 1.7rem; /* increased */
+  gap: 1.8rem;
+  font-size: 1.7rem;
   line-height: 2.2;
-  color: #2d3748;
   width: 100%;
   max-width: 560px;
   padding: 0;
@@ -53,19 +92,13 @@
 .detail-item {
   width: 100%;
   text-align: left;
-  padding: 0.6rem 1.2rem; /* more padding */
+  padding: 0.6rem 1.2rem;
   font-weight: 500;
 }
 
-.detail-item strong {
-  color: #1a202c;
-}
-
 .back-home {
-  background-color: #3182ce;
-  color: white;
-  padding: 1rem 2rem; /* larger button */
-  font-size: 1.25rem; /* larger text */
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   border: none;
   border-radius: 12px;
@@ -76,23 +109,18 @@
 }
 
 .back-home:hover {
-  background-color: #2b6cb0;
   transform: translateY(-2px);
 }
 
 .character-loading {
-  font-size: 2rem; /* larger loading text */
-  color: #4a5568;
+  font-size: 2rem;
   padding: 3rem;
   text-align: center;
+  color: inherit;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .character-title {
-    font-size: 2.4rem;
-  }
-
   .character-pic {
     width: 220px;
   }

@@ -1,10 +1,9 @@
-/* Footer Base */
+/* Footer Base (shared) */
 .site-footer {
-  background-color: #1a202c;
-  color: #e2e8f0;
   padding: 3rem 1rem;
   margin-top: 4rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .footer-content {
@@ -17,7 +16,6 @@
   text-align: left;
 }
 
-/* Each Column */
 .footer-section {
   flex: 1 1 200px;
   min-width: 200px;
@@ -26,8 +24,7 @@
 .footer-section h4 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: #fbd38d;
-  border-bottom: 2px solid #f6ad55;
+  border-bottom: 2px solid;
   padding-bottom: 0.5rem;
 }
 
@@ -43,12 +40,7 @@
 
 .footer-section ul li a {
   text-decoration: none;
-  color: #e2e8f0;
   transition: color 0.2s ease;
-}
-
-.footer-section ul li a:hover {
-  color: #f6ad55;
 }
 
 /* Footer Bottom */
@@ -56,9 +48,56 @@
   text-align: center;
   margin-top: 2.5rem;
   font-size: 0.9rem;
-  color: #a0aec0;
-  border-top: 1px solid #2d3748;
+  border-top: 1px solid;
   padding-top: 1rem;
+}
+
+/* ========== DARK THEME ========== */
+body[data-theme="dark"] .site-footer {
+  background-color: #000000;
+  color: #e2e8f0;
+}
+
+body[data-theme="dark"] .footer-section h4 {
+  color: #fbd38d;
+  border-color: #f6ad55;
+}
+
+body[data-theme="dark"] .footer-section ul li a {
+  color: #e2e8f0;
+}
+
+body[data-theme="dark"] .footer-section ul li a:hover {
+  color: #f6ad55;
+}
+
+body[data-theme="dark"] .footer-bottom {
+  color: #a0aec0;
+  border-color: #2d3748;
+}
+
+/* ========== LIGHT THEME ========== */
+body[data-theme="light"] .site-footer {
+  background-color: #e0f2fe; /* ✅ Soft light sky-blue */
+  color: #0f172a;
+}
+
+body[data-theme="light"] .footer-section h4 {
+  color: #0ea5e9;
+  border-color: #0284c7;
+}
+
+body[data-theme="light"] .footer-section ul li a {
+  color: #0f172a;
+}
+
+body[data-theme="light"] .footer-section ul li a:hover {
+  color: #1d4ed8;
+}
+
+body[data-theme="light"] .footer-bottom {
+  color: #475569;
+  border-color: #94a3b8;
 }
 
 /* Responsive */
@@ -79,7 +118,7 @@
   }
 }
 
-/* ✅ Sticky Footer Layout (added at the bottom) */
+/* Sticky Footer Layout */
 html, body, #root {
   height: 100%;
   margin: 0;

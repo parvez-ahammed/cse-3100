@@ -8,7 +8,6 @@ export default function Home() {
   const [info, setInfo] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Get filters and page from URL
   const initialSearch = searchParams.get("name") || "";
   const initialStatus = searchParams.get("status") || "";
   const initialPage = parseInt(searchParams.get("page")) || 1;
@@ -17,7 +16,6 @@ export default function Home() {
   const [status, setStatus] = useState(initialStatus);
   const [page, setPage] = useState(initialPage);
 
-  // Fetch characters based on current filters and page
   useEffect(() => {
     const fetchCharacters = async () => {
       const query = new URLSearchParams();
@@ -30,7 +28,7 @@ export default function Home() {
         const data = await res.json();
         setCharacters(data.results || []);
         setInfo(data.info || {});
-      } catch (error) {
+      } catch {
         setCharacters([]);
         setInfo({});
       }
@@ -39,37 +37,37 @@ export default function Home() {
     fetchCharacters();
   }, [search, status, page]);
 
-  // Update URL when filters or page change
   useEffect(() => {
     const params = {};
     if (search) params.name = search;
     if (status) params.status = status;
-    params.page = page; // Always reflect page in URL
+    params.page = page;
     setSearchParams(params);
   }, [search, status, page, setSearchParams]);
 
-  // Limit display to 10 characters per page
   const filtered = characters.slice(0, 10);
 
   return (
     <main className="container my-5">
       <h1 className="mb-4 text-center">Rick & Morty Explorer</h1>
 
-      {/* Filters */}
+      {/* Filters section (search always visible, filter dropdown only if data) */}
       <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mb-4 filters">
-        <select
-          className="form-select"
-          value={status}
-          onChange={(e) => {
-            setStatus(e.target.value);
-            setPage(1); // reset to page 1 when filters change
-          }}
-        >
-          <option value="">All Statuses</option>
-          <option value="Alive">Alive</option>
-          <option value="Dead">Dead</option>
-          <option value="unknown">Unknown</option>
-        </select>
+        {filtered.length > 0 && (
+          <select
+            className="form-select"
+            value={status}
+            onChange={(e) => {
+              setStatus(e.target.value);
+              setPage(1);
+            }}
+          >
+            <option value="">All Statuses</option>
+            <option value="Alive">Alive</option>
+            <option value="Dead">Dead</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        )}
 
         <input
           type="text"
@@ -78,12 +76,12 @@ export default function Home() {
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
-            setPage(1); // reset to page 1 when filters change
+            setPage(1);
           }}
         />
       </div>
 
-      {/* Character Grid */}
+      {/* Characters */}
       <div className="row">
         {filtered.length > 0 ? (
           filtered.map((char) => (

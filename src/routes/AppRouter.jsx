@@ -5,10 +5,12 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import CharacterDetail from "../pages/CharacterDetail";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar"; // ✅ Import
 
 export default function AppRouter() {
   return (
-    <div className="app-container">
+    <div className="app-container" style={{ paddingTop: "100px" }}>
+      <Navbar /> {/* ✅ Fixed Navbar at the top */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

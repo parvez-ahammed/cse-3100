@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/About.css";
-import developerImage from "../assets/tahmid.jpg"; // ✅ Make sure this path is correct
+import developerImage from "../assets/tahmid.jpg"; 
 
 export default function About() {
   return (
