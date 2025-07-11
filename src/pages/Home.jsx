@@ -15,11 +15,15 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
+    <main className="container py-5">
+      <div className="text-center mb-5">
+        <h1 className="display-4 fw-bold text-success">Rick & Morty Explorer</h1>
+        <p className="lead">Discover characters from the Rick and Morty universe!</p>
+      </div>
+
       <div className="row">
         {characters.map((char) => (
-          <div className="col-md-4 mb-4" key={char.id}>
+          <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={char.id}>
             <CharacterCard character={char} />
           </div>
         ))}
