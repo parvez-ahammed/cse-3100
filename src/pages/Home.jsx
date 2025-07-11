@@ -17,7 +17,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
       <main className="container">
         <h1 className="my-4">Rick & Morty Explorer</h1>
         <div className="row">
