@@ -1,0 +1,115 @@
+.about-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background-color: #0f172a;
+  color: #f1f5f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+.about-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #facc15;
+  text-align: center;
+}
+
+.about-section {
+  margin-bottom: 2.5rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-subheading {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #38bdf8;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.about-quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #7dd3fc;
+  border-left: 4px solid #38bdf8;
+  padding-left: 1rem;
+}
+
+.about-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 4px solid #38bdf8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.hoverable-image:hover {
+  transform: scale(1.05);
+}
+
+/* Developer Section Layout */
+.developer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.no-box {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.developer-text {
+  text-align: center;
+  color: #f1f5f9;
+}
+
+.developer-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #7dd3fc;
+  margin-bottom: 0.5rem;
+}
+
+.developer-role {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.developer-email {
+  font-size: 1rem;
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.developer-email:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .developer-text {
+    text-align: center;
+  }
+}
