@@ -1,0 +1,98 @@
+.contact-container {
+  padding: 4rem 2rem;
+  min-height: 100vh;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  color: #f1f5f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-heading {
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: #facc15;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-top: 0.5rem;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  color: #f1f5f9;
+  font-size: 1rem;
+  transition: border 0.3s ease, background 0.3s ease;
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border: 1px solid #38bdf8;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.error-input {
+  border: 1px solid #f87171 !important;
+}
+
+.error-text {
+  color: #f87171;
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+.success-message {
+  color: #4ade80;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.submit-btn {
+  align-self: flex-start;
+  background-color: #38bdf8;
+  color: #0f172a;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.submit-btn:hover {
+  background-color: #0ea5e9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.4);
+}
