@@ -1,25 +1,21 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import FetchSingleCharacter from "../hooks/FetchSingleCharacter";
 
 export default function CharacterDetail() {
-  const { id } = useParams();
-  const [character, setCharacter] = useState(null);
-
-  useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((res) => res.json())
-      .then(setCharacter);
-  }, [id]);
+  const { character } = FetchSingleCharacter();
 
   if (!character) return <p>Loading...</p>;
 
   return (
-    <div className="container my-4">
+    <div className="flex flex-col items-center h-screen justify-center">
+      {console.log(character)}
       <h2>{character.name}</h2>
       <img src={character.image} alt={character.name} className="img-fluid" />
-      <p>
+      <p className="card-text">
         <strong>Status:</strong> {character.status} <br />
         <strong>Species:</strong> {character.species} <br />
+        <strong>Origin:</strong> {character.origin.name} <br />
+        <strong>Last Known Location:</strong> {character.location.name} <br />
+        <strong>Episodes Appeared in:</strong> {character.episode.length}
       </p>
     </div>
   );

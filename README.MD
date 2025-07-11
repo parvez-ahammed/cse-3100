@@ -6,7 +6,7 @@
 
 ## For UI :
 
-Tailwind css
+Tailwind CSS
 
 ## To Setup:
 

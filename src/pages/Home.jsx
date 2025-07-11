@@ -1,22 +1,13 @@
-import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
+import FetchCharacter from "../hooks/FetchCharacter";
 
 export default function Home() {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    const fetchCharacters = async () => {
-      const res = await fetch("https://rickandmortyapi.com/api/character");
-      const data = await res.json();
-      setCharacters(data.results);
-    };
-
-    fetchCharacters();
-  }, []);
+  
+  const {characters}=FetchCharacter();
 
   return (
-    <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
+    <main className="container flex flex-col items-center">
+      <div className="my-4 text-3xl">Rick & Morty Explorer</div>
       <div className="row">
         {characters.map((char) => (
           <div className="col-md-4 mb-4" key={char.id}>
