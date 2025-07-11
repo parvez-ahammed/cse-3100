@@ -19,9 +19,42 @@ Last known location
 Number of episodes they appeared in
 Used React Router’s dynamic routing with the character ID.
 
+## Feature 2 :
+
+Added a search box to filter characters by name.
+Added a dropdown to filter by status (Alive, Dead, Unknown).
+Filters work together
+
+## Feature 3:
+
+pagination added with “Next” and “Previous” button at the bottom.
+Shows only 10 characters per page.
+
+## Feature 4:
+
+Created a separate contact page with a form that includes:
+
+Name
+Email
+Message
+Submit button
+Form validation (e.g., required fields, valid email format)
+On submit, displays a success message and reset the form.
+
+## Feature 5 :
+
+Static About page which contains Info about the app,
+Developer,
+Favorite Rick & Morty quote
+
+## Additional:
+
+Added a Navigation bar for better navigation through pages.
+The Whole app is Wrapped with Dynamic Routing of React
+
 ## For UI :
 
-Tailwind CSS
+Used Tailwind CSS
 
 ## To Setup:
 

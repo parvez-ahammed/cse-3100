@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-6">
-      <h2 className="text-3xl font-bold text-center text-green-700">
+      <h2 className="text-3xl font-bold text-center text-slate-500">
         About Rick & Morty Explorer
       </h2>
 
@@ -13,7 +13,7 @@ export default function About() {
       </p>
 
       <div>
-        <h3 className="text-xl font-semibold text-green-600 mb-2">
+        <h3 className="text-xl font-semibold text-slate-500 mb-2">
           Developer Info
         </h3>
         <ul className="text-gray-700 list-disc list-inside space-y-1">
@@ -46,7 +46,7 @@ export default function About() {
         </ul>
       </div>
 
-      <blockquote className="italic border-l-4 border-green-500 pl-4 text-gray-700">
+      <blockquote className="italic border-l-4 border-slate-500 pl-4 text-gray-700">
         "To live is to risk it all; otherwise you're just an inert chunk of
         randomly assembled molecules drifting wherever the universe blows you."
         – Rick Sanchez
