@@ -15,6 +15,9 @@ export default function Navbar() {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -23,13 +26,23 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <NavLink to="/" className="nav-link" end>
+              <NavLink to="/" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")} end>
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/about" className="nav-link">
+              <NavLink to="/about" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>
                 About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/contact" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>
+                Contact
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/join" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>
+                Join
               </NavLink>
             </li>
           </ul>

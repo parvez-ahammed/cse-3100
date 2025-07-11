@@ -4,14 +4,19 @@ export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
+  // Handle input change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message || !form.email.includes("@")) {
-      alert("Please fill in all fields with valid data.");
+    const { name, email, message } = form;
+
+    // Simple validation
+    if (!name || !email.includes("@") || !message) {
+      alert("Please fill out all fields correctly.");
       return;
     }
 
@@ -20,46 +25,54 @@ export default function Contact() {
   };
 
   return (
-    <div className="container my-4">
-      <h2>Contact Us</h2>
-      {submitted && <div className="alert alert-success">Message sent successfully!</div>}
+    <div className="container py-5" style={{ maxWidth: "700px" }}>
+      <h2 className="mb-4 text-success">📬 Contact Us</h2>
 
-      <form onSubmit={handleSubmit}>
+      {submitted && (
+        <div className="alert alert-success">
+          ✅ Your message has been sent successfully!
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="bg-white p-4 rounded shadow-sm">
         <div className="mb-3">
-          <label>Name</label>
+          <label htmlFor="name" className="form-label fw-semibold">Name</label>
           <input
-            className="form-control"
             type="text"
             name="name"
+            className="form-control rounded-pill px-4 py-2"
             value={form.name}
             onChange={handleChange}
             required
           />
         </div>
+
         <div className="mb-3">
-          <label>Email</label>
+          <label htmlFor="email" className="form-label fw-semibold">Email</label>
           <input
-            className="form-control"
             type="email"
             name="email"
+            className="form-control rounded-pill px-4 py-2"
             value={form.email}
             onChange={handleChange}
             required
           />
         </div>
-        <div className="mb-3">
-          <label>Message</label>
+
+        <div className="mb-4">
+          <label htmlFor="message" className="form-label fw-semibold">Message</label>
           <textarea
-            className="form-control"
             name="message"
             rows="5"
+            className="form-control rounded-4 px-4 py-3"
             value={form.message}
             onChange={handleChange}
             required
           ></textarea>
         </div>
-        <button className="btn btn-primary" type="submit">
-          Send
+
+        <button type="submit" className="btn btn-primary rounded-pill px-4 w-100">
+          ✉️ Send Message
         </button>
       </form>
     </div>
