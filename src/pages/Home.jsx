@@ -4,7 +4,6 @@ import SearchBox from "../components/SearchBox";
 import StatusFilter from "../components/StatusFilter";
 import PaginationControls from "../components/PaginationControls";
 import { useSearchParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
 
 export default function Home() {
   const { characters, info } = FetchCharacter();
@@ -16,7 +15,6 @@ export default function Home() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <Navbar />
       <div className="flex flex-col sm:flex-row gap-4 mb-6">
         <SearchBox />
         <StatusFilter />
