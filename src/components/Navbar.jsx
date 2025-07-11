@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <nav className="flex justify-around items-center p-7 bg-gray-900 text-white">
-      <div className="flex items-center gap-4 text-2xl">
-        <GiStairs size={48} />
-        <h1 className="font-extrabold">Rick & Morty Explorer</h1>
-      </div>
+      <Link to={"/"}>
+        <div className="flex items-center gap-4 text-2xl cursor-pointer">
+          <GiStairs size={48} />
+          <h1 className="font-extrabold">Rick & Morty Explorer</h1>
+        </div>
+      </Link>
       <ul className="flex gap-7">
         <Link to={"/"}>
           <li className="relative group">
