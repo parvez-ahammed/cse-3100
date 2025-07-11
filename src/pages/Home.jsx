@@ -2,26 +2,40 @@ import CharacterCard from "../components/CharacterCard";
 import FetchCharacter from "../hooks/FetchCharacter";
 import SearchBox from "../components/SearchBox";
 import StatusFilter from "../components/StatusFilter";
+import PaginationControls from "../components/PaginationControls";
+import { useSearchParams } from "react-router-dom";
 
 export default function Home() {
-  const { characters } = FetchCharacter();
+  const { characters, info } = FetchCharacter();
+  const [searchParams] = useSearchParams();
+  const uiPage = parseInt(searchParams.get("page") || "1");
+
+  // Show 10 per UI page
+  const startIndex = ((uiPage - 1) % 2) * 10;
+  const visibleCharacters = characters.slice(startIndex, startIndex + 10);
 
   return (
-    <main className="container flex flex-col items-center">
-      <div className="my-4 text-3xl">Rick & Morty Explorer</div>
+    <main className="container mx-auto px-4 py-8">
+      <h2 className="text-3xl font-bold text-center mb-6">
+        Rick & Morty Explorer
+      </h2>
 
-      <div className="w-100">
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
         <SearchBox />
         <StatusFilter />
       </div>
 
-      <div className="row">
-        {characters.map((char) => (
-          <div className="col-md-4 mb-4" key={char.id}>
-            <CharacterCard character={char} />
-          </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        {visibleCharacters.map((char) => (
+          <CharacterCard key={char.id} character={char} />
         ))}
       </div>
+
+      {characters.length > 0 && (
+        <div className="mt-8">
+          <PaginationControls totalItems={characters.length} />
+        </div>
+      )}
     </main>
   );
 }
