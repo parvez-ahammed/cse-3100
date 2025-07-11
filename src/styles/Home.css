@@ -97,3 +97,39 @@ h1 {
   font-size: 1.2rem;
   margin-top: 2rem;
 }
+/* Improved Pagination Style */
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.pagination-buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pagination-buttons button:hover:not(:disabled) {
+  background-color: #e2e2e2;
+}
+
+.pagination-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Active Page Styling */
+.pagination-buttons .page-number {
+  padding: 0.5rem 1rem;
+  background-color: #e53e3e; /* red */
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+}

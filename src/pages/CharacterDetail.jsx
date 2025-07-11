@@ -42,8 +42,8 @@ export default function CharacterDetail() {
           <div className="detail-item"><strong>Number of episodes:</strong> {character.episode.length}</div>
         </div>
 
-        {/* Button to go back to the home page */}
-        <button className="back-home" onClick={() => navigate("/")}>
+        {/* Button to go back to the previous page */}
+        <button className="back-home" onClick={() => navigate(-1)}>
           ⬅ Back to Home
         </button>
       </div>
