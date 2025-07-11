@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
+import Header from "../components/header";
 
 export default function Home() {
   const [characters, setCharacters] = useState([]);
@@ -16,13 +17,20 @@ export default function Home() {
 
   return (
     <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
-      <div className="row">
-        {characters.map((char) => (
-          <div className="col-md-4 mb-4" key={char.id}>
-            <CharacterCard character={char} />
-          </div>
-        ))}
+      <div className="m-0 p-0">
+        <Header />
+      </div>
+      <div className="m-20 p-5">
+        <h1 className="text-2xl font-semibold text-gray-800 my-4">
+          Characters:
+        </h1>
+        <div className="row pr-20">
+          {characters.map((char) => (
+            <div className="col-md-4 mb-4" key={char.id}>
+              <CharacterCard character={char} />
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );
