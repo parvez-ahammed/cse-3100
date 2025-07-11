@@ -5,6 +5,9 @@ In this project, you'll build a beautiful and interactive single-page applicatio
 You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
 
 ---
+##wakatime badge 
+
+[![wakatime](https://wakatime.com/badge/user/70cb7d88-dce0-4f4d-ac94-d2f0d4b9ae3b/project/02489e11-8a61-479b-873b-0238e0163cde.svg)](https://wakatime.com/badge/user/70cb7d88-dce0-4f4d-ac94-d2f0d4b9ae3b/project/02489e11-8a61-479b-873b-0238e0163cde)
 
 ## Submission Guidelines
 
