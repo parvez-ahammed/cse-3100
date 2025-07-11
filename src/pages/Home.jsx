@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
-import CharacterCard from "../components/CharacterCard";
+import { Link } from "react-router-dom"; // routing
+import CharacterCard from "../components/CharacterCard"; // jei component use korchen
+import { useEffect, useState } from "react"; // data load korar jonno
 
 export default function Home() {
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]); // state to store characters
 
+  // API theke character data load korbo
   useEffect(() => {
-    const fetchCharacters = async () => {
-      const res = await fetch("https://rickandmortyapi.com/api/character");
-      const data = await res.json();
-      setCharacters(data.results);
-    };
-
-    fetchCharacters();
+    fetch("https://rickandmortyapi.com/api/character")
+      .then((res) => res.json())
+      .then((data) => setCharacters(data.results))
+      .catch((err) => console.error("Error fetching characters:", err));
   }, []);
 
   return (
@@ -19,6 +18,11 @@ export default function Home() {
       <div className="text-center mb-5">
         <h1 className="display-4 fw-bold text-success">Rick & Morty Explorer</h1>
         <p className="lead">Discover characters from the Rick and Morty universe!</p>
+
+        {/* Navigation Button to About */}
+        <Link to="/about" className="btn btn-outline-primary mt-3">
+          Learn More About This App
+        </Link>
       </div>
 
       <div className="row">
