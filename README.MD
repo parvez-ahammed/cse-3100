@@ -44,3 +44,6 @@ npm run dev
 
 ## Wakatime Badge
 - [![wakatime](https://wakatime.com/badge/user/41f37653-8fc2-4ae4-b4c5-d7c1f8df20d3/project/34d27d19-a56b-4f7a-afe5-1b982263247d.svg)](https://wakatime.com/badge/user/41f37653-8fc2-4ae4-b4c5-d7c1f8df20d3/project/34d27d19-a56b-4f7a-afe5-1b982263247d)
+
+## Wakatime URL
+- https://wakatime.com/@41f37653-8fc2-4ae4-b4c5-d7c1f8df20d3/projects/damlmoypob?start=2025-07-06&end=2025-07-12
