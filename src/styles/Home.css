@@ -1,0 +1,99 @@
+main.container {
+  max-width: 1440px;
+  margin: auto;
+  padding: 2rem 1rem;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  color: #1a202c;
+}
+
+/* Filters */
+.filters {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+/* Centered Search Input */
+.filters input {
+  flex-grow: 1;
+  max-width: 600px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e0;
+  text-align: center;
+}
+
+/* Filter Dropdown to the Right */
+.filters select {
+  position: absolute;
+  right: 0;
+  padding: 0.7rem 1rem;
+  font-size: 1.05rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e0;
+  min-width: 160px;
+}
+
+/* Character Grid */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+  background: transparent;
+}
+
+.col-md-4 {
+  flex: 0 1 calc(25% - 1rem);
+  max-width: 300px;
+  min-width: 260px;
+}
+
+/* Mobile and Tablet Styles */
+@media (max-width: 1024px) {
+  .col-md-4 {
+    flex: 0 1 calc(33.333% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    position: static;
+    align-items: stretch;
+  }
+
+  .filters input,
+  .filters select {
+    width: 100%;
+    max-width: 100%;
+    position: static;
+  }
+
+  .col-md-4 {
+    flex: 0 1 100%;
+  }
+}
+
+.text-center {
+  text-align: center;
+  color: #4a5568;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}

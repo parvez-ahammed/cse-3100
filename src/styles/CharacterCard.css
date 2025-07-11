@@ -1,0 +1,10 @@
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-link:hover .character-card {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+}
