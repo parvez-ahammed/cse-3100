@@ -1,0 +1,93 @@
+.detail-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: #f4f4f4;
+  padding: 2rem;
+}
+
+.character-card {
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.character-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #eee;
+  margin-bottom: 1rem;
+}
+
+.character-info h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.info-grid div {
+  background: #fafafa;
+  padding: 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.info-grid span {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.info-grid p {
+  margin: 0.2rem 0 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  background: #333;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.back-button:hover {
+  background: #555;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
-//import Header from "../components/Header";
-//import Footer from "../components/Footer";
+
 import './home.css';
 
 export default function Home() {

@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./CharacterDetail.css";
 
 export default function CharacterDetail() {
   const { id } = useParams();
@@ -11,16 +12,45 @@ export default function CharacterDetail() {
       .then(setCharacter);
   }, [id]);
 
-  if (!character) return <p>Loading...</p>;
+  if (!character) {
+    return <p className="loading">Loading...</p>;
+  }
 
   return (
-    <div className="container my-4">
-      <h2>{character.name}</h2>
-      <img src={character.image} alt={character.name} className="img-fluid" />
-      <p>
-        <strong>Status:</strong> {character.status} <br />
-        <strong>Species:</strong> {character.species} <br />
-      </p>
+    <div className="detail-wrapper">
+      <div className="character-card">
+        <img
+          src={character.image}
+          alt={character.name}
+          className="character-image"
+        />
+        <div className="character-info">
+          <h1>{character.name}</h1>
+          <div className="info-grid">
+            <div>
+              <span>Status</span>
+              <p>{character.status}</p>
+            </div>
+            <div>
+              <span>Species</span>
+              <p>{character.species}</p>
+            </div>
+            <div>
+              <span>Gender</span>
+              <p>{character.gender}</p>
+            </div>
+            <div>
+              <span>Origin</span>
+              <p>{character.origin?.name}</p>
+            </div>
+            <div>
+              <span>Location</span>
+              <p>{character.location?.name}</p>
+            </div>
+          </div>
+          <Link to="/" className="back-button">← Back to Home</Link>
+        </div>
+      </div>
     </div>
   );
 }

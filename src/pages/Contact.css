@@ -63,3 +63,21 @@
 .contact-form button:hover {
   background-color: #333;
 }
+.success-message {
+  color: green;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.contact-form input.error-border,
+.contact-form textarea.error-border {
+  border-color: red;
+}
+
