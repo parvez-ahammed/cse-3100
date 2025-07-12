@@ -1,0 +1,29 @@
+.about-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
+  background-color: #0f0f1c;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.section {
+  background-color: #1a1a2e;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.1);
+}
+
+.section-title {
+  color: #00ffff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-left: 4px solid #00ffcc;
+  padding-left: 12px;
+}
+
+.about-page p {
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
