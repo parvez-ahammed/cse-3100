@@ -1,4 +1,4 @@
-# Assignment 1 – React Dropdown Filter
+# Assignment 1 – Rick & Morty Explorer
 
 This project is a submission for **CSE 3100 - Software Development** Assignment 1. It demonstrates a React-based dropdown filter interface using Vite as the build tool.
 
@@ -36,7 +36,7 @@ To run this project locally:
 
 ```bash
 # Clone your fork
-git clone https://github.com/<your-username>/cse-3100.git
+git clone https://github.com/0Nafi0/cse-3100.git
 cd cse-3100
 
 # Install dependencies
