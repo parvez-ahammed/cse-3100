@@ -11,7 +11,7 @@ export default function Home() {
     species: { human: 0, alien: 0, other: 0 }
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [humansPerPage] = useState(10); // Changed from 4 to 10 characters per page
+  const [humansPerPage] = useState(10); 
 
   useEffect(() => {
     fetchAllCharacters();
@@ -30,7 +30,7 @@ export default function Home() {
         const res = await fetch(url);
         const data = await res.json();
         allCharacters = [...allCharacters, ...(data.results || [])];
-        url = data.info?.next; // Get next page URL
+        url = data.info?.next; 
       }
 
       setCharacters(allCharacters);
