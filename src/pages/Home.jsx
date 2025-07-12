@@ -1,29 +1,14 @@
-import { useEffect, useState } from "react";
-import CharacterCard from "../components/CharacterCard";
+import React from "react";
+import Navbar from "../components/Navbar";
+import Banner from "../components/Banner";
 
 export default function Home() {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    const fetchCharacters = async () => {
-      const res = await fetch("https://rickandmortyapi.com/api/character");
-      const data = await res.json();
-      setCharacters(data.results);
-    };
-
-    fetchCharacters();
-  }, []);
-
   return (
-    <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
-      <div className="row">
-        {characters.map((char) => (
-          <div className="col-md-4 mb-4" key={char.id}>
-            <CharacterCard character={char} />
-          </div>
-        ))}
+    <div className="min-h-screen bg-gradient-to-tr from-[#0f2027] via-[#203a43] to-[#2c5364] p-8 sm:p-6">
+      <div className="max-w-[1400px] mx-auto bg-white/5 rounded-2xl backdrop-blur-lg shadow-lg border border-white/20 p-8 relative">
+        <Navbar />
+        <Banner />
       </div>
-    </main>
+    </div>
   );
 }
