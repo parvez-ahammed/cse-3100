@@ -6,6 +6,67 @@ You'll apply React and JavaScript skills, routing, API fetching, conditional ren
 
 ---
 
+## waka time
+[![wakatime](https://wakatime.com/badge/user/e0ed99f9-5f30-4f27-9920-703655de3846/project/105d9a72-31b6-4d29-8af0-c243654ba0ba.svg)](https://wakatime.com/badge/user/e0ed99f9-5f30-4f27-9920-703655de3846/project/105d9a72-31b6-4d29-8af0-c243654ba0ba)
+
+## Work done
+📌 Project Details
+
+- Frontend & Design
+Designed visually appealing, responsive, and user-friendly websites using modern UI/UX principles
+
+
+
+- Backend Development with Laravel
+Developed dynamic, data-driven web applications using the Laravel framework
+
+ - Implemented robust RESTful APIs to power frontend and external integrations
+
+    
+
+Version Control
+Collaborated efficiently using Git and GitHub
+
+Applied advanced branching strategies, pull requests, and merge conflict resolution for seamless team development
+
+- Containerization
+Set up containerized environments using Docker for consistent development and deployment
+
+Used docker-compose to manage multi-container Laravel + MySQL/Nginx setups
+
+- DevOps & CI/CD
+Understood and implemented CI/CD pipelines to automate testing, builds, and deployments
+
+Utilized tools like GitHub Actions, GitLab CI, or Jenkins to streamline development workflows
+
+- Automation & Best Practices
+Automated repetitive tasks using DevOps best practices and shell scripting
+
+Improved deployment reliability and rollback strategies
+
+- Deployment
+Delivered a full-stack Laravel web application
+
+Packaged in Docker containers
+
+Deployed to a live server or cloud platform
+
+Featured persistent storage, secure APIs, and a clean UI
+
+##  AI Project Work 
+
+###  Spam Detection using NLP
+- Built a Naive Bayes and Logistic Regression model to classify email content as spam or not spam.
+- Used scikit-learn and NLTK for text preprocessing, stop-word removal, and vectorization (TF-IDF).
+- Evaluated model using precision, recall, and F1-score.
+- Deployed using Streamlit for web demo and Heroku for live hosting.
+
+###  Face Recognition System
+- Trained a CNN-based model using OpenCV and face encodings (dlib) for real-time face identification.
+- Implemented face verification for attendance system.
+- Deployed in local environment using Flask + OpenCV for live camera feed processing.
+
+
 ## Submission Guidelines
 
 The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):

@@ -1,12 +1,154 @@
+/* General Page Styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #dae4a6;
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
+/* Main Container */
 .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
+
+/* Title */
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #222;
+}
+
+/* Filter Input & Dropdown */
+input[type="text"], select {
+  font-size: 1rem;
+  padding: 0.6rem 0.75rem;
+  margin: 0.5rem 0.5rem 1.5rem 0;
+  border: 1px solid #0e0303;
+  border-radius: 6px;
+  width: 250px;
+  box-sizing: border-box;
+}
+
+/* Character Grid Layout */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Character Card */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Character Image */
+.card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-bottom: 1px solid #0a0404;
+}
+
+/* Card Body */
+.card-body {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* View Details Button */
+.card button {
+  padding: 0.5rem 1rem;
+  background-color: #164c8a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #005ecb;
+}
+
+/* Load More Button */
+.load-more {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.load-more button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.load-more button:hover {
+  background-color: #005ecb;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+  .character-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .character-grid {
+    grid-template-columns: 1fr;
+  }
+
+  input[type="text"], select {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+input, textarea {
+  font-size: 1rem;
+  border: 1px solid #792c2c;
+  border-radius: 6px;
+}
+
+label {
+  font-weight: bold;
+}
+
+
