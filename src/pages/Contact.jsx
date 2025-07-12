@@ -1,20 +1,95 @@
+import { useState } from "react";
+
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Invalid email format";
+    }
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length === 0) {
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      setErrors({});
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <div className="container my-4">
       <h2>Contact Us</h2>
-      <form>
+
+      {submitted && (
+        <div className="alert alert-success">Your message was sent!</div>
+      )}
+
+      <form onSubmit={handleSubmit} noValidate>
         <div className="mb-3">
-          <label>Name</label>
-          <input className="form-control" type="text" />
+          <label className="form-label">Name</label>
+          <input
+            name="name"
+            type="text"
+            value={formData.name}
+            onChange={handleChange}
+            className={`form-control ${errors.name ? "is-invalid" : ""}`}
+          />
+          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
         </div>
+
         <div className="mb-3">
-          <label>Email</label>
-          <input className="form-control" type="email" />
+          <label className="form-label">Email</label>
+          <input
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={`form-control ${errors.email ? "is-invalid" : ""}`}
+          />
+          {errors.email && (
+            <div className="invalid-feedback">{errors.email}</div>
+          )}
         </div>
+
         <div className="mb-3">
-          <label>Message</label>
-          <textarea className="form-control" rows="5"></textarea>
+          <label className="form-label">Message</label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows="5"
+            className={`form-control ${errors.message ? "is-invalid" : ""}`}
+          />
+          {errors.message && (
+            <div className="invalid-feedback">{errors.message}</div>
+          )}
         </div>
+
         <button className="btn btn-primary" type="submit">
           Send
         </button>
@@ -22,3 +97,4 @@ export default function Contact() {
     </div>
   );
 }
+
