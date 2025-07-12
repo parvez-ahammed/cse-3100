@@ -93,5 +93,5 @@ The app will run at http://localhost:5173 (if using Vite).
 👩‍💻 Developer Info
 
 Sadia Sultana
-3rd Year, 1st Semester
-CSE, AUST
+3rd Year, 1st Semester.
+AUST - CSE
