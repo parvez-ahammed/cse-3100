@@ -1,8 +1,38 @@
-# Rick & Morty Explorer – Assignment 1
+# Rick & Morty Explorer - CSE-3100
 
-In this project, you'll build a beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
+Rick & Morty Explorer is a fan-made React application to browse, search, and filter characters from the Rick and Morty universe. This project demonstrates modern frontend development practices including:
 
-You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
+- API fetching
+- Pagination
+- Filtering
+- Routing
+- Responsive layout
+- Character detail view
+- Contact form with confirmation
+- Static About page
+
+---
+
+## 👩‍💻 Submitted By
+
+- **Name:** Faiad Nakib 
+- **Roll Number:** 20220204080
+
+---
+
+## 🕒 Time Tracking (WakaTime)
+
+- **Total Coding Time:**  
+    [![wakatime](https://wakatime.com/@7d570a56-773f-4e49-8d78-0b0803fea282/projects/occzfrslee?start=2025-07-07&end=2025-07-13)
+
+## ✨ Features
+
+- **Character Filtering:** Search characters by name and filter by status (Alive, Dead, Unknown).
+- **Pagination:** View characters 10 per page with Next, Prev, and page number buttons.
+- **Dynamic Routing:** Click any character to view a full profile with details.
+- **Contact Form:** Submit a message and see a confirmation popup.
+- **About Page:** Static info about the project and its authors.
+- **Responsive Design:** Optimized layout for both desktop and mobile.
 
 ---
 
