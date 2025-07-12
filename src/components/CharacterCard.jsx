@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export default function CharacterCard({ character }) {
+  const [showDetails, setShowDetails] = useState(false);
+
   return (
     <div className="card">
       <img
@@ -12,7 +16,19 @@ export default function CharacterCard({ character }) {
           <strong>Status:</strong> {character.status} <br />
           <strong>Species:</strong> {character.species}
         </p>
-        <button>View Details</button>
+
+        <button
+          className="btn btn-primary"
+          onClick={() => setShowDetails(!showDetails)}
+        >
+          {showDetails ? "Hide Details" : "View Details"}
+        </button>
+
+        {showDetails && (
+          <div className="mt-3">
+            <p>{character.description}</p>
+          </div>
+        )}
       </div>
     </div>
   );
