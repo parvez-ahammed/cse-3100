@@ -11,15 +11,22 @@ export default function CharacterDetail() {
       .then(setCharacter);
   }, [id]);
 
-  if (!character) return <p>Loading...</p>;
+  if (!character) return <p className="text-center mt-8">Loading...</p>;
 
   return (
-    <div className="container my-4">
-      <h2>{character.name}</h2>
-      <img src={character.image} alt={character.name} className="img-fluid" />
-      <p>
+    <div className="max-w-xl mx-auto my-8 bg-white p-6 rounded shadow">
+      <h2 className="text-3xl font-bold mb-4">{character.name}</h2>
+      <img
+        src={character.image}
+        alt={character.name}
+        className="w-64 mx-auto rounded shadow mb-4"
+      />
+      <p className="text-lg">
         <strong>Status:</strong> {character.status} <br />
         <strong>Species:</strong> {character.species} <br />
+        <strong>Origin:</strong> {character.origin.name} <br />
+        <strong>Last Location:</strong> {character.location.name} <br />
+        <strong>Episodes:</strong> {character.episode.length}
       </p>
     </div>
   );

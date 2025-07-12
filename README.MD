@@ -38,6 +38,9 @@ Make sure you have the following installed:
 
 ---
 
+## waka time 
+[![wakatime](https://wakatime.com/badge/user/9ed32cdc-f1b0-40d8-b67e-a2a820a8a845/project/a27bea73-af77-4ab5-885b-4058b0f397fa.svg)](https://wakatime.com/badge/user/9ed32cdc-f1b0-40d8-b67e-a2a820a8a845/project/a27bea73-af77-4ab5-885b-4058b0f397fa)
+
 ## Setup Instructions
 
 ### Clone the Repository
