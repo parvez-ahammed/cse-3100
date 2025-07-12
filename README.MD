@@ -5,7 +5,7 @@ An interactive React application for exploring characters from the Rick and Mort
 ---
 
 ## Wakatime Stats
-[![wakatime](https://wakatime.com/badge/user/cecc9ca2-fced-44a8-af23-56ed7c3bd08a/cse-3100.svg)](https://wakatime.com/@cecc9ca2-fced-44a8-af23-56ed7c3bd08a)
+[![wakatime](https://wakatime.com/badge/user/cecc9ca2-fced-44a8-af23-56ed7c3bd08a.svg)](https://wakatime.com/@cecc9ca2-fced-44a8-af23-56ed7c3bd08a)
 
 ## ✅ Features Implemented
 
