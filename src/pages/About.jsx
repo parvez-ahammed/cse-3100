@@ -63,7 +63,7 @@ const About = () => {
 
         <div className="mt-10 text-center text-sm text-[#00e0b6] font-semibold italic tracking-wide">
           Developed by Sadia Sultana 👩‍💻 <br />
-          Just another curious mind from AUST, Year 3 🎓 <br />
+          Just another curious mind from AUST, CSE, Year 3 🎓 <br />
           Crafted this during a multiverse-level coding session for my Software
           Development course 🛠️🪐
         </div>
