@@ -1,12 +1,159 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+/* Base Layout */
+html, body, #root {
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 1rem;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: var(--bs-navbar-bg) !important;
+  border-bottom: 1px solid var(--bs-border-color);
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bs-navbar-color) !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  color: var(--bs-navbar-color) !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--bs-navbar-hover-color) !important;
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  color: var(--bs-navbar-active-color) !important;
+  font-weight: 600;
+}
+
+.navbar-toggler {
+  border-color: var(--bs-border-color);
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+  transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: var(--bs-body-bg);
+  padding: 4rem 0;
+  text-align: center;
+  margin-bottom: 3rem;
+  transition: all 0.3s ease;
+}
+
+.hero-section:hover {
+  transform: translateY(-3px);
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--bs-body-color);
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  color: var(--bs-text-muted);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  transition: all 0.3s ease;
+}
+
+/* Card Styles */
+.card {
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px var(--bs-box-shadow);
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--bs-card-bg);
+  color: var(--bs-body-color);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px var(--bs-box-shadow-hover);
+}
+
+/* Footer */
+footer {
+  background-color: var(--bs-footer-bg);
+  padding: 2rem 0;
+  border-top: 1px solid var(--bs-border-color);
+  margin-top: auto;
+  transition: all 0.3s ease;
+}
+
+/* Theme Variables */
+[data-bs-theme="dark"] {
+  --bs-body-bg: #121212;
+  --bs-body-color: #f8f9fa;
+  --bs-card-bg: #1e1e1e;
+  --bs-footer-bg: #1a1a1a;
+  --bs-navbar-bg: #1a1a1a;
+  --bs-text-muted: #adb5bd;
+  --bs-navbar-color: rgba(255, 255, 255, 0.75);
+  --bs-navbar-hover-color: #ffffff;
+  --bs-navbar-active-color: #ffffff;
+  --bs-border-color: rgba(255, 255, 255, 0.1);
+  --bs-box-shadow: rgba(0, 0, 0, 0.3);
+  --bs-box-shadow-hover: rgba(0, 0, 0, 0.4);
+}
+
+[data-bs-theme="light"] {
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #212529;
+  --bs-card-bg: #ffffff;
+  --bs-footer-bg: #f8f9fa;
+  --bs-navbar-bg: #f8f9fa;
+  --bs-text-muted: #6c757d;
+  --bs-navbar-color: rgba(0, 0, 0, 0.7);
+  --bs-navbar-hover-color: #000000;
+  --bs-navbar-active-color: #000000;
+  --bs-border-color: rgba(0, 0, 0, 0.1);
+  --bs-box-shadow: rgba(0, 0, 0, 0.05);
+  --bs-box-shadow-hover: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 1rem !important;
+  }
+  .hero-section h1 {
+    font-size: 2.25rem;
+  }
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
 }
