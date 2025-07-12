@@ -54,5 +54,5 @@ An interactive React application for exploring characters from the Rick and Mort
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/rick-and-morty-explorer.git
+git clone https://github.com/0Nafi0/rick-and-morty-explorer.git
 cd rick-and-morty-explorer
