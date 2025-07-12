@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -18,7 +17,6 @@ export default function CharacterDetail() {
     <div className="container my-4">
       <h2>{character.name}</h2>
       <img src={character.image} alt={character.name} className="img-fluid mb-3" />
-
       <p>
         <strong>Status:</strong> {character.status} <br />
         <strong>Species:</strong> {character.species} <br />
