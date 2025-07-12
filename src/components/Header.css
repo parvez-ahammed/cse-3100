@@ -1,18 +1,32 @@
 .navbar {
   background: #f9f9f9;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
+  padding: 0.3rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .navbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 40px;
+}
+
+.navbar h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
 .nav-links a {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   text-decoration: none;
   color: #333;
   font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.nav-links a:hover {
+  color: #0077cc;
 }
