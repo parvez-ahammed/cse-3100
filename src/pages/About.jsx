@@ -24,15 +24,29 @@ export default function About() {
           {/* Main content */}
           <div className="space-y-6 text-gray-700 dark:text-gray-300">
             <p className="text-lg leading-relaxed">
-              Dive into the multiverse with our React application that lets you
-              explore the bizarre and wonderful characters from the Rick & Morty
-              universe. Built with <span className="text-red-500">❤️</span> by
-              students of{" "}
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-                CSE-3100
-              </span>
-              .
+              This React application lets you explore characters from the Rick &
+              Morty universe. Built with{" "}
+              <span className="text-red-500">❤️</span> as part of our CSE-3100
+              course project.
             </p>
+
+            {/* Developer Info */}
+            <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border-l-4 border-indigo-400 dark:border-indigo-500">
+              <h3 className="font-bold text-indigo-600 dark:text-indigo-400 mb-2">
+                Developer Information
+              </h3>
+              <div className="space-y-2">
+                <p>
+                  <span className="font-medium">Name:</span> Md Abu Sayem Pias
+                </p>
+                <p>
+                  <span className="font-medium">ID:</span> 20220204100
+                </p>
+                <p>
+                  <span className="font-medium">Section:</span> B
+                </p>
+              </div>
+            </div>
 
             {/* Features section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -88,37 +102,16 @@ export default function About() {
             </div>
           </div>
 
-          {/* Team section */}
-          <div className="mt-8">
-            <h3 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">
-              Development Team
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {[
-                "Team Member 1",
-                "Team Member 2",
-                "Team Member 3",
-                "Team Member 4",
-              ].map((member) => (
-                <span
-                  key={member}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 text-sm rounded-full"
-                >
-                  {member}
-                </span>
-              ))}
-            </div>
+          {/* Bottom credit */}
+          <div className="mt-8 text-center text-gray-400 dark:text-gray-500 text-sm animate-fade-in delay-300">
+            <p>
+              Made with React, Tailwind CSS, and interdimensional cable
+              technology
+            </p>
+            <p className="mt-1 text-xs">
+              © {new Date().getFullYear()} CSE-3100 Project
+            </p>
           </div>
-        </div>
-
-        {/* Bottom credit */}
-        <div className="mt-8 text-center text-gray-400 dark:text-gray-500 text-sm animate-fade-in delay-300">
-          <p>
-            Made with React, Tailwind CSS, and interdimensional cable technology
-          </p>
-          <p className="mt-1 text-xs">
-            © {new Date().getFullYear()} CSE-3100 Project
-          </p>
         </div>
       </div>
     </div>

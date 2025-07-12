@@ -1,168 +1,132 @@
-# Rick & Morty Explorer – Assignment 1
+# Rick & Morty Explorer - Assignment 1
 
-In this project, you'll build a beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
+## Project Screenshots
 
-You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
+<div align="center">
+  <h3>Home Page with Character Listing</h3>
+  <img src="./src/assets/screenshots/home.png" alt="Home Page" width="400">
+  <br/><br/>
 
----
+  <h3>Home Page with Character Listing light mode</h3>
+  <img src="./src/assets/screenshots/home1.png" alt="Home Page" width="400">
+  <br/><br/>
 
-## Submission Guidelines
+  <h3>Character Details Page</h3>
+  <img src="./src/assets/screenshots/character-detail.png" alt="Character Details" width="400">
+  <br/><br/>
 
-The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
+  <h3>Contact Form</h3>
+  <img src="./src/assets/screenshots/contact.png" alt="Contact Page" width="400">
+  <br/><br/>
 
-- **Time Tracking (Recommended):**  
-  Use tools like [WakaTime](https://wakatime.com/) to track your development time. This provides visibility into the effort invested.
+  <h3>About Page</h3>
+  <img src="./src/assets/screenshots/about.png" alt="About Page" width="400">
+</div>
+A responsive React application that allows users to explore characters from the Rick & Morty universe using the public Rick & Morty API.
 
-- **Updated README (Mandatory):**  
-  Include a clear and updated `README.md` in your repository with:
+## Features Implemented
 
-  - Summary of implemented features
-  - Any additional improvements made
-  - Setup and run instructions
-  - Known issues or limitations
-  - Notes for the instructor
+### Core Requirements
 
-- **AI Tool Usage (If Used):**  
-  If you have used any AI-powered tools during development, please include:
-  - A short description of which AI tool(s) were used
-  - A brief explanation of how they were used
+✅ **Character Details Page**
 
-## Requirements
+- Dynamic routing (e.g., /character/1)
+- Displays comprehensive character information including:
+  - Image, name, status, species
+  - Origin and last known location
+  - Episode count
 
-Make sure you have the following installed:
+✅ **Search & Filter Functionality**
 
-- [Node.js (preferably v22.16.5)](https://nodejs.org/en/download/)
-- [Code editor – VSCode](https://code.visualstudio.com/)
-- [NVM (optional)](https://github.com/coreybutler/nvm-windows)
-- [WakaTime extension for VSCode (to track total time invested in this project)](https://wakatime.com/plugins/vscode)
+- Name search with real-time filtering
+- Status filter (Alive/Dead/Unknown)
+- Combined filters with URL persistence
 
----
+✅ **Pagination System**
 
-## waka time 
+- Next/Previous buttons
+- 10 characters per page
+- Boundary protection (can't go beyond first/last page)
+
+✅ **Contact Us Page**
+
+- Form with validation for:
+  - Name (required)
+  - Email (format validation)
+  - Message (required)
+- Success message on submission
+
+✅ **About Us Page**
+
+- App description
+- Developer information
+- Favorite Rick & Morty quote
+
+✅ **Code Quality**
+
+- Reusable components (CharacterCard, SearchBar)
+- Clean folder structure
+- Meaningful variable names
+- Proper commenting
+
+### Bonus Features Implemented
+
+✨ **Dark/Light Mode Toggle**
+
+- Full theme support across all pages
+- Persists user preference in localStorage
+
+✨ **Enhanced Animations**
+
+- Smooth transitions between pages
+- Loading states
+- Interactive hover effects
+
+## Development Details
+
+### Technologies Used
+
+- React.js
+- React Router
+- Tailwind CSS
+- Rick & Morty API
+
+### AI Tool Usage
+
+I used the following AI tools during development:
+
+**1. DeepSeek Chat**
+
+- Assisted with debugging React state management issues
+- Suggested optimizations for API fetching
+- Helped design the responsive layout
+
+**2. ChatGPT**
+
+- Generated boilerplate code for form validation
+- Provided Tailwind CSS class recommendations
+- Suggested animation implementations
+
+**Note:** All AI-generated code was reviewed, modified, and properly integrated into the project.
+
+### Time Investment
+
 [![wakatime](https://wakatime.com/badge/user/9ed32cdc-f1b0-40d8-b67e-a2a820a8a845/project/a27bea73-af77-4ab5-885b-4058b0f397fa.svg)](https://wakatime.com/badge/user/9ed32cdc-f1b0-40d8-b67e-a2a820a8a845/project/a27bea73-af77-4ab5-885b-4058b0f397fa)
+
+Total development time: ~6 hours
 
 ## Setup Instructions
 
-### Clone the Repository
+### Prerequisites
 
-Fork the base repository. Then, clone the forked repository to your local machine and switch to the branch assignment-1
+- Node.js (v18+ recommended)
+- npm or yarn
 
-```bash
-git clone git@github.com:parvez-ahammed/cse-3100.git
-cd cse-3100
-git checkout assignment-1
-```
+### Installation
 
-### Install Dependencies
-
-Run the following to install npm dependencies
-
-```bash
-npm install
-```
-
-### Run the Development Server
-
-```bash
-npm run dev
-```
-
----
-
-## Assignment Instructions
-
-You'll enhance the base Rick & Morty character explorer app with the following features and pages.
-
-### 1. Character Details Page (2 marks)
-
-On the main list, clicking a character should navigate to a dynamic route (e.g., /character/1) and display:
-
-- Name
-- Image
-- Status
-- Species
-- Origin
-- Last known location
-- Number of episodes they appeared in
-
-You must use React Router’s dynamic routing with the character ID.
-
-### 2. Search + Filter Functionality (2 marks)
-
-- Add a search box to filter characters by name.
-
-- Add a dropdown to filter by status (Alive, Dead, Unknown).
-
-- Filters must work together and persist in the URL via query parameters (e.g., ?name=rick&status=alive).
-
-### 3. Pagination (2 marks)
-
-- Use the API’s built-in pagination (?page=2) to add a “Next” and “Previous” button at the bottom.
-
-- Show only 10 characters per page.
-
-- Prevent going past first/last page.
-
-### 4. Contact Us Page (2 marks)
-
-Create a separate route /contact with a form that includes:
-
-- Name
-- Email
-- Message
-- Submit button
-- Form validation (e.g., required fields, valid email format)
-- On submit, display a success message and reset the form.
-
-### 5. About Us Page (1 mark)
-
-Static page /about with:
-
-- Info about the app
-- Developer
-- Favorite Rick & Morty quote
-
-### 6. Code Quality (1 mark)
-
-- Clean code structure
-- Reusable components (e.g., CharacterCard)
-- Proper comments, meaningful names, formatting
-
----
-
-## Bonus Challenges (Optional)
-
-Not required but impressive if done:
-
-- Add episode titles in the character detail view by fetching additional data
-- Add a dark/light mode toggle
-- Store search/filter preferences in localStorage
-
----
-
-## API Reference
-
-- List characters:  
-  <https://rickandmortyapi.com/api/character>
-
-- Search by name:  
-  <https://rickandmortyapi.com/api/character/?name=rick>
-
-- Filter by status:  
-  <https://rickandmortyapi.com/api/character/?status>
-
-## Recommeded Project Structure (Optional and Flexible)
-
-To keep your project organized, consider the following structure:
-
-- `src/assets`: Static assets (e.g., images, icons)
-- `src/common`: Common utilities and constants (e.g., API endpoints, constants, apis)
-- `src/components`: Reusable components (e.g., CharacterCard, SearchBar, FilterDropdown)
-- `src/config`: Configuration files (e.g., API configuration or app settings)
-- `src/context`: Context providers (e.g., ThemeContext, FilterContext)
-- `src/features`: Feature-specific components (e.g., CharacterList, CharacterDetails, ContactForm)
-- `src/pages`: Page components (e.g., HomePage, CharacterDetailsPage, ContactPage, AboutPage)
-- `src/hooks`: Custom hooks (e.g., useFetchCharacters, useQueryParams)
-- `src/utils`: Utility functions (e.g., formatCharacterData, validateEmail)
-- `src/styles`: CSS files or styled components
-- `src/routes`: Route definitions (e.g., AppRouter)
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:parvez-ahammed/cse-3100.git
+   cd cse-3100
+   git checkout assignment-1
+   ```
