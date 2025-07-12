@@ -1,12 +1,299 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme for html and body */
+[data-bs-theme="dark"] body,
+html[data-bs-theme="dark"] body,
+.dark body,
+html.dark body {
+  background-color: #212529 !important;
+  color: #e9ecef !important;
+}
+
+/* Ensure dark theme applies to root elements */
+[data-bs-theme="dark"],
+html[data-bs-theme="dark"],
+.dark,
+html.dark {
+  background-color: #212529;
+  color: #e9ecef;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
   padding: 1rem;
+}
+
+/* Custom animations */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Dark mode card hover effects */
+[data-bs-theme="dark"] .card:hover,
+.dark .card:hover {
+  box-shadow: 0 8px 25px rgba(255,255,255,0.1);
+}
+
+/* Loading states */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Search and filter styling */
+.input-group-text {
+  background-color: transparent;
+  border-right: none;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Character card improvements */
+.card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Badge styling */
+.badge {
+  font-size: 0.75em;
+  padding: 0.5em 0.75em;
+}
+
+/* Pagination styling */
+.pagination .page-link {
+  border-color: #dee2e6;
+  color: #0d6efd;
+  background-color: #fff;
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+/* Dark mode pagination styling */
+[data-bs-theme="dark"] .pagination .page-link,
+.dark .pagination .page-link {
+  background-color: #2d3748 !important;
+  border-color: #4a5568 !important;
+  color: #60a5fa !important;
+}
+
+[data-bs-theme="dark"] .pagination .page-item.active .page-link,
+.dark .pagination .page-item.active .page-link {
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+[data-bs-theme="dark"] .pagination .page-item.disabled .page-link,
+.dark .pagination .page-item.disabled .page-link {
+  background-color: #374151 !important;
+  border-color: #4a5568 !important;
+  color: #9ca3af !important;
+}
+
+[data-bs-theme="dark"] .pagination .page-link:hover:not(.disabled),
+.dark .pagination .page-link:hover:not(.disabled) {
+  background-color: #374151 !important;
+  border-color: #60a5fa !important;
+  color: #93c5fd !important;
+}
+
+/* Enhanced dark mode improvements */
+[data-bs-theme="dark"] .card,
+.dark .card {
+  background-color: #2d3748 !important;
+  border-color: #4a5568 !important;
+  color: #e2e8f0 !important;
+}
+
+[data-bs-theme="dark"] .form-control,
+.dark .form-control {
+  background-color: #2d3748 !important;
+  border-color: #4a5568 !important;
+  color: #e2e8f0 !important;
+}
+
+[data-bs-theme="dark"] .form-control:focus,
+.dark .form-control:focus {
+  background-color: #2d3748 !important;
+  border-color: #0d6efd !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25) !important;
+}
+
+[data-bs-theme="dark"] .form-select,
+.dark .form-select {
+  background-color: #2d3748 !important;
+  border-color: #4a5568 !important;
+  color: #e2e8f0 !important;
+}
+
+[data-bs-theme="dark"] .input-group-text,
+.dark .input-group-text {
+  background-color: #2d3748 !important;
+  border-color: #4a5568 !important;
+  color: #e2e8f0 !important;
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary,
+.dark .btn-outline-secondary {
+  color: #e2e8f0 !important;
+  border-color: #4a5568 !important;
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary:hover,
+.dark .btn-outline-secondary:hover {
+  background-color: #4a5568 !important;
+  border-color: #4a5568 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Dark mode text colors */
+[data-bs-theme="dark"] .text-muted,
+.dark .text-muted {
+  color: #adb5bd !important;
+}
+
+[data-bs-theme="dark"] h1, [data-bs-theme="dark"] h2, [data-bs-theme="dark"] h3,
+[data-bs-theme="dark"] h4, [data-bs-theme="dark"] h5, [data-bs-theme="dark"] h6,
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #e9ecef !important;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+/* Character detail page styling */
+.character-detail-image {
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Form styling improvements */
+.form-label {
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+[data-bs-theme="dark"] .form-label,
+.dark .form-label {
+  color: #e2e8f0 !important;
+}
+
+/* Success and error states */
+.is-valid {
+  border-color: #198754;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Dark mode scrollbar */
+[data-bs-theme="dark"] ::-webkit-scrollbar-track,
+.dark ::-webkit-scrollbar-track {
+  background: #2d3748;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb,
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a5568;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover,
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* Button hover effects */
+.btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Footer styling */
+footer {
+  border-top: 1px solid #dee2e6;
+}
+
+[data-bs-theme="dark"] footer,
+.dark footer {
+  border-top-color: #4a5568 !important;
+  background-color: #1a202c !important;
+}
+
+/* Alert styling for dark mode */
+[data-bs-theme="dark"] .alert-warning,
+.dark .alert-warning {
+  background-color: #663d00 !important;
+  border-color: #996600 !important;
+  color: #ffcc00 !important;
+}
+
+[data-bs-theme="dark"] .alert-success,
+.dark .alert-success {
+  background-color: #0f4229 !important;
+  border-color: #175934 !important;
+  color: #75dd96 !important;
 }
