@@ -23,7 +23,7 @@ Rick & Morty Explorer is a fan-made React application to browse, search, and fil
 ## 🕒 Time Tracking (WakaTime)
 
 - **Total Coding Time:**  
-[![wakatime](https://wakatime.com/badge/user/4b64109a-e835-4ac8-a5b6-032acb97d1c4.svg)](https://wakatime.com/@4b64109a-e835-4ac8-a5b6-032acb97d1c4)
+    [![wakatime](https://wakatime.com/@jabin03/projects/dsltbljjdb?start=2025-07-07&end=2025-07-13)
 
 ## ✨ Features
 
