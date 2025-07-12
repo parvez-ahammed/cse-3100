@@ -9,10 +9,13 @@ export default function Home() {
   const nameFilter = searchParams.get("name") || "";
   const statusFilter = searchParams.get("status") || "";
 
+  const page = parseInt(searchParams.get("page")) || 1;
+  const [totalPages, setTotalPages] = useState(1);
+
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        let query = "";
+        let query = `?page=${page}`;
         if (nameFilter) query += `&name=${nameFilter}`;
         if (statusFilter) query += `&status=${statusFilter}`;
 
@@ -21,14 +24,15 @@ export default function Home() {
         );
         const data = await res.json();
         setCharacters(data.results || []);
-        // eslint-disable-next-line no-unused-vars
+        setTotalPages(data.info?.pages || 1);
       } catch (err) {
-        setCharacters([]); // handle error or empty results
+        setCharacters([]);
+        setTotalPages(1);
       }
     };
 
     fetchCharacters();
-  }, [nameFilter, statusFilter]);
+  }, [nameFilter, statusFilter, page]);
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
@@ -50,23 +54,41 @@ export default function Home() {
     });
   };
 
-  return (
-    <main className="container">
-      <h1 className="my-4">Rick & Morty Explorer</h1>
+  const handlePageChange = (newPage) => {
+    setSearchParams((prev) => {
+      const params = new URLSearchParams(prev);
+      params.set("page", newPage);
+      return params;
+    });
+  };
 
-      <div className="row mb-4">
+  return (
+    <main className="container my-5">
+      <div className="text-center mb-4">
+        <h1 className="display-4 fw-bold text-success">
+          Rick & Morty Explorer
+        </h1>
+        <p className="lead text-muted">
+          Search and filter your favorite characters
+        </p>
+      </div>
+
+      {/* Filters */}
+      <div className="row g-3 mb-5 align-items-end">
         <div className="col-md-6">
+          <label className="form-label fw-semibold">Search by Name</label>
           <input
             type="text"
             className="form-control"
-            placeholder="Search by name..."
+            placeholder="e.g., Rick, Morty..."
             value={nameFilter}
             onChange={handleSearchChange}
           />
         </div>
         <div className="col-md-6">
+          <label className="form-label fw-semibold">Filter by Status</label>
           <select
-            className="form-control"
+            className="form-select"
             value={statusFilter}
             onChange={handleStatusChange}
           >
@@ -78,6 +100,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Character Grid */}
       <div className="row">
         {characters.length > 0 ? (
           characters.map((char) => (
@@ -86,9 +109,47 @@ export default function Home() {
             </div>
           ))
         ) : (
-          <p>No characters found.</p>
+          <div className="col text-center">
+            <p className="text-danger fs-5">No characters found.</p>
+          </div>
         )}
       </div>
+
+      {/* Page Buttons */}
+      {totalPages > 1 && (
+        <div className="d-flex flex-wrap justify-content-center align-items-center gap-2 my-4">
+          <button
+            className="btn btn-outline-secondary"
+            onClick={() => handlePageChange(page - 1)}
+            disabled={page <= 1}
+          >
+            Previous
+          </button>
+
+          {[...Array(totalPages)].map((_, index) => {
+            const pageNum = index + 1;
+            return (
+              <button
+                key={pageNum}
+                onClick={() => handlePageChange(pageNum)}
+                className={`btn ${
+                  pageNum === page ? "btn-success" : "btn-outline-secondary"
+                }`}
+              >
+                {pageNum}
+              </button>
+            );
+          })}
+
+          <button
+            className="btn btn-outline-secondary"
+            onClick={() => handlePageChange(page + 1)}
+            disabled={page >= totalPages}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </main>
   );
 }
