@@ -3,9 +3,16 @@ export default function About() {
     <div className="container my-4">
       <h2>About Rick & Morty Explorer</h2>
       <p>
-        This is a simple React app that lets you browse characters from the Rick
-        & Morty universe. Built with students of CSE-3100.
+        This app lets users explore characters from the Rick and Morty TV show. 
+        You can search characters by name, filter by status, and browse through pages of results. 
+        It’s built to be simple, fun, and easy to use
       </p>
+      <p>
+        <strong>Developer:</strong> Borsha
+      </p>
+      <blockquote>
+        <em>"Wubba Lubba Dub Dub!" – Rick Sanchez</em>
+      </blockquote>
     </div>
   );
 }

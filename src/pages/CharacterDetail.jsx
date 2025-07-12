@@ -17,10 +17,11 @@ export default function CharacterDetail() {
     <div className="container my-4">
       <h2>{character.name}</h2>
       <img src={character.image} alt={character.name} className="img-fluid" />
-      <p>
-        <strong>Status:</strong> {character.status} <br />
-        <strong>Species:</strong> {character.species} <br />
-      </p>
+      <p><strong>Status:</strong> {character.status}</p>
+      <p><strong>Species:</strong> {character.species}</p>
+      <p><strong>Origin:</strong> {character.origin.name}</p>
+      <p><strong>Last Known Location:</strong> {character.location.name}</p>
+      <p><strong>Number of Episodes:</strong> {character.episode.length}</p>
     </div>
   );
 }

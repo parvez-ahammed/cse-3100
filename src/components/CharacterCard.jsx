@@ -1,19 +1,19 @@
+import { Link } from "react-router-dom";
 export default function CharacterCard({ character }) {
   return (
-    <div className="card">
+    <div className="character-card">
       <img
         src={character.image}
-        className="card-img-top"
         alt={character.name}
       />
-      <div className="card-body">
-        <h5 className="card-title">{character.name}</h5>
-        <p className="card-text">
-          <strong>Status:</strong> {character.status} <br />
-          <strong>Species:</strong> {character.species}
-        </p>
-        <button>View Details</button>
+      <div className="character-info">
+        <h3>{character.name}</h3>
+        <p>Status: {character.status}</p>
+        <p>Species: {character.species}</p>
       </div>
+      <Link to={`/character/${character.id}`} className="view-detail-btn btn-clickable">
+        View Detail
+      </Link>
     </div>
   );
 }
