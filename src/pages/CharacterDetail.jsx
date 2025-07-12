@@ -6,7 +6,6 @@ import Header from "./../components/Header/header";
 export default function CharacterDetail() {
   const { id } = useParams();
   const [character, setCharacter] = useState(null);
-  const [isDark, setIsDark] = useState(true); // Add this state
 
   useEffect(() => {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)
@@ -26,12 +25,8 @@ export default function CharacterDetail() {
   }
 
   return (
-    <div
-      className={`min-h-screen transition-colors duration-300 ${
-        isDark ? "bg-gray-900" : "bg-gray-50"
-      }`}
-    >
-      <Header isDark={isDark} setIsDark={setIsDark} />
+    <div className="min-h-screen transition-colors duration-300 bg-gray-900">
+      <Header />
       <div className="min-h-screen bg-black py-8 px-4">
         <div className="max-w-2xl mx-auto">
           {/* Character Card */}

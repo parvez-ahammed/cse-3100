@@ -1,17 +1,10 @@
 import Header from "../components/Header/header";
 import Footer from "../components/footer/Footer";
-import { useState } from "react";
 
 export default function About() {
-  const [isDark, setIsDark] = useState(true);
-
   return (
-    <div
-      className={`min-h-screen transition-colors duration-300 ${
-        isDark ? "bg-gray-900" : "bg-gray-50"
-      }`}
-    >
-      <Header isDark={isDark} setIsDark={setIsDark} />
+    <div className="min-h-screen transition-colors duration-300 bg-gray-900">
+      <Header />
 
       {/* Hero Section */}
       <div className="relative h-64 md:h-80 lg:h-96">
@@ -41,23 +34,11 @@ export default function About() {
       {/* Main Content */}
       <main className="max-w-3xl mx-auto px-4 py-16 space-y-16">
         {/* About Rick & Morty Section */}
-        <div
-          className={`rounded-2xl shadow-md p-8 ${
-            isDark ? "bg-gray-800" : "bg-white"
-          }`}
-        >
-          <h2
-            className={`text-3xl font-bold mb-6 ${
-              isDark ? "text-green-400" : "text-blue-600"
-            }`}
-          >
+        <div className="rounded-2xl shadow-md p-8 bg-gray-800">
+          <h2 className="text-3xl font-bold mb-6 text-green-400">
             About Rick and Morty
           </h2>
-          <p
-            className={`text-lg leading-relaxed ${
-              isDark ? "text-green-200" : "text-gray-700"
-            }`}
-          >
+          <p className="text-lg leading-relaxed text-green-200">
             *Rick and Morty* is an American animated science fiction sitcom
             created by Justin Roiland and Dan Harmon. The show follows the
             misadventures of Rick Sanchez, a cynical mad scientist, and his
@@ -70,55 +51,25 @@ export default function About() {
         </div>
 
         {/* Famous Quote */}
-        <div
-          className={`rounded-2xl shadow-md p-6 ${
-            isDark ? "bg-gray-800" : "bg-blue-50"
-          }`}
-        >
-          <h2
-            className={`text-2xl font-semibold mb-3 ${
-              isDark ? "text-green-400" : "text-blue-600"
-            }`}
-          >
+        <div className="rounded-2xl shadow-md p-6 bg-gray-800">
+          <h2 className="text-2xl font-semibold mb-3 text-green-400">
             Famous Quote by Rick
           </h2>
-          <blockquote
-            className={`border-l-4 pl-4 italic rounded-md ${
-              isDark
-                ? "border-green-400 bg-gray-700 text-green-200"
-                : "border-blue-600 bg-blue-100 text-gray-800"
-            }`}
-          >
+          <blockquote className="border-l-4 pl-4 italic rounded-md border-green-400 bg-gray-700 text-green-200">
             "Sometimes science is more art than science, Morty. A lot of people
-            don’t get that."
+            don't get that."
           </blockquote>
         </div>
 
         {/* Developer Info */}
-        <div
-          className={`rounded-2xl shadow-md p-6 text-center ${
-            isDark ? "bg-gray-800" : "bg-white"
-          }`}
-        >
-          <h2
-            className={`text-2xl font-semibold mb-2 ${
-              isDark ? "text-green-400" : "text-blue-600"
-            }`}
-          >
+        <div className="rounded-2xl shadow-md p-6 text-center bg-gray-800">
+          <h2 className="text-2xl font-semibold mb-2 text-green-400">
             Developer Info
           </h2>
-          <p
-            className={`text-lg ${isDark ? "text-green-200" : "text-gray-700"}`}
-          >
+          <p className="text-lg text-green-200">
             Developed by <strong>Adnan Kader Mitul</strong>
           </p>
-          <p
-            className={`text-md mt-1 ${
-              isDark ? "text-green-300" : "text-gray-500"
-            }`}
-          >
-            ID: 20220204102
-          </p>
+          <p className="text-md mt-1 text-green-300">ID: 20220204102</p>
         </div>
       </main>
 
