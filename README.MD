@@ -44,22 +44,62 @@ Make sure you have the following installed:
 
 ## Works Done
 
-- Added pagination so it shows at most 10 characters per page (Home page).
-- Integrated a search bar along with dropdown filters like status (Dead/Alive) and species type (Home page).
-- Implemented email validation in the Contact page form.
-- Made all pages fully responsive across different screen sizes.
-- Added a Navigation Bar and routed pages like Contact, About, and Character Details.
-- Built a dynamic Character Detail page accessible via "View Details" on Home page, showing character-specific info.
-- Separated structure (`.jsx`) and styling (`.css`) across all components and pages.
-- Enhanced the Character Detail page with a dropdown on the episode count, showing the list of episodes the character appeared in.
+## **Project Highlights: Rick & Morty Explorer**
 
-- Created Router.jsx and moved the Routing segment to there to keep App.jsx clean<br><br>
+- **Pagination & Character Display**
+
+  - Displays a maximum of 10 characters per page on the Home screen.
+  - Users can navigate using Prev/Next buttons for smooth browsing.
+
+- **Search & Filter Functionality**
+
+  - Integrated a **search bar** to find characters by name.
+  - Added **status filters** (Alive, Dead, Unknown).
+  - Added **species filters** (e.g., Human, Alien, etc.).
+
+- **Character Detail Page**
+
+  - Built a dynamic character detail page accessed via the **"View Details"** button.
+  - Displays:
+
+    - Name, image, status, species.
+    - A **dropdown** showing the total episode count and listing all episode names.
+
+- **Contact Form with Validation**
+
+  - Created a responsive contact form with inputs for name, email, and message.
+  - Implemented **custom email validation** ensuring:
+
+    - Only lowercase letters and symbols.
+    - Must contain `@` and `.`, with no spaces.
+
+- **Navigation & Routing**
+
+  - Created a responsive **Navigation Bar** for consistent routing across pages.
+
+    - Includes links to **Home**, **About**, and **Contact** (Character Detail excluded from nav).
+
+  - Moved routing logic to a dedicated `Router.jsx` file to maintain clean code in `App.jsx`.
+
+- **Responsive Design**
+
+  - Ensured full responsiveness for all pages across devices (mobile, tablet, desktop).
+  - Clean layout adjustments using CSS grid and flexbox.
+
+- **Code Structure & Best Practices**
+
+  - Maintained a clean separation of concerns:
+
+    - JSX for structure (`.jsx` files).
+    - CSS for styling (`.css` files).
+
+  - All major components are modularized under relevant folders (e.g., `pages`, `components`).
 
 <h1>Screenshots</h1>
 
 ## Waka Time
 
-<img src="src/assets/screenshots/wakatime_ss.png" width = "800" ><br><br>
+<img src="src/assets/screenshots/wakatime_ss.png" width = "1000" ><br><br>
 
 ## Home Page
 
