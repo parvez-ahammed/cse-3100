@@ -57,6 +57,10 @@ Make sure you have the following installed:
 
 <h1>Screenshots</h1>
 
+## Waka Time
+
+<img src="src/assets/screenshots/wakatime_ss.png" width = "800" ><br><br>
+
 ## Home Page
 
 <img src="src/assets/screenshots/ss_1.png" width = "800" ><br><br>
