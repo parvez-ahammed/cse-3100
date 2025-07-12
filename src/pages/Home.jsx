@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
+import CharacterList from "./CharacterList";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <div className="max-w-[1400px] mx-auto bg-white/5 rounded-2xl backdrop-blur-lg shadow-lg border border-white/20 p-8 relative">
         <Navbar />
         <Banner />
+        <CharacterList />
       </div>
     </div>
   );
