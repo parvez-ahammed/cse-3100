@@ -1,0 +1,54 @@
+.character-card {
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 270px;
+}
+
+.character-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.character-img {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
+.character-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+.character-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.character-info {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.view-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}

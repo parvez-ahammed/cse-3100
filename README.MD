@@ -38,6 +38,55 @@ Make sure you have the following installed:
 
 ---
 
+## Waka Time
+
+[![wakatime](https://wakatime.com/badge/user/3764e15a-69bc-4b7d-ad15-f837a011962c/project/29a3fbbd-a9d6-46fc-8ef5-69736e6f0088.svg)](https://wakatime.com/badge/user/3764e15a-69bc-4b7d-ad15-f837a011962c/project/29a3fbbd-a9d6-46fc-8ef5-69736e6f0088)
+
+## Works Done
+
+- Added pagination so it shows at most 10 characters per page (Home page).
+- Integrated a search bar along with dropdown filters like status (Dead/Alive) and species type (Home page).
+- Implemented email validation in the Contact page form.
+- Made all pages fully responsive across different screen sizes.
+- Added a Navigation Bar and routed pages like Contact, About, and Character Details.
+- Built a dynamic Character Detail page accessible via "View Details" on Home page, showing character-specific info.
+- Separated structure (`.jsx`) and styling (`.css`) across all components and pages.
+- Enhanced the Character Detail page with a dropdown on the episode count, showing the list of episodes the character appeared in.
+
+- Created Router.jsx and moved the Routing segment to there to keep App.jsx clean<br><br>
+
+<h1>Screenshots</h1>
+
+## Home Page
+
+<img src="src/assets/screenshots/ss_1.png" width = "800" ><br><br>
+
+<h3>Using Search Filters</h3><br>
+
+<img src="src/assets/screenshots/ss_2.png" width = "500" >
+<img src="src/assets/screenshots/ss_3.png" width = "500" >
+
+## Character Card
+
+<br> A drop down menu is put on the Episode No.s row to see the episodes in which the character appeared<br><br>
+<img src="src/assets/screenshots/character_card_ss.png" width = "800" ><br><br>
+
+## Contact Page
+
+<br>
+<img src="src/assets/screenshots/contact_ss.png" width = "800" ><br>
+
+<h3>Mail parameters check</h3>
+Puts error if invalid mail is put
+<br><br>
+<img src="src/assets/screenshots/invalid_mail_ss.png" width = "800" 
+><br>
+
+## About Page
+
+<img src="src/assets/screenshots/about_ss_1.png" width = "500">
+<img src="src/assets/screenshots/about_ss_2.png" width = "500">
+
 ## Setup Instructions
 
 ### Clone the Repository

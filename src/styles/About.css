@@ -1,0 +1,37 @@
+.about-container {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.about-section {
+  margin-bottom: 2.5rem;
+}
+
+.about-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.about-text {
+  font-size: 1.3rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+.doggy-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.doggy-gallery img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
