@@ -1,0 +1,18 @@
+.navbar {
+  background: #f9f9f9;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
