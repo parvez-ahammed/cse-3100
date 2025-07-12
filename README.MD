@@ -87,21 +87,21 @@ Static page /about with:
 
 ### Home Page
 
-![homePage1](./src/assets/project_ss/home1.PNG)
+![homePage1](https://github.com/IFTI612/cse-3100/blob/assignment-1-20220204030/src/assets/project_ss/home1.PNG)
 
-![homePage2](./src/assets/project_ss/home2.PNG)
+![homePage2](https://github.com/IFTI612/cse-3100/blob/assignment-1-20220204030/src/assets/project_ss/home2.PNG)
 
 ### About Page
 
-![about](./src/assets/project_ss/about.PNG)
+![about](https://github.com/IFTI612/cse-3100/blob/assignment-1-20220204030/src/assets/project_ss/about.PNG)
 
 ### Contact Us Page
 
-![contact](./src/assets/project_ss/contact.PNG)
+![contact](https://github.com/IFTI612/cse-3100/blob/assignment-1-20220204030/src/assets/project_ss/contact.PNG)
 
 ### Character Details Page
 
-![charDetails](./src/assets/project_ss/charDetails.PNG)
+![charDetails](https://github.com/IFTI612/cse-3100/blob/assignment-1-20220204030/src/assets/project_ss/charDetails.PNG)
 
 **When / How I used AI:**
 
