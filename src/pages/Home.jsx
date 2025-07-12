@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import CharacterCard from "../components/CharacterCard";
 import SearchBar from "../components/SearchBar";
 
 export default function Home() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [characters, setCharacters] = useState([]);
   const [displayedCharacters, setDisplayedCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,19 +13,29 @@ export default function Home() {
     species: { human: 0, alien: 0, other: 0 }
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [humansPerPage] = useState(10); 
+  const [humansPerPage] = useState(10);
+  const [statusFilter, setStatusFilter] = useState("");
 
   useEffect(() => {
-    fetchAllCharacters();
+    const name = searchParams.get("name") || "";
+    const status = searchParams.get("status") || "";
+    
+    setStatusFilter(status);
+    fetchAllCharacters(name, status);
   }, []);
 
-  const fetchAllCharacters = async (name = "") => {
+  const fetchAllCharacters = async (name = "", status = "") => {
     setLoading(true);
     try {
       let allCharacters = [];
-      let url = name 
-        ? `https://rickandmortyapi.com/api/character/?name=${name}` 
-        : "https://rickandmortyapi.com/api/character";
+      let url = "https://rickandmortyapi.com/api/character/";
+      
+      // Build query params
+      const params = new URLSearchParams();
+      if (name) params.append("name", name);
+      if (status) params.append("status", status);
+      
+      url += `?${params.toString()}`;
       
       // Fetch all pages
       while (url) {
@@ -35,7 +47,7 @@ export default function Home() {
 
       setCharacters(allCharacters);
       
-      if (!name) {
+      if (!name && !status) {
         const allHumans = allCharacters.filter(char => 
           char.species.toLowerCase() === 'human'
         );
@@ -85,23 +97,49 @@ export default function Home() {
 
   const handleSearch = (searchTerm) => {
     setCurrentPage(1);
-    if (searchTerm === "") {
+    updateUrlParams(searchTerm, statusFilter);
+    
+    if (searchTerm === "" && statusFilter === "") {
       const allHumans = characters.filter(char => 
         char.species?.toLowerCase() === 'human'
       );
       const paginatedHumans = paginateHumans(allHumans, 1);
       setDisplayedCharacters(paginatedHumans);
     } else {
-      fetchAllCharacters(searchTerm);
+      fetchAllCharacters(searchTerm, statusFilter);
     }
+  };
+
+  const handleStatusFilter = (status) => {
+    setCurrentPage(1);
+    setStatusFilter(status);
+    updateUrlParams(searchParams.get("name") || "", status);
+    
+    if (status === "" && !searchParams.get("name")) {
+      const allHumans = characters.filter(char => 
+        char.species?.toLowerCase() === 'human'
+      );
+      const paginatedHumans = paginateHumans(allHumans, 1);
+      setDisplayedCharacters(paginatedHumans);
+    } else {
+      fetchAllCharacters(searchParams.get("name") || "", status);
+    }
+  };
+
+  const updateUrlParams = (name, status) => {
+    const params = new URLSearchParams();
+    if (name) params.append("name", name);
+    if (status) params.append("status", status);
+    setSearchParams(params);
   };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    const allHumans = characters.filter(char => 
-      char.species?.toLowerCase() === 'human'
+    const filteredHumans = characters.filter(char => 
+      char.species?.toLowerCase() === 'human' &&
+      (statusFilter === "" || char.status?.toLowerCase() === statusFilter)
     );
-    const paginatedHumans = paginateHumans(allHumans, page);
+    const paginatedHumans = paginateHumans(filteredHumans, page);
     setDisplayedCharacters(paginatedHumans);
   };
 
@@ -110,7 +148,10 @@ export default function Home() {
   };
 
   const totalCharacters = characters.length;
-  const allHumans = characters.filter(char => char.species?.toLowerCase() === 'human');
+  const allHumans = characters.filter(char => 
+    char.species?.toLowerCase() === 'human' &&
+    (statusFilter === "" || char.status?.toLowerCase() === statusFilter)
+  );
   const totalHumanPages = Math.ceil(allHumans.length / humansPerPage);
 
   return (
@@ -121,6 +162,23 @@ export default function Home() {
       </div>
 
       <SearchBar onSearch={handleSearch} />
+
+      <div className="row mb-4">
+        <div className="col-md-3">
+          <label htmlFor="status-filter" className="form-label">Filter by Status</label>
+          <select 
+            id="status-filter"
+            className="form-select"
+            value={statusFilter}
+            onChange={(e) => handleStatusFilter(e.target.value)}
+          >
+            <option value="">All Statuses</option>
+            <option value="alive">Alive</option>
+            <option value="dead">Dead</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </div>
+      </div>
 
       {/* Stats Section */}
       {!loading && totalCharacters > 0 && (
