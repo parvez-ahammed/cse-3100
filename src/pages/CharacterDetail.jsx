@@ -6,7 +6,7 @@ import Header from "./../components/Header/header";
 export default function CharacterDetail() {
   const { id } = useParams();
   const [character, setCharacter] = useState(null);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(true); // Add this state
 
   useEffect(() => {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)
