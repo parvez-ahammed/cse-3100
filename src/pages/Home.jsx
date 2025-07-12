@@ -4,6 +4,9 @@ import ReactPaginate from "react-paginate";
 import { useSearchParams } from "react-router-dom";
 import Filter from "../components/Filter";
 import Spinner from "../components/Spinner";
+import { AnimatePresence, motion } from "framer-motion";
+
+const MotionGrid = motion.div;
 
 export default function Home() {
   const [apiCharacters, setApiCharacters] = useState([]);
@@ -82,12 +85,32 @@ export default function Home() {
           <p className="text-center text-gray-500">No characters found</p>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-              {characters.map((character) => (
-                <CharacterCard key={character.id} character={character} />
-              ))}
-            </div>
-
+            <AnimatePresence>
+              <MotionGrid
+                key={page}
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  y: -20,
+                }}
+                transition={{
+                  duration: 0.4,
+                  ease: "easeOut",
+                }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"
+              >
+                {characters.map((character) => (
+                  <CharacterCard key={character.id} character={character} />
+                ))}
+              </MotionGrid>
+            </AnimatePresence>
             <ReactPaginate
               previousLabel={"Previous"}
               nextLabel={"Next"}

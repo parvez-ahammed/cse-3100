@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
+import { motion } from "framer-motion";
+
+const MotionWrapper = motion.img;
 
 export default function CharacterDetail() {
   const { id } = useParams();
@@ -33,7 +36,13 @@ export default function CharacterDetail() {
       </h2>
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Character Image */}
-        <img
+        <MotionWrapper
+          initial={{
+            scale: 0,
+          }}
+          animate={{
+            scale: 1,
+          }}
           src={character.image}
           alt={character.name}
           className="rounded-xl w-full max-w-sm self-center"
