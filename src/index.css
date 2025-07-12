@@ -1,12 +1,136 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
+/* Reset some defaults */
+* {
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #d0f0fd, #f7f9fc);
+  color: #222;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container (for inner pages like About/Contact only) */
 .container {
   max-width: 900px;
   margin: auto;
+  padding: 2rem 1rem;
+}
+
+/* Character grid layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Character card styling */
+.character-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  text-align: center;
   padding: 1rem;
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Character image */
+.character-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Character name */
+.character-card h5 {
+  font-weight: 700;
+  color: #0d6efd;
+  margin-top: 1rem;
+}
+
+/* Navbar overrides */
+.navbar {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff !important;
+}
+
+.nav-link {
+  color: #0d6efd;
+  font-weight: 500;
+}
+
+.nav-link.active {
+  font-weight: 700;
+  border-bottom: 2px solid #0d6efd;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #0d6efd;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0849b1;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+body.dark-mode {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f0f0f0;
+}
+
+body.dark-mode .container {
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+}
+
+body.dark-mode .character-card {
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+body.dark-mode .character-card:hover {
+  box-shadow: 0 6px 25px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .btn-outline-dark {
+  color: white;
+  border-color: white;
+}
+
+body.dark-mode .nav-link {
+  color: #ddd;
+}
+
+body.dark-mode .nav-link.active {
+  border-bottom-color: #fff;
 }
