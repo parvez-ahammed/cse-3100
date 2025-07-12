@@ -34,6 +34,8 @@ export default function Home() {
   // Fetch data
   useEffect(() => {
     const fetchCharacters = async () => {
+      if (apiPage > 5) return; // Stop fetching beyond 100 characters
+
       const params = new URLSearchParams();
       if (name) params.append("name", name);
       if (status) params.append("status", status);
@@ -44,8 +46,12 @@ export default function Home() {
           `https://rickandmortyapi.com/api/character?${params.toString()}`
         );
         const data = await res.json();
-        setCharacters(data.results || []);
-        setTotalCharacters(data.info?.count || 0);
+
+        // Only update state if under 100 characters
+        const cappedResults = data.results?.slice(0, 20) || [];
+        setCharacters(cappedResults);
+        const cappedCount = Math.min(data.info?.count || 0, 100);
+        setTotalCharacters(cappedCount);
       } catch (error) {
         setCharacters([]);
         setTotalCharacters(0);
