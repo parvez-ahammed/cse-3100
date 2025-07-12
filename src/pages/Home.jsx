@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 import Pagination from "../components/Pagination";
-
-const STATUS_OPTIONS = ["Alive", "Dead", "unknown"];
+import SearchBar from "../components/SearchBar";
 
 export function Home() {
   const [characters, setCharacters] = useState([]);
@@ -33,46 +32,24 @@ export function Home() {
   }, [status, search, page]);
 
   return (
-    <div>
-      <div className="flex flex-col gap-4 mb-6">
-        <select
-          className="p-2 border rounded w-64"
-          value={status}
-          onChange={(e) => {
-            setPage(1);
-            setStatus(e.target.value);
-          }}
-        >
-          <option value="">Select status</option>
-          {STATUS_OPTIONS.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
-
-        <input
-          type="text"
-          placeholder="🔍 Search characters"
-          className="p-2 border rounded w-full sm:w-96"
-          value={search}
-          onChange={(e) => {
-            setPage(1);
-            setSearch(e.target.value);
-          }}
-        />
-      </div>
-
-      <p className="mb-4 text-sm text-gray-600">
+    <div className="w-full px-4 mt-4">
+      {" "}
+      {/* 👈 added mt-4 here */}
+      <SearchBar
+        status={status}
+        setStatus={setStatus}
+        search={search}
+        setSearch={setSearch}
+        setPage={setPage}
+      />
+      <p className="mb-4 text-sm text-gray-600 dark:text-gray-400 text-center animate-pulse">
         Showing {characters.length} of {info.count || 0} results
       </p>
-
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 animate-fade-in">
         {characters.map((char) => (
           <CharacterCard key={char.id} character={char} />
         ))}
       </div>
-
       <Pagination page={page} setPage={setPage} totalPages={info.pages} />
     </div>
   );

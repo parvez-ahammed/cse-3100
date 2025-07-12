@@ -14,7 +14,7 @@ export default function CharacterDetail() {
   if (!character) return <p className="text-center mt-8">Loading...</p>;
 
   return (
-    <div className="max-w-xl mx-auto my-8 bg-white p-6 rounded shadow">
+    <div className="max-w-xl mx-auto my-8 bg-white p-6 rounded shadow animate-fade-in">
       <h2 className="text-3xl font-bold mb-4">{character.name}</h2>
       <img
         src={character.image}

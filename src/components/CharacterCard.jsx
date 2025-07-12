@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function CharacterCard({ character }) {
   return (
-    <div className="bg-white rounded-xl shadow hover:shadow-lg transition p-3">
+    <div className="bg-white rounded-xl shadow hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-3 animate-fade-in">
       <img
         src={character.image}
         alt={character.name}
@@ -17,7 +17,7 @@ export default function CharacterCard({ character }) {
           <strong>Species:</strong> {character.species}
         </p>
         <Link to={`/character/${character.id}`}>
-          <button className="mt-2 bg-blue-500 text-white text-sm px-4 py-1 rounded hover:bg-blue-600">
+          <button className="mt-2 bg-blue-500 text-white text-sm px-4 py-1 rounded hover:bg-blue-600 transition">
             View Details
           </button>
         </Link>
