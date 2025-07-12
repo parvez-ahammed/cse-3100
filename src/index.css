@@ -1,12 +1,193 @@
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
   margin: 0;
   padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .container {
   max-width: 900px;
   margin: auto;
   padding: 1rem;
+}
+
+/* Light theme variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f8f9fa;
+  --card-border: #ddd;
+  --btn-bg: #007bff;
+  --btn-text: #ffffff;
+  --btn-bg-secondary: #6c757d;
+  --btn-text-secondary: #ffffff;
+
+  /* New colorful variables */
+  --primary-color: #ff6f61;
+  --secondary-color: #6b5b95;
+  --accent-color: #88b04b;
+  --highlight-color: #f7cac9;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --card-border: #333;
+  --btn-bg: #0d6efd;
+  --btn-text: #ffffff;
+  --btn-bg-secondary: #495057;
+  --btn-text-secondary: #ffffff;
+
+  /* New colorful variables for dark */
+  --primary-color: #ff8a80;
+  --secondary-color: #b39ddb;
+  --accent-color: #aed581;
+  --highlight-color: #f48fb1;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Card styles */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  background-color: var(--highlight-color);
+  color: var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 3px solid var(--primary-color);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* New grid container for character cards */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+/* Grid item for each card */
+.grid-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card body */
+.card-body {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+/* Card title */
+.card-title {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* Card text */
+.card-text {
+  margin: 0;
+  color: var(--secondary-color);
+  font-size: 1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--btn-text);
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: var(--primary-color);
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.25s ease-in-out;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.btn:hover {
+  background-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: var(--btn-bg-secondary);
+  color: var(--btn-text-secondary);
+  border-color: var(--btn-bg-secondary);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Form controls */
+.form-control, .form-select, textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+  border-color: var(--primary-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(255, 111, 97, 0.5);
+}
+
+/* Invalid feedback */
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875rem;
+}
+
+/* Alerts */
+.alert {
+  padding: 0.75rem 1.25rem;
+  margin-top: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
 }
