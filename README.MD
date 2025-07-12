@@ -1,31 +1,10 @@
 # Rick & Morty Explorer – Assignment 1
 
-In this project, you'll build a beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
-
-You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
-
----
-
-## Submission Guidelines
-
-The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
-
-- **Time Tracking (Recommended):**  
-  Use tools like [WakaTime](https://wakatime.com/) to track your development time. This provides visibility into the effort invested.
-
-- **Updated README (Mandatory):**  
-  Include a clear and updated `README.md` in your repository with:
-
-  - Summary of implemented features
-  - Any additional improvements made
-  - Setup and run instructions
-  - Known issues or limitations
-  - Notes for the instructor
+- **Waka Time**  
+  [![wakatime](https://wakatime.com/badge/user/3944b5f4-3bb5-4f43-a702-0fcf1e7bd0e9/project/3e433f9d-03bb-4c0d-8a3e-850d1a616b8b.svg)](https://wakatime.com/badge/user/3944b5f4-3bb5-4f43-a702-0fcf1e7bd0e9/project/3e433f9d-03bb-4c0d-8a3e-850d1a616b8b)
 
 - **AI Tool Usage (If Used):**  
-  If you have used any AI-powered tools during development, please include:
-  - A short description of which AI tool(s) were used
-  - A brief explanation of how they were used
+  ChatGPT used for speeding up coding process
 
 ## Requirements
 
@@ -45,7 +24,7 @@ Make sure you have the following installed:
 Fork the base repository. Then, clone the forked repository to your local machine and switch to the branch assignment-1
 
 ```bash
-git clone git@github.com:parvez-ahammed/cse-3100.git
+git clone git@github.com:priontysaha/cse-3100.git
 cd cse-3100
 git checkout assignment-1
 ```
@@ -66,74 +45,58 @@ npm run dev
 
 ---
 
-## Assignment Instructions
+## Changes Done
 
-You'll enhance the base Rick & Morty character explorer app with the following features and pages.
+### 🔍 Character Details Page
 
-### 1. Character Details Page (2 marks)
+- Implemented dynamic routing using React Router to navigate to individual character pages (e.g., `/character/1`).
+- Each character page displays:
+  - **Name**
+  - **Image**
+  - **Status**
+  - **Species**
+  - **Origin**
+  - **Last known location**
+  - **Number of episodes appeared in**
 
-On the main list, clicking a character should navigate to a dynamic route (e.g., /character/1) and display:
+### 🔎 Search and Filter Functionality
 
-- Name
-- Image
-- Status
-- Species
-- Origin
-- Last known location
-- Number of episodes they appeared in
+- Added a search box to filter characters by name.
+- Included a dropdown to filter characters by status: Alive, Dead, or Unknown.
+- Combined filters work together and persist in the URL via query parameters (e.g., `?name=rick&status=alive`).
 
-You must use React Router’s dynamic routing with the character ID.
+### 📄 Pagination
 
-### 2. Search + Filter Functionality (2 marks)
+- Utilized the API's built-in pagination to display 10 characters per page.
+- Implemented "Next" and "Previous" buttons to navigate between pages.
+- Ensured navigation does not go beyond the first or last page.
 
-- Add a search box to filter characters by name.
+### 📬 Contact Us Page
 
-- Add a dropdown to filter by status (Alive, Dead, Unknown).
+- Created a `/contact` route with a form that includes:
+  - **Name**
+  - **Email**
+  - **Message**
+  - **Submit** button
+- Implemented form validation to ensure:
+  - All fields are required.
+  - Email follows a valid format.
+- On successful submission:
+  - Displays a success message.
+  - Resets the form fields.
 
-- Filters must work together and persist in the URL via query parameters (e.g., ?name=rick&status=alive).
+### ℹ️ About Us Page
 
-### 3. Pagination (2 marks)
+- Developed a static `/about` page containing:
+  - Information about the application.
+  - Developer details.
+  - A favorite Rick & Morty quote.
 
-- Use the API’s built-in pagination (?page=2) to add a “Next” and “Previous” button at the bottom.
+### 🧹 Code Quality
 
-- Show only 10 characters per page.
-
-- Prevent going past first/last page.
-
-### 4. Contact Us Page (2 marks)
-
-Create a separate route /contact with a form that includes:
-
-- Name
-- Email
-- Message
-- Submit button
-- Form validation (e.g., required fields, valid email format)
-- On submit, display a success message and reset the form.
-
-### 5. About Us Page (1 mark)
-
-Static page /about with:
-
-- Info about the app
-- Developer
-- Favorite Rick & Morty quote
-
-### 6. Code Quality (1 mark)
-
-- Clean code structure
-- Reusable components (e.g., CharacterCard)
-- Proper comments, meaningful names, formatting
-
----
-
-## Bonus Challenges (Optional)
-
-Not required but impressive if done:
-
-- Add episode titles in the character detail view by fetching additional data
-- Add a dark/light mode toggle
-- Store search/filter preferences in localStorage
+- Maintained a clean code structure with reusable components (e.g., `CharacterCard`).
+- Added meaningful comments and used descriptive variable and function names.
+- Ensured consistent formatting throughout the codebase.
 
 ---
 
