@@ -1,12 +1,128 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
+/* CHARACTER GRID */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem; /* Reduced from 1.5rem */
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 1rem;
+
+@media (max-width: 992px) {
+  .character-grid {
+    grid-template-columns: repeat(3, 1fr); /* Medium screens: 3 per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .character-grid {
+    grid-template-columns: repeat(2, 1fr); /* Small screens: 2 per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .character-grid {
+    grid-template-columns: 1fr; /* Mobile: 1 per row */
+  }
+}
+
+
+/* CHARACTER CARD */
+.character-card {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.character-img {
+  max-height: 200px; 
+  object-fit: cover;
+}
+
+.character-card:hover {
+  transform: translateY(-4px);
+}
+
+.character-card h6 {
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+.character-card p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+
+/* FILTERS */
+.filter-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.filter-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.filter-row input,
+.filter-row select {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.filter-row button {
+  background-color: #0d9488; /* Teal-ish green like your screenshot */
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f0f0f0;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.pagination button:hover {
+  background: #ddd;
+}
+
+.pagination .active {
+  background: #333;
+  color: white;
+}
+
+/* Outer wrapper takes full width */
+.home-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.home-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;    
 }

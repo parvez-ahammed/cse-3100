@@ -1,169 +1,69 @@
-# Rick & Morty Explorer – Assignment 1
-
-In this project, you'll build a beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
-
-You'll apply React and JavaScript skills, routing, API fetching, conditional rendering, and basic UX design.
-
----
-
-## Submission Guidelines
-
-The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
-
-- **Time Tracking (Recommended):**  
-  Use tools like [WakaTime](https://wakatime.com/) to track your development time. This provides visibility into the effort invested.
-
-- **Updated README (Mandatory):**  
-  Include a clear and updated `README.md` in your repository with:
-
-  - Summary of implemented features
-  - Any additional improvements made
-  - Setup and run instructions
-  - Known issues or limitations
-  - Notes for the instructor
-
-- **AI Tool Usage (If Used):**  
-  If you have used any AI-powered tools during development, please include:
-  - A short description of which AI tool(s) were used
-  - A brief explanation of how they were used
 
 ## Wakatime Badge
 
 [![wakatime](https://wakatime.com/badge/user/7bff677b-9b77-497c-ba7d-29ffc0f02148/project/5a957cb7-f83c-424e-9c9b-fb6020734b8e.svg)](https://wakatime.com/badge/user/7bff677b-9b77-497c-ba7d-29ffc0f02148/project/5a957cb7-f83c-424e-9c9b-fb6020734b8e)
 
-## Requirements
+---
 
-Make sure you have the following installed:
+## ✅ Summary of Implemented Features
 
-- [Node.js (preferably v22.16.5)](https://nodejs.org/en/download/)
-- [Code editor – VSCode](https://code.visualstudio.com/)
-- [NVM (optional)](https://github.com/coreybutler/nvm-windows)
-- [WakaTime extension for VSCode (to track total time invested in this project)](https://wakatime.com/plugins/vscode)
+- ✅ **Character Details Page**: Dynamic routing to `/character/:id` with full details including name, status, species, gender, origin, location, and episode count.
+- ✅ **Search + Filter**: Search box to filter characters by name, and dropdown to filter by status (Alive, Dead, Unknown). Both use query parameters to persist filters in the URL.
+- ✅ **Pagination**: "Next" and "Previous" buttons to navigate through characters, 10 per page using API’s pagination feature.
+- ✅ **Contact Us Page**: `/contact` route with a form (name, email, message). Includes form validation and success message on submit.
+- ✅ **About Us Page**: `/about` static page with app information, developer details, and favorite Rick & Morty quote.
+- ✅ **Code Quality**: Modular components (`CharacterCard`, etc.), clean folder structure, semantic naming, and comments where necessary.
 
 ---
 
-## Setup Instructions
+## ✨ Additional Improvements Made
 
-### Clone the Repository
+- Improved layout and responsiveness (5-character grid per row).
+- Centralized layout with spacing on both sides for better UI.
+- Stylish navbar with consistent buttons linking to Home, About Us, and Contact.
+- Compact homepage layout to avoid vertical scrolling.
+- Pagination styling fixed for better visibility.
+- Refactored About and Contact pages to integrate smoothly into the app layout.
 
-Fork the base repository. Then, clone the forked repository to your local machine and switch to the branch assignment-1
+---
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
 
 ```bash
 git clone git@github.com:parvez-ahammed/cse-3100.git
 cd cse-3100
 git checkout assignment-1
-```
 
-### Install Dependencies
+---
+## 2. Known Issues / Limitations
+The Contact form currently logs data to the console (no backend submission).
 
-Run the following to install npm dependencies
+No dark/light mode toggle (optional bonus not implemented).
 
-```bash
-npm install
-```
+Filtering doesn’t support debounce for search input (performance on fast typing may lag).
 
-### Run the Development Server
-
-```bash
-npm run dev
-```
+Limited episode data; only episode count shown for characters.
 
 ---
 
-## Assignment Instructions
+### 3. Notes for the Instructor
+All features as per the assignment instructions have been implemented.
 
-You'll enhance the base Rick & Morty character explorer app with the following features and pages.
+UI closely matches the shared screenshot designs.
 
-### 1. Character Details Page (2 marks)
+Extra care was taken to improve usability, maintain clean structure, and keep code modular and readable.
 
-On the main list, clicking a character should navigate to a dynamic route (e.g., /character/1) and display:
+Please check /character/:id, /about, and /contact for full implementation coverage.
 
-- Name
-- Image
-- Status
-- Species
-- Origin
-- Last known location
-- Number of episodes they appeared in
 
-You must use React Router’s dynamic routing with the character ID.
 
-### 2. Search + Filter Functionality (2 marks)
+### 4. Tool Used: ChatGPT (GPT-4o, via OpenAI)
 
-- Add a search box to filter characters by name.
+Purpose:
 
-- Add a dropdown to filter by status (Alive, Dead, Unknown).
+Assisted in code refactoring and layout adjustments.
 
-- Filters must work together and persist in the URL via query parameters (e.g., ?name=rick&status=alive).
+Helped debug styling inconsistencies and component reusability.
 
-### 3. Pagination (2 marks)
-
-- Use the API’s built-in pagination (?page=2) to add a “Next” and “Previous” button at the bottom.
-
-- Show only 10 characters per page.
-
-- Prevent going past first/last page.
-
-### 4. Contact Us Page (2 marks)
-
-Create a separate route /contact with a form that includes:
-
-- Name
-- Email
-- Message
-- Submit button
-- Form validation (e.g., required fields, valid email format)
-- On submit, display a success message and reset the form.
-
-### 5. About Us Page (1 mark)
-
-Static page /about with:
-
-- Info about the app
-- Developer
-- Favorite Rick & Morty quote
-
-### 6. Code Quality (1 mark)
-
-- Clean code structure
-- Reusable components (e.g., CharacterCard)
-- Proper comments, meaningful names, formatting
-
----
-
-## Bonus Challenges (Optional)
-
-Not required but impressive if done:
-
-- Add episode titles in the character detail view by fetching additional data
-- Add a dark/light mode toggle
-- Store search/filter preferences in localStorage
-
----
-
-## API Reference
-
-- List characters:  
-  <https://rickandmortyapi.com/api/character>
-
-- Search by name:  
-  <https://rickandmortyapi.com/api/character/?name=rick>
-
-- Filter by status:  
-  <https://rickandmortyapi.com/api/character/?status>
-
-## Recommeded Project Structure (Optional and Flexible)
-
-To keep your project organized, consider the following structure:
-
-- `src/assets`: Static assets (e.g., images, icons)
-- `src/common`: Common utilities and constants (e.g., API endpoints, constants, apis)
-- `src/components`: Reusable components (e.g., CharacterCard, SearchBar, FilterDropdown)
-- `src/config`: Configuration files (e.g., API configuration or app settings)
-- `src/context`: Context providers (e.g., ThemeContext, FilterContext)
-- `src/features`: Feature-specific components (e.g., CharacterList, CharacterDetails, ContactForm)
-- `src/pages`: Page components (e.g., HomePage, CharacterDetailsPage, ContactPage, AboutPage)
-- `src/hooks`: Custom hooks (e.g., useFetchCharacters, useQueryParams)
-- `src/utils`: Utility functions (e.g., formatCharacterData, validateEmail)
-- `src/styles`: CSS files or styled components
-- `src/routes`: Route definitions (e.g., AppRouter)
+Used for README structure and wording polish (this file).

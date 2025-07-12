@@ -1,0 +1,31 @@
+.character-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+  padding: 0.75rem;
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+}
+
+.character-img {
+  border-radius: 12px;
+  width: 100%;
+}
+
+.btn-details {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: #72a9e4;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn-details:hover {
+  background-color: #0056b3;
+}
