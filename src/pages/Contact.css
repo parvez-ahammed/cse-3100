@@ -1,0 +1,57 @@
+
+.container {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: white;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #111;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #999;
+  outline: none;
+}
+
+button {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #333;
+}

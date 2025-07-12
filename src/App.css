@@ -1,0 +1,57 @@
+
+.container {
+    font-family: Arial, sans-serif;
+       text-align: center;
+  margin: 0;
+    padding: 0;
+}
+
+.head {
+    background-color: white;
+    color: white;
+      padding: 20px;
+}
+.gg{
+    color: black;
+     margin-right:380px;
+     
+}
+.navb {
+    margin-top: 10px;
+    margin-left:330px;
+    
+}
+
+.loginimage {
+    width: 800px;
+       height: 300px;
+    margin-bottom: 15px;
+}
+.navlink {
+    color: white;
+      text-decoration: none;
+  margin: 0 15px;
+    font-size: 18px;
+    color:black;
+}
+
+    .navlink:hover {
+        text-decoration: underline;
+    }
+
+.maincontent {
+    padding: 20px;
+}
+
+.foot {
+        background-color: #333;
+    color: white;
+      padding: 10px;
+    position: fixed;
+  bottom: 0;
+    width: 100%;
+}
+
+.landing h2 {
+    color: #444;
+}
