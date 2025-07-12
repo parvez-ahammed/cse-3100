@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -36,83 +37,61 @@ const ContactPage = () => {
       setErrors(validationErrors)
       return
     }
-    // Here you would typically send the form data to a server
     console.log('Form submitted:', formData)
     setIsSubmitted(true)
     setFormData({ name: '', email: '', message: '' })
     setErrors({})
+    setTimeout(() => setIsSubmitted(false), 5000)
   }
 
   return (
-    <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8">
-      <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+    <div className="container mx-auto px-4 py-8 max-w-3xl">
+      <Link to="/" className="btn btn-outline-primary mb-6">← Back to Home</Link>
+      <h1 className="text-3xl font-bold mb-6 text-center text-green-700">Contact Us</h1>
       {isSubmitted ? (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+        <div className="alert alert-success mb-4">
           Thank you for your message! We'll get back to you soon.
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-              Name
-            </label>
+            <label htmlFor="name" className="block text-sm font-medium">Name</label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 ${
-                errors.name ? 'border-red-500' : 'border'
-              }`}
+              className={`form-control ${errors.name ? 'is-invalid' : ''}`}
             />
-            {errors.name && (
-              <p className="mt-1 text-sm text-red-600">{errors.name}</p>
-            )}
+            {errors.name && <p className="invalid-feedback">{errors.name}</p>}
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
+            <label htmlFor="email" className="block text-sm font-medium">Email</label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 ${
-                errors.email ? 'border-red-500' : 'border'
-              }`}
+              className={`form-control ${errors.email ? 'is-invalid' : ''}`}
             />
-            {errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-            )}
+            {errors.email && <p className="invalid-feedback">{errors.email}</p>}
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-              Message
-            </label>
+            <label htmlFor="message" className="block text-sm font-medium">Message</label>
             <textarea
               id="message"
               name="message"
               rows="4"
               value={formData.message}
               onChange={handleChange}
-              className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 ${
-                errors.message ? 'border-red-500' : 'border'
-              }`}
+              className={`form-control ${errors.message ? 'is-invalid' : ''}`}
             ></textarea>
-            {errors.message && (
-              <p className="mt-1 text-sm text-red-600">{errors.message}</p>
-            )}
+            {errors.message && <p className="invalid-feedback">{errors.message}</p>}
           </div>
           <div>
-            <button
-              type="submit"
-              className="inline-flex justify-center rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-            >
-              Submit
-            </button>
+            <button type="submit" className="btn btn-primary">Submit</button>
           </div>
         </form>
       )}

@@ -27,7 +27,6 @@ export default function Home() {
       }
     });
 
-    // Reset to page 1 when search or filter changes
     if (updates.name !== undefined || updates.status !== undefined) {
       newParams.set('page', '1');
     }
@@ -86,19 +85,13 @@ export default function Home() {
   }, [searchTerm, statusFilter, currentPage]);
 
   return (
-    <main className="container">
-      <div className="header-section">
-        <Link to="/" className="title-link">
-          <h1 className="my-4">Rick & Morty Explorer</h1>
-        </Link>
-
-        {/* Navigation */}
-        <nav className="mb-4">
-          <Link to="/about" className="btn btn-outline-primary me-2">About</Link>
-          <Link to="/contact" className="btn btn-outline-primary">Contact</Link>
+    <main className="container home-main">
+      <header className="header-section home-header">
+        <h1 className="my-4 title-link">Rick & Morty Explorer</h1>
+        <nav className="nav-bar mb-4">
+          <Link to="/about" className="nav-btn">About</Link>
+          <Link to="/contact" className="nav-btn">Contact</Link>
         </nav>
-
-        {/* Search and Filter Controls */}
         <div className="controls-section mb-4">
           <div className="row">
             <div className="col-md-8">
@@ -115,30 +108,30 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Loading State */}
       {loading && <div className="text-center"><p>Loading characters...</p></div>}
 
-      {/* Error State */}
       {error && <div className="alert alert-warning text-center">{error}</div>}
 
-      {/* Characters Grid */}
       {!loading && !error && (
         <>
-          <div className="row">
-            {characters.map((char) => (
-              <div className="col-md-4 mb-4" key={char.id}>
-                <CharacterCard character={char} />
-              </div>
-            ))}
-          </div>
+          {/* Horizontal Scroll Container */}
+          <section className="character-row-container">
+            <div className="character-row">
+              {characters.map((char) => (
+                <div className="character-card-wrapper" key={char.id}>
+                  <CharacterCard character={char} />
+                </div>
+              ))}
+            </div>
+          </section>
 
           {/* Pagination */}
           {info && (
-            <div className="pagination-section d-flex justify-content-between align-items-center mt-4">
+            <nav className="pagination-section">
               <button
-                className="btn btn-secondary"
+                className="pagination-btn"
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={!info.prev}
               >
@@ -150,16 +143,48 @@ export default function Home() {
               </span>
 
               <button
-                className="btn btn-secondary"
+                className="pagination-btn"
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={!info.next}
               >
                 Next →
               </button>
-            </div>
+            </nav>
           )}
         </>
       )}
+
+      {/* Add this CSS */}
+      <style jsx>{`
+        .character-row-container {
+          width: 100%;
+          overflow-x: auto;
+          padding: 1rem 0;
+          margin-bottom: 2rem;
+        }
+        
+        .character-row {
+          display: flex;
+          gap: 1rem;
+          padding: 0 1rem;
+          min-width: max-content;
+        }
+        
+        .character-card-wrapper {
+          flex: 0 0 auto;
+          width: 200px; /* Adjust card width as needed */
+        }
+        
+        /* Hide scrollbar but keep functionality */
+        .character-row-container::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .character-row-container {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </main>
   );
 }
