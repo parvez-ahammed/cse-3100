@@ -5,7 +5,7 @@ const FilterIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
     height="24"
     width="24"
-    fill="#042c2bff"
+    fill="#00fff7"
     viewBox="0 0 24 24"
     className="mr-2"
   >
@@ -18,7 +18,7 @@ const ArrowDown = () => (
     xmlns="http://www.w3.org/2000/svg"
     height="16"
     width="16"
-    fill="#042c2bff"
+    fill="#00fff7"
     viewBox="0 0 24 24"
     className="pointer-events-none"
   >
@@ -47,8 +47,7 @@ const Search = ({
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="appearance-none bg-transparent border-none font-semibold text-base font-orbitron outline-none pr-8 cursor-pointer"
-          style={{ color: "#042c2bff" }}
+          className="appearance-none bg-transparent border-none text-cyan-400 font-semibold text-base font-orbitron outline-none pr-8 cursor-pointer"
         >
           <option value="">All Statuses</option>
           <option value="Alive">Alive</option>
