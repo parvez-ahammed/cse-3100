@@ -1,10 +1,12 @@
 export default function About() {
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-8">
-      <h1 className="text-3xl font-bold text-gray-800">About Us</h1>
+      <h1 className="text-3xl font-bold text-[#001F3F]">About Us</h1>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold text-gray-700">About this App</h2>
+        <h2 className="text-2xl font-semibold text-[#001F3F]">
+          About this App
+        </h2>
         <p className="text-gray-600">
           Welcome to the Rick & Morty Explorer! This is a React web application
           designed for fans and newcomers alike to browse and learn about
@@ -22,7 +24,7 @@ export default function About() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold text-gray-700">
+        <h2 className="text-2xl font-semibold text-[#001F3F]">
           Why we built it
         </h2>
         <p className="text-gray-600">
@@ -37,7 +39,7 @@ export default function About() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold text-gray-700">
+        <h2 className="text-2xl font-semibold text-[#001F3F]">
           About the Developer
         </h2>
         <p className="text-gray-600">
@@ -52,7 +54,7 @@ export default function About() {
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-xl font-semibold text-gray-800">Future Ideas</h3>
+        <h3 className="text-xl font-semibold text-[#001F3F]">Future Ideas</h3>
         <p className="text-gray-600">
           Adding episode filters, character favorites, and a dark mode are on my
           wishlist for next versions!
@@ -60,7 +62,7 @@ export default function About() {
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-xl font-semibold text-gray-800">
+        <h3 className="text-xl font-semibold text-[#001F3F]">
           Favorite Rick & Morty Quote
         </h3>
         <blockquote className="italic text-gray-600">
