@@ -1,113 +1,142 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import CharacterCard from "../components/CharacterCard";
 
 export default function Home() {
   const [characters, setCharacters] = useState([]);
+  const [apiPage, setApiPage] = useState(1);
+  const [uiPage, setUiPage] = useState(1);
+  const [totalCharacters, setTotalCharacters] = useState(0);
+  const [theme, setTheme] = useState("light");
+
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
-  const nameFilter = searchParams.get("name") || "";
-  const statusFilter = searchParams.get("status") || "";
+  const name = searchParams.get("name") || "";
+  const status = searchParams.get("status") || "";
 
-  const page = parseInt(searchParams.get("page")) || 1;
-  const [totalPages, setTotalPages] = useState(1);
+  const totalUiPages = Math.ceil(totalCharacters / 10);
 
+  // Theme setup
+  useEffect(() => {
+    const stored = localStorage.getItem("theme") || "light";
+    setTheme(stored);
+    document.body.classList.toggle("dark-mode", stored === "dark");
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.body.classList.toggle("dark-mode", newTheme === "dark");
+    localStorage.setItem("theme", newTheme);
+  };
+
+  // Fetch data
   useEffect(() => {
     const fetchCharacters = async () => {
-      try {
-        let query = `?page=${page}`;
-        if (nameFilter) query += `&name=${nameFilter}`;
-        if (statusFilter) query += `&status=${statusFilter}`;
+      const params = new URLSearchParams();
+      if (name) params.append("name", name);
+      if (status) params.append("status", status);
+      params.append("page", apiPage);
 
+      try {
         const res = await fetch(
-          `https://rickandmortyapi.com/api/character?${query}`
+          `https://rickandmortyapi.com/api/character?${params.toString()}`
         );
         const data = await res.json();
         setCharacters(data.results || []);
-        setTotalPages(data.info?.pages || 1);
-      } catch (err) {
+        setTotalCharacters(data.info?.count || 0);
+      } catch (error) {
         setCharacters([]);
-        setTotalPages(1);
+        setTotalCharacters(0);
       }
     };
 
     fetchCharacters();
-  }, [nameFilter, statusFilter, page]);
+  }, [apiPage, name, status]);
 
-  const handleSearchChange = (e) => {
-    const value = e.target.value;
-    setSearchParams((prev) => {
-      const params = new URLSearchParams(prev);
-      if (value) params.set("name", value);
-      else params.delete("name");
-      return params;
-    });
-  };
-
-  const handleStatusChange = (e) => {
-    const value = e.target.value;
-    setSearchParams((prev) => {
-      const params = new URLSearchParams(prev);
-      if (value) params.set("status", value);
-      else params.delete("status");
-      return params;
-    });
-  };
-
+  // Handle page change
   const handlePageChange = (newPage) => {
-    setSearchParams((prev) => {
-      const params = new URLSearchParams(prev);
-      params.set("page", newPage);
-      return params;
-    });
+    if (newPage < 1 || newPage > totalUiPages) return;
+    setUiPage(newPage);
+    const newApiPage = Math.ceil(newPage / 2);
+    if (newApiPage !== apiPage) setApiPage(newApiPage);
+  };
+
+  // Handle form
+  const handleFilterChange = (e) => {
+    e.preventDefault();
+    const newName = e.target.name.value.trim();
+    const newStatus = e.target.status.value;
+
+    const newParams = {};
+    if (newName) newParams.name = newName;
+    if (newStatus) newParams.status = newStatus;
+
+    setSearchParams(newParams);
+    setUiPage(1);
+    setApiPage(1);
   };
 
   return (
-    <main className="container my-5">
-      <div className="text-center mb-4">
-        <h1 className="display-4 fw-bold text-success">
-          Rick & Morty Explorer
-        </h1>
-        <p className="lead text-muted">
-          Search and filter your favorite characters
-        </p>
+    <main className="container">
+      <div className="d-flex justify-content-between align-items-center mt-4 mb-3">
+        <h1>Rick & Morty Explorer</h1>
+        <button
+          onClick={toggleTheme}
+          className="btn btn-sm btn-outline-primary"
+        >
+          Switch to {theme === "light" ? "Dark" : "Light"} Mode
+        </button>
       </div>
 
-      {/* Filters */}
-      <div className="row g-3 mb-5 align-items-end">
+      <form
+        onSubmit={handleFilterChange}
+        className="row g-3 align-items-end mb-4"
+      >
         <div className="col-md-6">
-          <label className="form-label fw-semibold">Search by Name</label>
+          <label htmlFor="name" className="form-label">
+            Search by Name
+          </label>
           <input
             type="text"
+            name="name"
+            defaultValue={name}
             className="form-control"
-            placeholder="e.g., Rick, Morty..."
-            value={nameFilter}
-            onChange={handleSearchChange}
+            placeholder="e.g., Rick"
           />
         </div>
-        <div className="col-md-6">
-          <label className="form-label fw-semibold">Filter by Status</label>
-          <select
-            className="form-select"
-            value={statusFilter}
-            onChange={handleStatusChange}
-          >
-            <option value="">All Statuses</option>
+        <div className="col-md-4">
+          <label htmlFor="status" className="form-label">
+            Filter by Status
+          </label>
+          <select name="status" defaultValue={status} className="form-select">
+            <option value="">All</option>
             <option value="alive">Alive</option>
             <option value="dead">Dead</option>
             <option value="unknown">Unknown</option>
           </select>
         </div>
-      </div>
+        <div className="col-md-2">
+          <button type="submit" className="btn btn-primary w-100">
+            Apply
+          </button>
+        </div>
+      </form>
 
-      {/* Character Grid */}
+      {/* Character grid */}
       <div className="row">
         {characters.length > 0 ? (
-          characters.map((char) => (
-            <div className="col-md-4 mb-4" key={char.id}>
-              <CharacterCard character={char} />
-            </div>
-          ))
+          characters
+            .slice(
+              (uiPage - 1) % 2 === 0 ? 0 : 10,
+              (uiPage - 1) % 2 === 0 ? 10 : 20
+            )
+            .map((char) => (
+              <div className="col-md-4 mb-4" key={char.id}>
+                <CharacterCard character={char} />
+              </div>
+            ))
         ) : (
           <div className="col text-center">
             <p className="text-danger fs-5">No characters found.</p>
@@ -115,25 +144,25 @@ export default function Home() {
         )}
       </div>
 
-      {/* Page Buttons */}
-      {totalPages > 1 && (
+      {/* Pagination */}
+      {totalUiPages > 1 && (
         <div className="d-flex flex-wrap justify-content-center align-items-center gap-2 my-4">
           <button
             className="btn btn-outline-secondary"
-            onClick={() => handlePageChange(page - 1)}
-            disabled={page <= 1}
+            onClick={() => handlePageChange(uiPage - 1)}
+            disabled={uiPage <= 1}
           >
             Previous
           </button>
 
-          {[...Array(totalPages)].map((_, index) => {
+          {[...Array(totalUiPages)].map((_, index) => {
             const pageNum = index + 1;
             return (
               <button
                 key={pageNum}
                 onClick={() => handlePageChange(pageNum)}
                 className={`btn ${
-                  pageNum === page ? "btn-success" : "btn-outline-secondary"
+                  pageNum === uiPage ? "btn-success" : "btn-outline-secondary"
                 }`}
               >
                 {pageNum}
@@ -143,8 +172,8 @@ export default function Home() {
 
           <button
             className="btn btn-outline-secondary"
-            onClick={() => handlePageChange(page + 1)}
-            disabled={page >= totalPages}
+            onClick={() => handlePageChange(uiPage + 1)}
+            disabled={uiPage >= totalUiPages}
           >
             Next
           </button>
