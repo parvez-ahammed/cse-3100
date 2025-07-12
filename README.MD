@@ -27,6 +27,10 @@ The following items are **strongly recommended** to ensure a professional, well-
   - A short description of which AI tool(s) were used
   - A brief explanation of how they were used
 
+## Wakatime Badge
+
+[![wakatime](https://wakatime.com/badge/user/7bff677b-9b77-497c-ba7d-29ffc0f02148/project/5a957cb7-f83c-424e-9c9b-fb6020734b8e.svg)](https://wakatime.com/badge/user/7bff677b-9b77-497c-ba7d-29ffc0f02148/project/5a957cb7-f83c-424e-9c9b-fb6020734b8e)
+
 ## Requirements
 
 Make sure you have the following installed:

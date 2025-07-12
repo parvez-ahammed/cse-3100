@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 export default function CharacterCard({ character }) {
   return (
-    <div className="card">
+    <div className="card shadow-sm h-100">
       <img
         src={character.image}
         className="card-img-top"
@@ -8,11 +10,18 @@ export default function CharacterCard({ character }) {
       />
       <div className="card-body">
         <h5 className="card-title">{character.name}</h5>
-        <p className="card-text">
+        <p className="card-text mb-2">
           <strong>Status:</strong> {character.status} <br />
           <strong>Species:</strong> {character.species}
         </p>
-        <button>View Details</button>
+
+        {/* Link to new route */}
+        <Link
+          to={`/character/${character.id}`}
+          className="btn btn-outline-primary btn-sm"
+        >
+          View Details
+        </Link>
       </div>
     </div>
   );
