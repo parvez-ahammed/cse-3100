@@ -1,0 +1,38 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filters input, .filters select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.pagination {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 0.2rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.pagination .active {
+  font-weight: bold;
+  background: #ddd;
+}
