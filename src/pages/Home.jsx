@@ -41,7 +41,7 @@ export default function Home() {
         setLoading(false);
       }
     };
-
+    window.scrollTo({ top: 0, behavior: "smooth" });
     fetchCharacters();
   }, [name, status, displayPage]);
 
@@ -64,32 +64,40 @@ export default function Home() {
 
         {/* Search & Filter Form */}
         <form
-          className="bg-sky-100 row gy-2 gx-3 align-items-center mb-4 bg-light p-3 rounded shadow-sm p-4"
           onSubmit={handleSearch}
+          className="bg-[#e0f2fe] md:flex md:flex-wrap items-end gap-4 p-6 rounded-xl shadow-sm"
         >
-          <div className="col-12 col-md-5 gy-2 gx-3">
-            <label htmlFor="name" className="form-label visually-hidden">
-              Name:
+          {/* Name Input */}
+          <div className="w-full md:w-5/12">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Name
             </label>
             <input
               type="text"
               name="name"
               id="name"
-              className="form-control"
-              placeholder=" Search by name..."
               defaultValue={name}
+              placeholder="Search by name..."
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400"
             />
           </div>
 
-          <div className="col-12 col-md-4">
-            <label htmlFor="status" className="form-label visually-hidden">
-              Status:
+          {/* Status Select */}
+          <div className="w-full md:w-4/12">
+            <label
+              htmlFor="status"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Status
             </label>
             <select
               name="status"
               id="status"
-              className="form-select"
               defaultValue={status}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400"
             >
               <option value="">All Statuses</option>
               <option value="alive">Alive</option>
@@ -98,8 +106,12 @@ export default function Home() {
             </select>
           </div>
 
-          <div className="col-12 col-md-3">
-            <button type="submit" className="btn btn-primary w-100 bg-sky-500">
+          {/* Submit Button */}
+          <div className="w-full md:w-3/12">
+            <button
+              type="submit"
+              className="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+            >
               Search
             </button>
           </div>
@@ -107,7 +119,7 @@ export default function Home() {
 
         {loading && <p className="text-center text-secondary">Loading...</p>}
         {error && <p className="text-center text-danger">{error}</p>}
-
+        <br />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {characters.map((char) => (
             <CharacterCard key={char.id} character={char} />
@@ -115,9 +127,9 @@ export default function Home() {
         </div>
 
         {/* Pagination Controls */}
-        <div className="d-flex justify-content-center gap-3 align-items-center my-4 flex-wrap">
+        <div className="flex justify-center items-center gap-4 my-6 flex-wrap">
           <button
-            className="btn btn-outline-primary px-4"
+            className="px-5 py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={!info.prev}
             onClick={() =>
               setSearchParams({ name, status, page: displayPage - 1 })
@@ -126,12 +138,12 @@ export default function Home() {
             ← Previous
           </button>
 
-          <span className="px-3 py-1 border rounded text-muted bg-light fw-semibold">
+          <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md font-semibold shadow-sm">
             Page {displayPage}
           </span>
 
           <button
-            className="btn btn-outline-primary px-4"
+            className="px-5 py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={!info.next}
             onClick={() =>
               setSearchParams({ name, status, page: displayPage + 1 })

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#3F4651] text-[#EBECED] py-10 mt-10">
+    <footer className="bg-[#3F4651] text-[#EBECED] py-10">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* About Vara-Hobe */}
         <div>
