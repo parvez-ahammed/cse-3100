@@ -6,6 +6,9 @@ You'll apply React and JavaScript skills, routing, API fetching, conditional ren
 
 ---
 
+## wakatime
+[![wakatime](https://wakatime.com/badge/user/9d96a11b-73d5-4a6c-9587-a9efa87ef402/project/6970a5b7-d507-43b5-bede-5dbb912018bd.svg)](https://wakatime.com/badge/user/9d96a11b-73d5-4a6c-9587-a9efa87ef402/project/6970a5b7-d507-43b5-bede-5dbb912018bd)
+
 ## Submission Guidelines
 
 The following items are **strongly recommended** to ensure a professional, well-documented, and transparent submission (not directly assessed or graded):
