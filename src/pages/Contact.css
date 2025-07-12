@@ -1,0 +1,40 @@
+.contact-page {
+  background-color: #121212;
+  color: #e0e0e0;
+  padding: 2rem;
+  border-radius: 12px;
+}
+.neon-heading {
+  color: #0ff; /* bright cyan/neon blue */
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #0ff, 0 0 20px rgba(0, 255, 255, 0.7);
+}
+.contact-subtext {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+}
+
+.contact-form {
+  background-color: #1e1e2f;
+  border: 1px solid #2f2f40;
+  border-radius: 10px;
+}
+
+.form-label {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.btn-custom {
+  background-color: #0077b6;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 30px;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-custom:hover {
+  background-color: #00b4d8;
+}

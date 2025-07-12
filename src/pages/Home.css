@@ -1,5 +1,86 @@
+/* Home.css */
+
+/* Background and overall color theme */
+body {
+  background: linear-gradient(to right, #0a0f1d, #1a2238);
+  color: #e0f7ff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  padding-top: 2rem;
+}
+
+/* Heading style */
+/* Heading style */
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00e0ff; /* Bright neon blue */
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 5px #00e0ff, 0 0 10px #00e0ff, 0 0 15px #00cfff;
+}
+
+/* Filter Inputs */
+input.form-control,
+select.form-control {
+  background-color: #1a253a;
+  color: #e0f7ff;
+  border: 2px solid #00e5ff55;
+  transition: border 0.3s ease;
+}
+
+input.form-control::placeholder {
+  color: #a8c9dd;
+}
+
+input.form-control:focus,
+select.form-control:focus {
+  border-color: #00e5ff;
+  box-shadow: 0 0 8px #00e5ff55;
+  background-color: #1f2b47;
+  color: #fff;
+}
+
+/* Character grid styling */
 .character-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
 }
+
+@media (min-width: 1400px) {
+  .character-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Pagination Buttons */
+button.btn {
+  background-color: #1f2b47;
+  color: #00e5ff;
+  border: 2px solid #00e5ff55;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+button.btn:hover {
+  background-color: #00e5ff;
+  color: #000;
+  box-shadow: 0 0 12px #00e5ff;
+}
+
+button.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Message for no results */
+.character-grid p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
