@@ -1,0 +1,87 @@
+.character-detail-page {
+  position: relative;
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px 30px;
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 30px; 
+  background-color: #2b9fb3;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s;
+  z-index: 10;
+}
+
+.back-button:hover {
+  background-color: #1f7c91;
+  transform: translateY(-2px);
+}
+
+.character-header h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+  color: #222;
+}
+
+.character-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.character-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.character-details {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.8;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+/* Spinner */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #eee;
+  border-top: 5px solid #2b9fb3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 80px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  text-align: center;
+  color: #b00020;
+  margin-top: 40px;
+}

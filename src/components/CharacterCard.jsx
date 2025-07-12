@@ -1,18 +1,34 @@
+import { useNavigate } from "react-router-dom";
+import './CharacterCard.css';
+
 export default function CharacterCard({ character }) {
+  const navigate = useNavigate();
+
+  const handleViewDetails = () => {
+    navigate(`/character/${character.id}`);
+  };
+
   return (
-    <div className="card">
+    <div className="character-card">
       <img
         src={character.image}
-        className="card-img-top"
         alt={character.name}
+        className="character-image"
       />
-      <div className="card-body">
-        <h5 className="card-title">{character.name}</h5>
-        <p className="card-text">
-          <strong>Status:</strong> {character.status} <br />
+      <div className="character-content">
+        <h5 className="character-name">{character.name}</h5>
+        <p className="character-info">
+          <strong>Status:</strong> {character.status}<br />
           <strong>Species:</strong> {character.species}
         </p>
-        <button>View Details</button>
+        <div className="button-container">
+          <button
+            className="view-details-button"
+            onClick={handleViewDetails}
+          >
+            View Details
+          </button>
+        </div>
       </div>
     </div>
   );
