@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import CharacterCard from "../components/CharacterCard"; // ✅ Correct import
+import CharacterCard from "../components/CharacterCard"; 
 
 export default function HomePage() {
   const [characters, setCharacters] = useState([]);
@@ -68,6 +68,7 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* 👤 Characters */}
       <div className="row">
         {characters.length > 0 ? (
           characters.map((char) => (
@@ -82,6 +83,7 @@ export default function HomePage() {
         )}
       </div>
 
+      {/* 🔁 Pagination */}
       {info && (
         <div className="d-flex justify-content-between my-4">
           <button

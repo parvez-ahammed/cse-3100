@@ -1,28 +1,57 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-
-export default function CharacterDetailsPage() {
+const CharacterDetail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState(null);
 
   useEffect(() => {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then(res => res.json())
-      .then(data => setCharacter(data));
+      .then((res) => res.json())
+      .then((data) => setCharacter(data))
+      .catch((error) => {
+        console.error("Error fetching character:", error);
+        setCharacter(null);
+      });
   }, [id]);
 
-  if (!character) return <p>Loading...</p>;
+  if (!character) {
+    return <div className="text-center mt-5">Loading character...</div>;
+  }
 
   return (
-    <div className="container py-4">
-      <h1>{character.name}</h1>
-      <img src={character.image} alt={character.name} />
-      <p>Status: {character.status}</p>
-      <p>Species: {character.species}</p>
-      <p>Origin: {character.origin.name}</p>
-      <p>Location: {character.location.name}</p>
-      <p>Episodes: {character.episode.length}</p>
+    <div className="container py-5">
+      <h2 className="mb-4 text-center fw-bold">{character.name}</h2>
+      <div className="row align-items-center">
+        <div className="col-md-4 text-center mb-4">
+          <img
+            src={character.image}
+            alt={character.name}
+            className="img-fluid rounded shadow"
+          />
+        </div>
+        <div className="col-md-8">
+          <ul className="list-group">
+            <li className="list-group-item">
+              <strong>Status:</strong> {character.status}
+            </li>
+            <li className="list-group-item">
+              <strong>Species:</strong> {character.species}
+            </li>
+            <li className="list-group-item">
+              <strong>Origin:</strong> {character.origin.name}
+            </li>
+            <li className="list-group-item">
+              <strong>Last Known Location:</strong> {character.location.name}
+            </li>
+            <li className="list-group-item">
+              <strong>Episodes:</strong> {character.episode.length}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default CharacterDetail;
