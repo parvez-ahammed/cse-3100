@@ -1,5 +1,7 @@
 # Rick & Morty Explorer
 
+https://wakatime.com/@1cb697c9-d16a-4c4d-a6e2-af85e61b283b/projects/vfogvqnhxn?start=2025-07-06&end=2025-07-12
+
 A beautiful and interactive single-page application that allows users to explore, filter, and view details about characters from the Rick and Morty universe using the public Rick and Morty API.
 
 ## 🚀 Features Implemented
