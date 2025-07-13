@@ -1,0 +1,89 @@
+/* Global styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header */
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+}
+
+header .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .nav a {
+  color: white;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+header .nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Main content */
+main {
+  padding: 1rem;
+}
+
+/* About / Contact pages */
+.page {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.page h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.page p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Footer (optional) */
+footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 2rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  header .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .container {
+    padding: 0.5rem;
+  }
+}

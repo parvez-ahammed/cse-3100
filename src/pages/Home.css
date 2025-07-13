@@ -2,37 +2,65 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
+  font-family: Arial, sans-serif;
 }
 
 .filters {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
-.filters input, .filters select {
+.filters select,
+.filters input {
   padding: 0.5rem;
   font-size: 1rem;
+  min-width: 200px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
+  margin-top: 1rem;
 }
 
-.pagination {
-  margin: 1rem 0;
+.grid > * {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
   text-align: center;
 }
 
-.pagination button {
-  margin: 0 0.2rem;
-  padding: 0.4rem 0.8rem;
-  cursor: pointer;
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.pagination .active {
-  font-weight: bold;
-  background: #ddd;
+.pagination button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button.active {
+  background: #007bff;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  padding: 0.4rem 0.8rem;
+  color: #666;
 }
