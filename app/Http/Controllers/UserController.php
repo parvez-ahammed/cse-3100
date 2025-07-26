@@ -28,7 +28,7 @@ class UserController extends Controller
         // Validate incoming request data
         try {
             $validatedData = $request->validate([
-                'name' => 'required|string|max:2',
+                'name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|string|min:6|confirmed',
             ]);
