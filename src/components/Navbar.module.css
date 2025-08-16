@@ -26,11 +26,57 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  transition: transform 0.2s ease;
 }
 
 .brand:hover {
-  transform: translateY(-2px);
+  color: var(--primary-light);
+}
+
+.navLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+.activeLink {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.activeLink::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary);
+  border-radius: 2px;
+}
+
+.themeToggle {
+  background: none;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.themeToggle:hover {
+  background-color: var(--primary);
+  color: var(--bg-secondary);
 }
 
 .portalIcon {
@@ -74,7 +120,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  color: transparent;
 }
 
 /* Navigation links with improved hover effects */

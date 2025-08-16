@@ -12,40 +12,50 @@ export default function CharacterDetail() {
 
   // Fetch character data
   useEffect(() => {
-    setLoading(true);
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((res) => {
+    const fetchCharacter = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
         if (!res.ok) throw new Error("Character not found");
-        return res.json();
-      })
-      .then(data => {
+        const data = await res.json();
         setCharacter(data);
-        setLoading(false);
-      })
-      .catch(err => {
+      } catch (err) {
         setError(err.message);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+    fetchCharacter();
   }, [id]);
 
   // Fetch episode titles
   useEffect(() => {
-    if (character && character.episode && character.episode.length > 0) {
+    const fetchEpisodes = async () => {
+      if (!character?.episode?.length) {
+        setEpisodeTitles([]);
+        return;
+      }
+      
       setEpisodesLoading(true);
-      Promise.all(
-        character.episode.map(epUrl =>
-          fetch(epUrl)
-            .then(res => res.json())
-            .then(data => ({ name: data.name, episode: data.episode }))
-            .catch(() => null)
-        )
-      ).then(episodes => {
+      try {
+        const episodePromises = character.episode.map(async (epUrl) => {
+          try {
+            const res = await fetch(epUrl);
+            const data = await res.json();
+            return { name: data.name, episode: data.episode };
+          } catch {
+            return null;
+          }
+        });
+        
+        const episodes = await Promise.all(episodePromises);
         setEpisodeTitles(episodes.filter(Boolean));
+      } finally {
         setEpisodesLoading(false);
-      });
-    } else {
-      setEpisodeTitles([]);
-    }
+      }
+    };
+    
+    fetchEpisodes();
   }, [character]);
 
   // Loading state

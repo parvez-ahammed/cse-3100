@@ -34,9 +34,8 @@ export default function Home() {
   const name = searchParams.get('name') || '';
   const status = searchParams.get('status') || '';
   const page = parseInt(searchParams.get('page') || '1', 10);
-  // State for total page count and all fetched results
+  // State for total page count
   const [pageCount, setPageCount] = useState(1);
-  const [allResults, setAllResults] = useState([]);
 
   // Persist search/filter preferences to localStorage whenever they change
   useEffect(() => {
@@ -68,7 +67,6 @@ export default function Home() {
             results = results.concat(nextData.results || []);
           }
         }
-        setAllResults(results);
         // Calculate strict 10-per-page page count
         const totalResults = data.info.count;
         setPageCount(Math.ceil(totalResults / 10));
@@ -77,7 +75,6 @@ export default function Home() {
         setCharacters(results.slice(startIdx, startIdx + 10));
       } catch (err) {
         setCharacters([]);
-        setAllResults([]);
         setPageCount(1);
         setError(err.message);
       } finally {

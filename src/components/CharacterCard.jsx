@@ -14,15 +14,6 @@ export default function CharacterCard({ character }) {
     }
   };
 
-  // Get status text color class
-  const getStatusTextClass = () => {
-    switch(character.status.toLowerCase()) {
-      case 'alive': return styles.textAlive;
-      case 'dead': return styles.textDead;
-      default: return styles.textUnknown;
-    }
-  };
-
   return (
     <div className={styles.card} onClick={goToDetail}>
       <div className={styles.cardImageWrapper}>
