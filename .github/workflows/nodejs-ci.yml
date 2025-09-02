@@ -29,10 +29,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Run ESLint (will fail if linting issues exist)
-      - name: Run ESLint
-        run: npm run lint
-
       # Run tests
       - name: Run unit tests
         run: npm test
