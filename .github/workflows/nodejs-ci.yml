@@ -1,0 +1,38 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - test-nodejs-ci
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+
+    steps:
+      # Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Node.js for each version in the matrix
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run ESLint (will fail if linting issues exist)
+      - name: Run ESLint
+        run: npm run lint
+
+      # Run tests
+      - name: Run unit tests
+        run: npm test
