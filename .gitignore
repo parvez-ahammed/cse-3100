@@ -25,3 +25,8 @@ dist-ssr
 **/node_modules
 **/dist
 **/build
+
+.env
+bootstrap
+storage
+vendor

@@ -1,0 +1,8 @@
+services:
+  react-app:
+    container_name: client
+    build: .
+    ports:
+      - "5173:5173"
+    restart: always
+    command: "npm run dev"
