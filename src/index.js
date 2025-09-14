@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Hello from Simple Node API!' });
+  res.json({ message: 'Hello from Simple Node API! something unexpected' });
 });
 
 if (process.env.NODE_ENV !== 'test') {
